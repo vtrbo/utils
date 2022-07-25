@@ -1,0 +1,11 @@
+{
+  "name": "docs",
+  "scripts": {
+    "dev": "vitepress dev . --port 5174 --host --open",
+    "build": "vitepress build .",
+    "serve": "vitepress serve . --port 5175"
+  },
+  "devDependencies": {
+    "vitepress": "1.0.0-alpha.4"
+  }
+}
