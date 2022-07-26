@@ -7,9 +7,6 @@ export default defineConfig({
 
   base: '/',
   lastUpdated: true,
-  markdown: {
-    lineNumbers: true,
-  },
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
@@ -22,6 +19,9 @@ export default defineConfig({
       text: '为此页提供修改建议',
       pattern: 'https://github.com/vtrbo/utils/edit/main/docs/:path',
     },
+
+    outlineTitle: '快速定位',
+    lastUpdatedText: '最后更新',
 
     socialLinks: [
       { icon: 'twitter', link: 'https://twitter.com/vtrbo88' },
@@ -48,6 +48,10 @@ export default defineConfig({
       '/method/': sideMethod(),
     },
   },
+
+  markdown: {
+    lineNumbers: true,
+  },
 })
 
 function sideGuide() {
@@ -66,10 +70,10 @@ function sideGuide() {
 function sideMethod() {
   return [
     {
-      text: '模块',
+      text: '方法库',
       collapsible: true,
       items: [
-        { text: 'string', link: '/method/string' },
+        { text: 'String', link: '/method/string' },
         { text: 'tool', link: '/method/tool' },
       ],
     },
