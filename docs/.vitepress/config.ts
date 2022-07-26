@@ -6,7 +6,10 @@ export default defineConfig({
   description: 'Collection of common JavaScript or TypeScript utils.',
 
   base: '/',
-  // lastUpdated: true,
+  lastUpdated: true,
+  markdown: {
+    lineNumbers: true,
+  },
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
@@ -37,11 +40,12 @@ export default defineConfig({
 
     nav: [
       { text: '指引', link: '/guide/what-is-utils', activeMatch: '/guide/' },
-      { text: '函数', link: '/function/', activeMatch: '/function/' },
+      { text: '函数', link: '/method/string', activeMatch: '/method/' },
     ],
 
     sidebar: {
       '/guide/': sideGuide(),
+      '/method/': sideMethod(),
     },
   },
 })
@@ -54,6 +58,19 @@ function sideGuide() {
       items: [
         { text: '介绍', link: '/guide/what-is-utils' },
         { text: '快速上手', link: '/guide/get-started' },
+      ],
+    },
+  ]
+}
+
+function sideMethod() {
+  return [
+    {
+      text: '模块',
+      collapsible: true,
+      items: [
+        { text: 'string', link: '/method/string' },
+        { text: 'tool', link: '/method/tool' },
       ],
     },
   ]

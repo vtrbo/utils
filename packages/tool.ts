@@ -1,1 +1,1 @@
-export * from './core/tool'
+export * from './core/tool/entry'

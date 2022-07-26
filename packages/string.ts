@@ -1,1 +1,1 @@
-export * from './core/string'
+export * from './core/string/entry'

@@ -36,7 +36,7 @@
     "dist"
   ],
   "scripts": {
-    "generate": "esno packages/build.ts",
+    "generate": "esno generate/entry.ts",
     "build": "nr generate && tsup",
     "dev": "nr generate && tsup --watch",
     "lint": "eslint .",

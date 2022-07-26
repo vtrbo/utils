@@ -1,11 +1,12 @@
-import tool from './core/tool'
-import string from './core/string'
+import string from './core/string/entry'
+import tool from './core/tool/entry'
 
 export {
-  tool,
   string,
+  tool,
 }
+
 export default {
-  tool,
   string,
+  tool,
 }
