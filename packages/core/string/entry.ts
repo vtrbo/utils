@@ -13,20 +13,24 @@ import {
   toArray,
   uniq,
 } from './array'
+
 import {
   assert,
   noop,
   toString,
 } from './base'
+
 import {
   clamp,
   sum,
 } from './math'
+
 import {
   batchInvoke,
   invoke,
   tap,
 } from './array/entry'
+
 import {
   isBoolean,
   isDef,

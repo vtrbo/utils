@@ -25,10 +25,11 @@ const generateEntries = async () => {
 
       writeModuleEntry({ mark, path })
 
-      fs.writeFileSync(
+      fs.writeFile(
         `packages/${mark}.ts`,
         `export * from './${path}/entry'\n`,
         {},
+        writeError,
       )
       importContent += `import ${mark} from './${path}/entry'\n`
       exportContent += `\n  ${mark},`
@@ -36,28 +37,30 @@ const generateEntries = async () => {
   })
 
   // 写库导出
-  fs.writeFileSync(
+  fs.writeFile(
     'packages/index.ts',
     `${importContent}\n`
     + `export {${exportContent}\n}\n\n`
     + `export default {${exportContent}\n}\n`,
     {},
+    writeError,
   )
 }
 
 /**
- * 写模块入口
+ * 写模块入口文件函数
  */
 async function writeModuleEntry(params: { mark: string; path: string }) {
   const { mark } = params
   const entries = await fg([`packages/core/${mark}/**/*.ts`, `!packages/core/${mark}/entry.ts`])
 
-  // 写入入口文件
+  // 写入口文件
   const entry = `packages/core/${mark}/entry.ts`
-  fs.writeFileSync(
+  fs.writeFile(
     entry,
     '',
     {},
+    writeError,
   )
 
   const moduleExport: string[] = []
@@ -67,8 +70,6 @@ async function writeModuleEntry(params: { mark: string; path: string }) {
       f,
       { encoding: 'utf-8' },
     )
-
-    // console.log('module data', data)
 
     // 取出所有导出的函数名称
     const reg = /export.*?function(.*?)\(|export.*?(const|let|var)(.*?)=/g
@@ -81,7 +82,7 @@ async function writeModuleEntry(params: { mark: string; path: string }) {
       const importContent = [...new Set(fileExport)].join(',\n  ')
       fs.appendFileSync(
         entry,
-        `import {\n  ${importContent},\n} from './${f.replace(/packages\/core\/.*?\/(.*?).ts/g, '$1')}'\n`,
+        `import {\n  ${importContent},\n} from './${f.replace(/packages\/core\/.*?\/(.*?).ts/g, '$1')}'\n\n`,
         {},
       )
 
@@ -91,12 +92,21 @@ async function writeModuleEntry(params: { mark: string; path: string }) {
 
   // 写入口文件函数的导出
   const exportContent = [...new Set(moduleExport)].join(',\n  ')
-  fs.appendFileSync(
+  fs.appendFile(
     entry,
-    `\nexport {\n  ${exportContent},\n}\n`
+    `export {\n  ${exportContent},\n}\n`
     + `\nexport default {\n  ${exportContent},\n}\n`,
     {},
+    writeError,
   )
+}
+
+/**
+ * 写入失败处理函数
+ */
+function writeError(error: NodeJS.ErrnoException | null): void {
+  if (error)
+    throw error
 }
 
 generateEntries()
