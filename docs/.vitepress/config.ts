@@ -58,7 +58,7 @@ function sideGuide() {
   return [
     {
       text: '基础',
-      collapsible: true,
+      collapsible: false,
       items: [
         { text: '介绍', link: '/guide/what-is-utils' },
         { text: '快速上手', link: '/guide/get-started' },
