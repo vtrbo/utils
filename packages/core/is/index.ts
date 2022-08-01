@@ -1,4 +1,4 @@
-import { toRawType } from '../function/toRawType'
+import { toRawType } from '../fn/toRawType'
 import { firstUpperCase } from '../string/firstUpperCase'
 
 /**

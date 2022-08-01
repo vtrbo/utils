@@ -5,8 +5,8 @@ import fg from 'fast-glob'
  * 生成入口文件主函数
  */
 const generateEntries = async () => {
-  const entries = await fg(['packages/core/**/*.ts', '!packages/core/*/entry.ts'])
-  const files = await fg(['packages/*.ts', '!packages/types.ts'])
+  const entries = await fg(['packages/core/**/*.ts', '!packages/core/*/entry.ts', '!packages/core/types.ts'])
+  const files = await fg(['packages/*.ts'])
 
   files.forEach(f => fs.unlinkSync(f))
 
@@ -15,15 +15,14 @@ const generateEntries = async () => {
 
   // 写模块导出
   const generate: string[] = []
-  entries.forEach(async (f: string) => {
+  entries.forEach((f: string) => {
     const fsp = f.split('/')
     const mark = fsp[2]
     const path = fsp.slice(1, 3).join('/')
 
     if (!generate.includes(mark)) {
       generate.push(mark)
-
-      if (await writeModuleEntry({ mark, path })) {
+      if (writeModuleEntry({ mark, path })) {
         fs.writeFile(
           `packages/${mark}.ts`,
           `export * from './${path}/entry'\n`,
@@ -50,9 +49,9 @@ const generateEntries = async () => {
 /**
  * 写模块入口文件函数
  */
-async function writeModuleEntry(params: { mark: string; path: string }) {
+function writeModuleEntry(params: { mark: string; path: string }) {
   const { mark } = params
-  const entries = await fg([`packages/core/${mark}/**/*.ts`, `!packages/core/${mark}/entry.ts`])
+  const entries = fg.sync([`packages/core/${mark}/**/*.ts`, `!packages/core/${mark}/entry.ts`])
 
   // 写入口文件
   const entry = `packages/core/${mark}/entry.ts`

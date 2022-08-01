@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import sideMethods from './methods'
 
 export default defineConfig({
   lang: 'zh-CN',
@@ -45,7 +46,7 @@ export default defineConfig({
 
     sidebar: {
       '/guide/': sideGuide(),
-      '/method/': sideMethod(),
+      '/method/': sideMethods,
     },
   },
 
@@ -67,15 +68,3 @@ function sideGuide() {
   ]
 }
 
-function sideMethod() {
-  return [
-    {
-      text: '方法库',
-      collapsible: true,
-      items: [
-        { text: 'String', link: '/method/string' },
-        { text: 'tool', link: '/method/tool' },
-      ],
-    },
-  ]
-}

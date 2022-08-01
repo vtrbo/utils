@@ -1,4 +1,4 @@
-import type { Arrayable, Nullable } from '../../types'
+import type { Arrayable, Nullable } from '../types'
 
 /**
  * @description Arrayable<T> 转为 Array<T>

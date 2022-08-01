@@ -1,5 +1,5 @@
 {
-  "name": "docs",
+  "name": "@vtrbo/utils-docs",
   "scripts": {
     "dev": "vitepress dev . --port 5174 --host --open",
     "build": "vitepress build .",
