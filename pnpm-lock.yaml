@@ -30,10 +30,8 @@ importers:
 
   docs:
     specifiers:
-      '@vtrbo/utils': workspace:0.0.0-alpha.0
       vitepress: 1.0.0-alpha.4
     devDependencies:
-      '@vtrbo/utils': link:..
       vitepress: 1.0.0-alpha.4_hqkgilnnkjl2yrbcirnx26odsu
 
   playground:
