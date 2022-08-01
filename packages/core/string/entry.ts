@@ -1,11 +1,47 @@
 import {
+  backslashToSlash,
+} from './backslashToSlash'
+
+import {
+  ensurePrefix,
+} from './ensurePrefix'
+
+import {
+  ensureSuffix,
+} from './ensureSuffix'
+
+import {
   firstUpperCase,
-} from './index'
+} from './firstUpperCase'
+
+import {
+  randomString,
+} from './randomString'
+
+import {
+  templateEngine,
+} from './templateEngine'
+
+import {
+  toString,
+} from './toString'
 
 export {
+  backslashToSlash,
+  ensurePrefix,
+  ensureSuffix,
   firstUpperCase,
+  randomString,
+  templateEngine,
+  toString,
 }
 
 export default {
+  backslashToSlash,
+  ensurePrefix,
+  ensureSuffix,
   firstUpperCase,
+  randomString,
+  templateEngine,
+  toString,
 }

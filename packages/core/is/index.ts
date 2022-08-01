@@ -1,5 +1,5 @@
-import { toRawType } from '../tool'
-import { firstUpperCase } from '../string'
+import { toRawType } from '../function/toRawType'
+import { firstUpperCase } from '../string/firstUpperCase'
 
 /**
  * @description 是否是指定类型

@@ -6,7 +6,7 @@ import fg from 'fast-glob'
  */
 const generateEntries = async () => {
   const entries = await fg(['packages/core/**/*.ts', '!packages/core/*/entry.ts'])
-  const files = await fg(['packages/*.ts', '!packages/build.ts'])
+  const files = await fg(['packages/*.ts', '!packages/types.ts'])
 
   files.forEach(f => fs.unlinkSync(f))
 
