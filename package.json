@@ -1,7 +1,7 @@
 {
   "name": "@vtrbo/utils",
   "version": "0.0.0-alpha.0",
-  "packageManager": "pnpm@7.7.1",
+  "packageManager": "pnpm@7.8.0",
   "description": "Collection of common JavaScript or TypeScript utils.",
   "author": {
     "name": "Victor Bo",
@@ -55,9 +55,9 @@
     "eslint": "^8.20.0",
     "esno": "^0.16.3",
     "fast-glob": "^3.2.11",
-    "pnpm": "^7.7.1",
+    "pnpm": "^7.8.0",
     "tsup": "^6.2.1",
     "typescript": "^4.7.4",
-    "vitest": "^0.20.0"
+    "vitest": "^0.20.2"
   }
 }
