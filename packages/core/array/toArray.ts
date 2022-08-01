@@ -5,6 +5,7 @@ import type { Arrayable, Nullable } from '../types'
  *
  * @function toArray
  * @param { array } data?
+ * @returns { array }
  */
 export function toArray<T>(data?: Nullable<Arrayable<T>>): Array<T> {
   data = data || []

@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import sideMethods from './methods'
+import sideMethods from './sidebar'
 
 export default defineConfig({
   lang: 'zh-CN',
@@ -41,17 +41,23 @@ export default defineConfig({
 
     nav: [
       { text: '指引', link: '/guide/what-is-utils', activeMatch: '/guide/' },
-      { text: '函数', link: '/method/string', activeMatch: '/method/' },
+      { text: '函数', link: sideMethods[0].link || '/method/string', activeMatch: '/method/' },
     ],
 
     sidebar: {
       '/guide/': sideGuide(),
-      '/method/': sideMethods,
+      '/method/': [
+        {
+          text: '函数库',
+          collapsible: false,
+          items: sideMethods,
+        },
+      ],
     },
   },
 
   markdown: {
-    lineNumbers: true,
+    lineNumbers: false,
   },
 })
 
