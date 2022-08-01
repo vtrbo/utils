@@ -15,7 +15,7 @@ const generateEntries = async () => {
 
   // 写模块导出
   const generate: string[] = []
-  entries.forEach((f: string) => {
+  entries.forEach(async (f: string) => {
     const fsp = f.split('/')
     const mark = fsp[2]
     const path = fsp.slice(1, 3).join('/')
@@ -23,16 +23,16 @@ const generateEntries = async () => {
     if (!generate.includes(mark)) {
       generate.push(mark)
 
-      writeModuleEntry({ mark, path })
-
-      fs.writeFile(
-        `packages/${mark}.ts`,
-        `export * from './${path}/entry'\n`,
-        {},
-        writeError,
-      )
-      importContent += `import ${mark} from './${path}/entry'\n`
-      exportContent += `\n  ${mark},`
+      if (await writeModuleEntry({ mark, path })) {
+        fs.writeFile(
+          `packages/${mark}.ts`,
+          `export * from './${path}/entry'\n`,
+          {},
+          writeError,
+        )
+        importContent += `import ${mark} from './${path}/entry'\n`
+        exportContent += `\n  ${mark},`
+      }
     }
   })
 
@@ -90,15 +90,19 @@ async function writeModuleEntry(params: { mark: string; path: string }) {
     }
   })
 
-  // 写入口文件函数的导出
-  const exportContent = [...new Set(moduleExport)].join(',\n  ')
-  fs.appendFile(
-    entry,
-    `export {\n  ${exportContent},\n}\n`
-    + `\nexport default {\n  ${exportContent},\n}\n`,
-    {},
-    writeError,
-  )
+  if ((moduleExport || []).length) {
+    // 写入口文件函数的导出
+    const exportContent = [...new Set(moduleExport)].join(',\n  ')
+    fs.appendFile(
+      entry,
+      `export {\n  ${exportContent},\n}\n`
+      + `\nexport default {\n  ${exportContent},\n}\n`,
+      {},
+      writeError,
+    )
+    return true
+  }
+  return false
 }
 
 /**
