@@ -37,7 +37,7 @@
     "build": "nr generate && tsup",
     "dev": "nr generate && tsup --watch",
     "lint": "eslint .",
-    "publish": "nr generate && npm publish --access=public",
+    "publish": "npm publish --access=public",
     "release": "bumpp && nr publish",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
