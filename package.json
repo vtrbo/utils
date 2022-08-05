@@ -9,14 +9,39 @@
   },
   "license": "MIT",
   "keywords": [
-    "vtrbo",
     "utils",
     "tools"
   ],
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "require": "./dist/index.js",
       "import": "./dist/index.mjs"
+    },
+    "./array": {
+      "types": "./dist/array.d.ts",
+      "require": "./dist/array.js",
+      "import": "./dist/array.mjs"
+    },
+    "./color": {
+      "types": "./dist/color.d.ts",
+      "require": "./dist/color.js",
+      "import": "./dist/color.mjs"
+    },
+    "./fn": {
+      "types": "./dist/fn.d.ts",
+      "require": "./dist/fn.js",
+      "import": "./dist/fn.mjs"
+    },
+    "./is": {
+      "types": "./dist/is.d.ts",
+      "require": "./dist/is.js",
+      "import": "./dist/is.mjs"
+    },
+    "./string": {
+      "types": "./dist/string.d.ts",
+      "require": "./dist/string.js",
+      "import": "./dist/string.mjs"
     }
   },
   "main": "dist/index.js",
