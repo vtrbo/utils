@@ -1,8 +1,4 @@
 import {
-  hexToRgba,
-} from './hexToRgba'
-
-import {
   randomHex,
 } from './randomHex'
 
