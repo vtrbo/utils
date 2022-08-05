@@ -1,6 +1,6 @@
 {
   "name": "@vtrbo/utils",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "packageManager": "pnpm@7.8.0",
   "description": "Collection of common JavaScript or TypeScript utils.",
   "author": {
@@ -37,7 +37,7 @@
     "build": "nr generate && tsup",
     "dev": "nr generate && tsup --watch",
     "lint": "eslint .",
-    "prepublishOnly": "nr generate",
+    "prepublishOnly": "nr build",
     "release": "bumpp && npm publish --access=public",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
