@@ -5,9 +5,9 @@ import { firstUpperCase } from './../packages/string'
 /**
  * 生成侧边栏目录
  */
-const generateTopic = async () => {
-  const entries = await fg(['packages/core/*/entry.ts'])
-  const topic = await fg(['docs/.vitepress/sidebar.ts'])
+const generateTopic = () => {
+  const entries = fg.sync(['packages/core/*/entry.ts'])
+  const topic = fg.sync(['docs/.vitepress/sidebar.ts'])
 
   topic.forEach(f => fs.unlinkSync(f))
 

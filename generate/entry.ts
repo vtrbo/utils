@@ -4,9 +4,9 @@ import fg from 'fast-glob'
 /**
  * 生成入口文件主函数
  */
-const generateEntries = async () => {
-  const entries = await fg(['packages/core/**/*.ts', '!packages/core/*/entry.ts', '!packages/core/types.ts'])
-  const files = await fg(['packages/*.ts'])
+const generateEntries = () => {
+  const entries = fg.sync(['packages/core/**/*.ts', '!packages/core/*/entry.ts', '!packages/core/types.ts'])
+  const files = fg.sync(['packages/*.ts'])
 
   files.forEach(f => fs.unlinkSync(f))
 
