@@ -19,20 +19,11 @@ const generateTopic = async () => {
   })
   exportTopic += '\n]\n'
 
-  fs.writeFile(
+  fs.writeFileSync(
     'docs/.vitepress/sidebar.ts',
     exportTopic,
     {},
-    writeError,
   )
-}
-
-/**
- * 写入失败处理函数
- */
-function writeError(error: NodeJS.ErrnoException | null): void {
-  if (error)
-    throw error
 }
 
 generateTopic()

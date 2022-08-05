@@ -23,11 +23,10 @@ const generateEntries = async () => {
     if (!generate.includes(mark)) {
       generate.push(mark)
       if (writeModuleEntry({ mark, path })) {
-        fs.writeFile(
+        fs.writeFileSync(
           `packages/${mark}.ts`,
           `export * from './${path}/entry'\n`,
           {},
-          writeError,
         )
         importContent += `import ${mark} from './${path}/entry'\n`
         exportContent += `\n  ${mark},`
@@ -36,13 +35,12 @@ const generateEntries = async () => {
   })
 
   // 写库导出
-  fs.writeFile(
+  fs.writeFileSync(
     'packages/index.ts',
     `${importContent}\n`
     + `export {${exportContent}\n}\n\n`
     + `export default {${exportContent}\n}\n`,
     {},
-    writeError,
   )
 }
 
@@ -55,11 +53,10 @@ function writeModuleEntry(params: { mark: string; path: string }) {
 
   // 写入口文件
   const entry = `packages/core/${mark}/entry.ts`
-  fs.writeFile(
+  fs.writeFileSync(
     entry,
     '',
     {},
-    writeError,
   )
 
   const moduleExport: string[] = []
@@ -92,24 +89,15 @@ function writeModuleEntry(params: { mark: string; path: string }) {
   if ((moduleExport || []).length) {
     // 写入口文件函数的导出
     const exportContent = [...new Set(moduleExport)].join(',\n  ')
-    fs.appendFile(
+    fs.appendFileSync(
       entry,
       `export {\n  ${exportContent},\n}\n`
       + `\nexport default {\n  ${exportContent},\n}\n`,
       {},
-      writeError,
     )
     return true
   }
   return false
-}
-
-/**
- * 写入失败处理函数
- */
-function writeError(error: NodeJS.ErrnoException | null): void {
-  if (error)
-    throw error
 }
 
 generateEntries()
