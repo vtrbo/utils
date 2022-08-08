@@ -9,5 +9,5 @@
 export function hasOwn<T>(object: T, key: PropertyKey): boolean {
   if (object == null)
     return false
-  return Object.hasOwn(object, key)
+  return Object.prototype.hasOwnProperty.call(object, key)
 }

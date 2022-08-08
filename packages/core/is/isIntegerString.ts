@@ -1,3 +1,5 @@
+import { isString } from './isString'
+
 /**
  * @description 是否为数字型字符串
  *
