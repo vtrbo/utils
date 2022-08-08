@@ -1,3 +1,6 @@
 {
-  "extends": "@vtrbo"
+  "extends": "@vtrbo",
+  "rules": {
+    "@typescript-eslint/no-inferrable-types": "off"
+  }
 }

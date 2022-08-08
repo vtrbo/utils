@@ -18,6 +18,17 @@
  */
 ```
 
+## once
+```ts
+/**
+ * @description 一次函数
+ *
+ * @function once
+ * @param { (this: T, ...arg: A) => R } fn
+ * @returns { (this: T, ...arg: A) => R | undefined }
+ */
+```
+
 ## toRawType
 ```ts
 /**
