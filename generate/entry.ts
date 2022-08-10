@@ -5,7 +5,12 @@ import fg from 'fast-glob'
  * 生成入口文件主函数
  */
 const generateEntries = () => {
-  const entries = fg.sync(['packages/core/**/*.ts', '!packages/core/*/entry.ts', '!packages/core/types.ts'])
+  const entries = fg.sync([
+    'packages/core/**/*.ts',
+    '!packages/core/**/*.test.ts',
+    '!packages/core/*/entry.ts',
+    '!packages/core/types.ts',
+  ])
   const files = fg.sync(['packages/*.ts'])
 
   files.forEach(f => fs.unlinkSync(f))

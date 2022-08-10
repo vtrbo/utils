@@ -23,6 +23,10 @@ import {
 } from './map'
 
 import {
+  omit,
+} from './omit'
+
+import {
   pick,
 } from './pick'
 
@@ -33,6 +37,7 @@ export {
   keyIn,
   keys,
   map,
+  omit,
   pick,
 }
 
@@ -43,5 +48,6 @@ export default {
   keyIn,
   keys,
   map,
+  omit,
   pick,
 }

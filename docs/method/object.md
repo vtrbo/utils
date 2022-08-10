@@ -54,8 +54,19 @@
  * @function pick
  * @param { O } object
  * @param { T[] } keys
- * @param { boolean } omitUndefined = false
  * @returns { Pick<O, T> }
+ */
+```
+
+## omit
+```ts
+/**
+ * @description object omit
+ *
+ * @function omit
+ * @param { O } object
+ * @param { T[] } keys
+ * @returns { Omit<O, T> }
  */
 ```
 
