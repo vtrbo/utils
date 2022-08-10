@@ -1,6 +1,19 @@
 # Color 函数库
 
+## hexToRgba
+
+```ts
+/**
+ * @description HEX 转 RGBA
+ *
+ * @function hexToRgba
+ * @param { string } hex
+ * @returns { number[] }
+ */
+```
+
 ## randomHex
+
 ```ts
 /**
  * @description 生成随机 HEX 颜色
@@ -11,6 +24,7 @@
 ```
 
 ## rgbaToHex
+
 ```ts
 /**
  * @description RGBA 转 HEX
@@ -24,13 +38,3 @@
  */
 ```
 
-## hexToRgba
-```ts
-/**
- * @description HEX 转 RGBA
- *
- * @function hexToRgba
- * @param { string } hex
- * @returns { number[] }
- */
-```

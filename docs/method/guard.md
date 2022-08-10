@@ -1,6 +1,7 @@
 # Guard 函数库
 
 ## notFalsy
+
 ```ts
 /**
  * @description 非 falsy
@@ -12,6 +13,7 @@
 ```
 
 ## notNull
+
 ```ts
 /**
  * @description 非 null value
@@ -23,6 +25,7 @@
 ```
 
 ## notNullish
+
 ```ts
 /**
  * @description 非 nullish value
@@ -34,6 +37,7 @@
 ```
 
 ## notUndefined
+
 ```ts
 /**
  * @description 非 undefined value
@@ -43,3 +47,4 @@
  * @returns { boolean }
  */
 ```
+

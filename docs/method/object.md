@@ -1,6 +1,7 @@
 # Object 函数库
 
 ## deepMerge
+
 ```ts
 /**
  * @description 深拷贝对象
@@ -13,6 +14,7 @@
 ```
 
 ## entries
+
 ```ts
 /**
  * @description object entries
@@ -23,54 +25,8 @@
  */
 ```
 
-## keys
-```ts
-/**
- * @description object keys
- *
- * @function keys
- * @param { T } object
- * @returns { (keyof T)[] }
- */
-```
-
-## map
-```ts
-/**
- * @description object map
- *
- * @function map
- * @param { Record<K, V> } object
- * @param { (key: K, value: V) => [NK, NV] | undefined } fn
- * @returns { boolean }
- */
-```
-
-## pick
-```ts
-/**
- * @description object pick
- *
- * @function pick
- * @param { O } object
- * @param { T[] } keys
- * @returns { Pick<O, T> }
- */
-```
-
-## omit
-```ts
-/**
- * @description object omit
- *
- * @function omit
- * @param { O } object
- * @param { T[] } keys
- * @returns { Omit<O, T> }
- */
-```
-
 ## hasOwn
+
 ```ts
 /**
  * @description object 中是否存在 key
@@ -83,6 +39,7 @@
 ```
 
 ## keyIn
+
 ```ts
 /**
  * @description object 中是否存在 key
@@ -93,3 +50,55 @@
  * @returns { boolean }
  */
 ```
+
+## keys
+
+```ts
+/**
+ * @description object keys
+ *
+ * @function keys
+ * @param { T } object
+ * @returns { (keyof T)[] }
+ */
+```
+
+## map
+
+```ts
+/**
+ * @description object map
+ *
+ * @function map
+ * @param { Record<K, V> } object
+ * @param { (key: K, value: V) => [NK, NV] | undefined } fn
+ * @returns { boolean }
+ */
+```
+
+## omit
+
+```ts
+/**
+ * @description object omit
+ *
+ * @function omit
+ * @param { O } object
+ * @param { T[] } keys
+ * @returns { Omit<O, T> }
+ */
+```
+
+## pick
+
+```ts
+/**
+ * @description object pick
+ *
+ * @function pick
+ * @param { O } object
+ * @param { T[] } keys
+ * @returns { Pick<O, T> }
+ */
+```
+

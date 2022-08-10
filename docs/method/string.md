@@ -1,28 +1,7 @@
 # String 函数库
 
-## toString
-```ts
-/**
- * @description 转为字符串
- *
- * @function toString
- * @param { any } data
- * @returns { string }
- */
-```
-
-## randomString
-```ts
-/**
- * @description 生成随机字符串
- *
- * @function randomString
- * @param { number } size?
- * @param { string } dict?
- */
-```
-
 ## backslashToSlash
+
 ```ts
 /**
  * @description 替换 \ 为 /
@@ -33,30 +12,8 @@
  */
 ```
 
-## firstUpperCase
-```ts
-/**
- * @description 首字母大写
- *
- * @function firstUpperCase
- * @param { string } data
- * @returns { string }
- */
-```
-
-## templateEngine
-```ts
-/**
- * @description 简易的模板引擎
- *
- * @function templateEngine
- * @param { string } data
- * @param { any } args
- * @returns { string }
- */
-```
-
 ## ensurePrefix
+
 ```ts
 /**
  * @description 确保字符串前缀
@@ -69,6 +26,7 @@
 ```
 
 ## ensureSuffix
+
 ```ts
 /**
  * @description 确保字符串后缀
@@ -79,3 +37,53 @@
  * @returns { string }
  */
 ```
+
+## firstUpperCase
+
+```ts
+/**
+ * @description 首字母大写
+ *
+ * @function firstUpperCase
+ * @param { string } data
+ * @returns { string }
+ */
+```
+
+## randomString
+
+```ts
+/**
+ * @description 生成随机字符串
+ *
+ * @function randomString
+ * @param { number } size?
+ * @param { string } dict?
+ */
+```
+
+## templateEngine
+
+```ts
+/**
+ * @description 简易的模板引擎
+ *
+ * @function templateEngine
+ * @param { string } data
+ * @param { any } args
+ * @returns { string }
+ */
+```
+
+## toString
+
+```ts
+/**
+ * @description 转为字符串
+ *
+ * @function toString
+ * @param { any } data
+ * @returns { string }
+ */
+```
+
