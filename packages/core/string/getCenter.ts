@@ -21,37 +21,47 @@ const defaultOption: IOption = {
 }
 
 /**
- * @description 取右边文本
+ * @description 取中间文本
  *
- * @function getRight
+ * @function getCenter
  * @param { string } source - 源文本
- * @param { string } target - 目标文本
+ * @param { string } before - 前面文本
+ * @param { string } after - 后面文本
  * @param { IOption } [option] - 配置项
  * @param { number } [option.startPosition = 0] - 配置项.开始寻找位置
  * @param { boolean } [option.matchCase = false] - 配置项.是否区分大小写
  * @param { boolean } [option.returnTarget = false] - 配置项.是否返回寻找文本
- * @returns { string } - 右边的文本
+ * @returns { string } - 中间的文本
  */
-export const getRight = (
+export const getCenter = (
   source: string,
-  target: string,
+  before: string,
+  after: string,
   option?: IOption,
 ): string => {
   const tOption: IOption = { ...defaultOption, ...(option || {}) }
   let tSource: string = source
-  let tTarget: string = target
+  let tBefore: string = before
+  let tAfter: string = after
 
   // matchCase
   if (!tOption?.matchCase) {
     tSource = tSource.toLowerCase()
-    tTarget = target.toLowerCase()
+    tBefore = before.toLowerCase()
+    tAfter = after.toLowerCase()
   }
 
-  const position = tSource.indexOf(tTarget, tOption?.startPosition)
+  const beforePosition = tSource.indexOf(tBefore, tOption?.startPosition)
+  if (beforePosition === -1)
+    return ''
+
+  const afterPosition = tSource.indexOf(tAfter, beforePosition + before.length)
+  if (afterPosition === -1)
+    return ''
 
   // returnTarget
-  return position !== -1
-    ? source.substring(position + (!tOption?.returnTarget ? target.length : 0))
-    : ''
+  return tOption?.returnTarget
+    ? source.substring(beforePosition, afterPosition + after.length)
+    : source.substring(beforePosition + before.length, afterPosition)
 }
 

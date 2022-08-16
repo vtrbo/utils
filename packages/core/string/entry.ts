@@ -15,6 +15,10 @@ import {
 } from './firstUpperCase'
 
 import {
+  getCenter,
+} from './getCenter'
+
+import {
   getLeft,
 } from './getLeft'
 
@@ -39,6 +43,7 @@ export {
   ensurePrefix,
   ensureSuffix,
   firstUpperCase,
+  getCenter,
   getLeft,
   getRight,
   randomString,
@@ -51,6 +56,7 @@ export default {
   ensurePrefix,
   ensureSuffix,
   firstUpperCase,
+  getCenter,
   getLeft,
   getRight,
   randomString,

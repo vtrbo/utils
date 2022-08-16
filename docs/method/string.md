@@ -50,19 +50,37 @@
  */
 ```
 
+## getCenter
+
+```ts
+/**
+ * @description 取中间文本
+ *
+ * @function getCenter
+ * @param { string } source - 源文本
+ * @param { string } before - 前面文本
+ * @param { string } after - 后面文本
+ * @param { IOption } [option] - 配置项
+ * @param { number } [option.startPosition = 0] - 配置项.开始寻找位置
+ * @param { boolean } [option.matchCase = false] - 配置项.是否区分大小写
+ * @param { boolean } [option.returnTarget = false] - 配置项.是否返回寻找文本
+ * @returns { string } - 中间的文本
+ */
+```
+
 ## getLeft
 
 ```ts
 /**
- * @description 取文本左边
+ * @description 取左边文本
  *
  * @function getLeft
- * @param { string } data - 欲取的全文本
- * @param { string } findData - 寻找的文本
- * @param { IOption } [options] - 配置项
- * @param { number } [options.findPosition = 0] - 配置项.开始寻找位置
- * @param { boolean } [options.diffCase = false] - 配置项.是否区分大小写
- * @param { boolean } [options.returnFind = false] - 配置项.是否返回寻找文本
+ * @param { string } source - 源文本
+ * @param { string } target - 目标文本
+ * @param { IOption } [option] - 配置项
+ * @param { number } [option.startPosition = 0] - 配置项.开始寻找位置
+ * @param { boolean } [option.matchCase = false] - 配置项.是否区分大小写
+ * @param { boolean } [option.returnTarget = false] - 配置项.是否返回寻找文本
  * @returns { string } - 左边的文本
  */
 ```
@@ -71,15 +89,15 @@
 
 ```ts
 /**
- * @description 取文本右边
+ * @description 取右边文本
  *
  * @function getRight
- * @param { string } data - 欲取的全文本
- * @param { string } findData - 寻找的文本
- * @param { IOption } [options] - 配置项
- * @param { number } [options.findPosition = 0] - 配置项.开始寻找位置
- * @param { boolean } [options.diffCase = false] - 配置项.是否区分大小写
- * @param { boolean } [options.returnFind = false] - 配置项.是否返回寻找文本
+ * @param { string } source - 源文本
+ * @param { string } target - 目标文本
+ * @param { IOption } [option] - 配置项
+ * @param { number } [option.startPosition = 0] - 配置项.开始寻找位置
+ * @param { boolean } [option.matchCase = false] - 配置项.是否区分大小写
+ * @param { boolean } [option.returnTarget = false] - 配置项.是否返回寻找文本
  * @returns { string } - 右边的文本
  */
 ```

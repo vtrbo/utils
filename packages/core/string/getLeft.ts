@@ -1,45 +1,57 @@
 export interface IOption {
-  findPosition?: number
-  diffCase?: boolean
-  returnFind?: boolean
+  // 开始寻找位置
+  startPosition?: number
+
+  // 区分大小写
+  matchCase?: boolean
+
+  // 返回寻找文本
+  returnTarget?: boolean
 }
 
 const defaultOption: IOption = {
-  findPosition: 0,
-  diffCase: false,
-  returnFind: false,
+  // 开始寻找位置
+  startPosition: 0,
+
+  // 区分大小写
+  matchCase: false,
+
+  // 返回寻找文本
+  returnTarget: false,
 }
 
 /**
- * @description 取文本左边
+ * @description 取左边文本
  *
  * @function getLeft
- * @param { string } data - 欲取的全文本
- * @param { string } findData - 寻找的文本
- * @param { IOption } [options] - 配置项
- * @param { number } [options.findPosition = 0] - 配置项.开始寻找位置
- * @param { boolean } [options.diffCase = false] - 配置项.是否区分大小写
- * @param { boolean } [options.returnFind = false] - 配置项.是否返回寻找文本
+ * @param { string } source - 源文本
+ * @param { string } target - 目标文本
+ * @param { IOption } [option] - 配置项
+ * @param { number } [option.startPosition = 0] - 配置项.开始寻找位置
+ * @param { boolean } [option.matchCase = false] - 配置项.是否区分大小写
+ * @param { boolean } [option.returnTarget = false] - 配置项.是否返回寻找文本
  * @returns { string } - 左边的文本
  */
 export const getLeft = (
-  data: string,
-  findData: string,
-  options?: IOption,
+  source: string,
+  target: string,
+  option?: IOption,
 ): string => {
-  const tOptions = { ...defaultOption, ...(options || {}) }
-  let tData: string = data
+  const tOption: IOption = { ...defaultOption, ...(option || {}) }
+  let tSource: string = source
+  let tTarget: string = target
 
-  // diffCase
-  if (!tOptions?.diffCase)
-    tData = tData.toLowerCase()
+  // matchCase
+  if (!tOption?.matchCase) {
+    tSource = tSource.toLowerCase()
+    tTarget = target.toLowerCase()
+  }
 
-  // findPosition
-  const position = tData.indexOf(findData, tOptions?.findPosition)
+  const position = tSource.indexOf(tTarget, tOption?.startPosition)
 
-  // returnFind
+  // returnTarget
   return position !== -1
-    ? data.substring(0, position + (tOptions?.returnFind ? findData.length : 0))
+    ? source.substring(0, position + (tOption?.returnTarget ? target.length : 0))
     : ''
 }
 
