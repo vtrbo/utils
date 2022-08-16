@@ -1,14 +1,14 @@
 # Array 函数库
 
-## toArray
+## toArray<T>
 
 ```ts
 /**
- * @description Arrayable<T> 转为 Array<T>
+ * @description 转换为数组
  *
- * @function toArray
- * @param { array } data?
- * @returns { array }
+ * @function toArray<T>
+ * @param { T | Array<T> } [data] - 欲转换的值
+ * @returns { Array<T>  } - 数组
  */
 ```
 

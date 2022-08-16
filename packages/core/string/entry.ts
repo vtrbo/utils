@@ -15,6 +15,14 @@ import {
 } from './firstUpperCase'
 
 import {
+  getLeft,
+} from './getLeft'
+
+import {
+  getRight,
+} from './getRight'
+
+import {
   randomString,
 } from './randomString'
 
@@ -31,6 +39,8 @@ export {
   ensurePrefix,
   ensureSuffix,
   firstUpperCase,
+  getLeft,
+  getRight,
   randomString,
   templateEngine,
   toString,
@@ -41,6 +51,8 @@ export default {
   ensurePrefix,
   ensureSuffix,
   firstUpperCase,
+  getLeft,
+  getRight,
   randomString,
   templateEngine,
   toString,

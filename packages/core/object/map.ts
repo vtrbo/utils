@@ -1,12 +1,12 @@
 import { notNullish } from '../guard/notNullish'
 
 /**
- * @description object map
+ * @description 对象的 Map
  *
  * @function map
- * @param { Record<K, V> } object
- * @param { (key: K, value: V) => [NK, NV] | undefined } fn
- * @returns { boolean }
+ * @param { Record<K, V> } object - 源对象
+ * @param { (key: K, value: V) => [NK, NV] | undefined } fn - Map 函数
+ * @returns { Record<K, V> } - Map 后的对象
  */
 export function map<K extends string, V, NK = K, NV = V>(object: Record<K, V>, fn: (key: K, value: V) => [NK, NV] | undefined): Record<K, V> {
   return Object.fromEntries(

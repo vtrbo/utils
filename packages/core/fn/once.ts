@@ -2,8 +2,8 @@
  * @description 一次函数
  *
  * @function once
- * @param { (this: T, ...arg: A) => R } fn
- * @returns { (this: T, ...arg: A) => R | undefined }
+ * @param { (this: T, ...arg: A) => R } fn - 欲执行的函数
+ * @returns { (this: T, ...arg: A) => R | undefined } - 执行函数 或 undefined
  */
 export const once = <A extends any[], R, T>(
   fn: (this: T, ...arg: A) => R,

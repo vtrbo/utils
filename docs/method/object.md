@@ -1,27 +1,14 @@
 # Object 函数库
 
-## deepMerge
-
-```ts
-/**
- * @description 深拷贝对象
- *
- * @function deepMerge
- * @param { T } target
- * @param { S[] } sources
- * @returns { DeepMerge<T, S> }
- */
-```
-
 ## entries
 
 ```ts
 /**
- * @description object entries
+ * @description 对象的 Entries
  *
  * @function entries
- * @param { T } object
- * @returns { [keyof T, T[keyof T]][] }
+ * @param { T } object - 源对象
+ * @returns { [keyof T, T[keyof T]][] } - Entries
  */
 ```
 
@@ -29,12 +16,12 @@
 
 ```ts
 /**
- * @description object 中是否存在 key
+ * @description 对象中是否存在键
  *
  * @function hasOwn
- * @param { T } object
- * @param { PropertyKey } key
- * @returns { boolean }
+ * @param { T } object - 源对象
+ * @param { PropertyKey } key - 键名
+ * @returns { boolean } - 是否存在
  */
 ```
 
@@ -42,12 +29,12 @@
 
 ```ts
 /**
- * @description object 中是否存在 key
+ * @description 对象中是否存在键
  *
  * @function keyIn
- * @param { T } object
- * @param { any } key
- * @returns { boolean }
+ * @param { T } object - 源对象
+ * @param { any } key - 键名
+ * @returns { boolean } - 是否存在
  */
 ```
 
@@ -55,11 +42,11 @@
 
 ```ts
 /**
- * @description object keys
+ * @description 对象的 Keys
  *
  * @function keys
- * @param { T } object
- * @returns { (keyof T)[] }
+ * @param { T } object - 源对象
+ * @returns { (keyof T)[] } - Keys
  */
 ```
 
@@ -67,12 +54,25 @@
 
 ```ts
 /**
- * @description object map
+ * @description 对象的 Map
  *
  * @function map
- * @param { Record<K, V> } object
- * @param { (key: K, value: V) => [NK, NV] | undefined } fn
- * @returns { boolean }
+ * @param { Record<K, V> } object - 源对象
+ * @param { (key: K, value: V) => [NK, NV] | undefined } fn - Map 函数
+ * @returns { Record<K, V> } - Map 后的对象
+ */
+```
+
+## merge
+
+```ts
+/**
+ * @description 合并对象
+ *
+ * @function merge
+ * @param { T } target - 目标对象
+ * @param { ...S } sources - 合并的对象
+ * @returns { Merge<T, S> } - 合并后的对象
  */
 ```
 
@@ -80,12 +80,12 @@
 
 ```ts
 /**
- * @description object omit
+ * @description 剔除对象键值
  *
  * @function omit
- * @param { O } object
- * @param { T[] } keys
- * @returns { Omit<O, T> }
+ * @param { O } object - 源对象
+ * @param { T[] } keys - 剔除的 keys
+ * @returns { Omit<O, T> } - 剔除后的对象
  */
 ```
 
@@ -93,12 +93,12 @@
 
 ```ts
 /**
- * @description object pick
+ * @description 摘取对象键值
  *
  * @function pick
- * @param { O } object
- * @param { T[] } keys
- * @returns { Pick<O, T> }
+ * @param { O } object - 源对象
+ * @param { T[] } keys - 取的 keys
+ * @returns { Pick<O, T> } - 取出 keys 组成的对象
  */
 ```
 

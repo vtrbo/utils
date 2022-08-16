@@ -27,8 +27,8 @@
  * @description 一次函数
  *
  * @function once
- * @param { (this: T, ...arg: A) => R } fn
- * @returns { (this: T, ...arg: A) => R | undefined }
+ * @param { (this: T, ...arg: A) => R } fn - 欲执行的函数
+ * @returns { (this: T, ...arg: A) => R | undefined } - 执行函数 或 undefined
  */
 ```
 
@@ -39,8 +39,8 @@
  * @description 提取数据原始类型
  *
  * @function toRawType
- * @param { any } data
- * @returns { string }
+ * @param { any } data - 欲提取的值
+ * @returns { string } - 原始类型
  */
 ```
 

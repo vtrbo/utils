@@ -2,8 +2,8 @@
  * @description HEX 转 RGBA
  *
  * @function hexToRgba
- * @param { string } hex
- * @returns { number[] }
+ * @param { string } hex - 16进制颜色
+ * @returns { number[] } - [R, G, B, A]
  */
 export const hexToRgba = (hex: string): number[] => {
   const lengthStrategy: {

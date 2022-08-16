@@ -1,8 +1,4 @@
 import {
-  deepMerge,
-} from './deepMerge'
-
-import {
   entries,
 } from './entries'
 
@@ -23,6 +19,10 @@ import {
 } from './map'
 
 import {
+  merge,
+} from './merge'
+
+import {
   omit,
 } from './omit'
 
@@ -31,23 +31,23 @@ import {
 } from './pick'
 
 export {
-  deepMerge,
   entries,
   hasOwn,
   keyIn,
   keys,
   map,
+  merge,
   omit,
   pick,
 }
 
 export default {
-  deepMerge,
   entries,
   hasOwn,
   keyIn,
   keys,
   map,
+  merge,
   omit,
   pick,
 }

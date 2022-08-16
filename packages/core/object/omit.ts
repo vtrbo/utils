@@ -1,12 +1,12 @@
 import { keys as objectKeys } from './keys'
 
 /**
- * @description object omit
+ * @description 剔除对象键值
  *
  * @function omit
- * @param { O } object
- * @param { T[] } keys
- * @returns { Omit<O, T> }
+ * @param { O } object - 源对象
+ * @param { T[] } keys - 剔除的 keys
+ * @returns { Omit<O, T> } - 剔除后的对象
  */
 export function omit<O, T extends keyof O>(object: O, keys: T[]): Omit<O, T> {
   return objectKeys(object as unknown as object).reduce((acc, key) => {

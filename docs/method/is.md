@@ -7,8 +7,8 @@
  * @description 是否是数组
  *
  * @function isArray
- * @param { any } data
- * @returns { boolean }
+ * @param { any } data - 欲校验的值
+ * @returns { boolean } - 校验结果
  */
 ```
 
@@ -19,8 +19,8 @@
  * @description 是否是布尔
  *
  * @function isBoolean
- * @param { any } data
- * @returns { boolean }
+ * @param { any } data - 欲校验的值
+ * @returns { boolean } - 校验结果
  */
 ```
 
@@ -31,8 +31,8 @@
  * @description 是否是函数
  *
  * @function isFunction
- * @param { any } data
- * @returns { boolean }
+ * @param { any } data - 欲校验的值
+ * @returns { boolean } - 校验结果
  */
 ```
 
@@ -43,8 +43,8 @@
  * @description 是否为数字型字符串
  *
  * @function isIntegerString
- * @param { any } data
- * @returns { boolean }
+ * @param { any } data - 欲校验的值
+ * @returns { boolean } - 校验结果
  */
 ```
 
@@ -55,8 +55,8 @@
  * @description 是否是 NULL
  *
  * @function isNull
- * @param { any } data
- * @returns { boolean }
+ * @param { any } data - 欲校验的值
+ * @returns { boolean } - 校验结果
  */
 ```
 
@@ -67,8 +67,8 @@
  * @description 是否是数值
  *
  * @function isNumber
- * @param { any } data
- * @returns { boolean }
+ * @param { any } data - 欲校验的值
+ * @returns { boolean } - 校验结果
  */
 ```
 
@@ -79,8 +79,8 @@
  * @description 是否是对象
  *
  * @function isObject
- * @param { any } data
- * @returns { boolean }
+ * @param { any } data - 欲校验的值
+ * @returns { boolean } - 校验结果
  */
 ```
 
@@ -91,8 +91,8 @@
  * @description 是否是字符串
  *
  * @function isString
- * @param { any } data
- * @returns { boolean }
+ * @param { any } data - 欲校验的值
+ * @returns { boolean } - 校验结果
  */
 ```
 
@@ -103,9 +103,9 @@
  * @description 是否是指定类型
  *
  * @function isType
- * @param { any } data
- * @param { string } type
- * @returns { boolean }
+ * @param { any } data - 欲校验的值
+ * @param { string } type - 校验的类型
+ * @returns { boolean } - 校验结果
  */
 ```
 
@@ -116,8 +116,8 @@
  * @description 是否是 UNDEFINED
  *
  * @function isUndefined
- * @param { any } data
- * @returns { boolean }
+ * @param { any } data - 欲校验的值
+ * @returns { boolean } - 校验结果
  */
 ```
 
