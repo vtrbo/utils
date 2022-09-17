@@ -28,15 +28,30 @@
       "require": "./dist/color.js",
       "import": "./dist/color.mjs"
     },
+    "./date": {
+      "types": "./dist/date.d.ts",
+      "require": "./dist/date.js",
+      "import": "./dist/date.mjs"
+    },
     "./fn": {
       "types": "./dist/fn.d.ts",
       "require": "./dist/fn.js",
       "import": "./dist/fn.mjs"
     },
+    "./guard": {
+      "types": "./dist/guard.d.ts",
+      "require": "./dist/guard.js",
+      "import": "./dist/guard.mjs"
+    },
     "./is": {
       "types": "./dist/is.d.ts",
       "require": "./dist/is.js",
       "import": "./dist/is.mjs"
+    },
+    "./object": {
+      "types": "./dist/object.d.ts",
+      "require": "./dist/object.js",
+      "import": "./dist/object.mjs"
     },
     "./string": {
       "types": "./dist/string.d.ts",
