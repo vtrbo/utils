@@ -1,6 +1,6 @@
 {
   "name": "@vtrbo/utils",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "packageManager": "pnpm@7.9.0",
   "description": "Collection of common JavaScript or TypeScript utils.",
   "author": {
