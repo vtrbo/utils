@@ -3,6 +3,14 @@ import {
 } from './backslashToSlash'
 
 import {
+  decrypt,
+} from './decrypt'
+
+import {
+  encrypt,
+} from './encrypt'
+
+import {
   ensurePrefix,
 } from './ensurePrefix'
 
@@ -40,6 +48,8 @@ import {
 
 export {
   backslashToSlash,
+  decrypt,
+  encrypt,
   ensurePrefix,
   ensureSuffix,
   firstUpperCase,
@@ -53,6 +63,8 @@ export {
 
 export default {
   backslashToSlash,
+  decrypt,
+  encrypt,
   ensurePrefix,
   ensureSuffix,
   firstUpperCase,

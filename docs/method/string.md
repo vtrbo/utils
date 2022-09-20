@@ -12,6 +12,32 @@
  */
 ```
 
+## decrypt
+
+```ts
+/**
+ * @description 字符串解密
+ *
+ * @function decrypt
+ * @param { string } data - 欲解密数据
+ * @param { string } salt - 盐
+ * @returns { string } - 解密数据
+ */
+```
+
+## encrypt
+
+```ts
+/**
+ * @description 字符串加密
+ *
+ * @function encrypt
+ * @param { string } data - 欲加密数据
+ * @param { string } salt - 盐
+ * @returns { string } - 加密数据
+ */
+```
+
 ## ensurePrefix
 
 ```ts
