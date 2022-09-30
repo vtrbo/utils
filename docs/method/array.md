@@ -8,7 +8,7 @@
  *
  * @function groupBy
  * @param { Array<T> } list - 欲分组的列表
- * @callback { (single: T) => string | number } fn - 分组条件
+ * @callback { (single: T) => string } fn - 分组条件
  * @returns { Array<T>  } - 数组
  */
 ```
