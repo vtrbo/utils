@@ -27,6 +27,10 @@ import {
 } from './isObject'
 
 import {
+  isRegExp,
+} from './isRegExp'
+
+import {
   isString,
 } from './isString'
 
@@ -46,6 +50,7 @@ export {
   isNull,
   isNumber,
   isObject,
+  isRegExp,
   isString,
   isType,
   isUndefined,
@@ -59,6 +64,7 @@ export default {
   isNull,
   isNumber,
   isObject,
+  isRegExp,
   isString,
   isType,
   isUndefined,

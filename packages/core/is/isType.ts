@@ -1,5 +1,4 @@
 import { toRawType } from '../fn/toRawType'
-import { firstUpperCase } from '../string/firstUpperCase'
 
 /**
  * @description 是否是指定类型
@@ -9,4 +8,4 @@ import { firstUpperCase } from '../string/firstUpperCase'
  * @param { string } type - 校验的类型
  * @returns { boolean } - 校验结果
  */
-export const isType = (data: any, type: string): boolean => toRawType(data) === `${firstUpperCase(type.toLowerCase())}`
+export const isType = (data: any, type: string): boolean => toRawType(data).toLowerCase() === type.toLowerCase()

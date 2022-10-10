@@ -1,5 +1,17 @@
 # Object 函数库
 
+## clone
+
+```ts
+/**
+ * @description 复制数据
+ *
+ * @function clone
+ * @param { T } target - 源数据
+ * @returns { T } - copyTarget
+ */
+```
+
 ## entries
 
 ```ts

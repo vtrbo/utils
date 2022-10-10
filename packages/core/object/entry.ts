@@ -1,4 +1,8 @@
 import {
+  clone,
+} from './clone'
+
+import {
   entries,
 } from './entries'
 
@@ -31,6 +35,7 @@ import {
 } from './pick'
 
 export {
+  clone,
   entries,
   hasOwn,
   keyIn,
@@ -42,6 +47,7 @@ export {
 }
 
 export default {
+  clone,
   entries,
   hasOwn,
   keyIn,
