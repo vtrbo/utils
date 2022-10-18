@@ -57,6 +57,11 @@
       "types": "./dist/string.d.ts",
       "require": "./dist/string.js",
       "import": "./dist/string.mjs"
+    },
+    "./tree": {
+      "types": "./dist/tree.d.ts",
+      "require": "./dist/tree.js",
+      "import": "./dist/tree.mjs"
     }
   },
   "main": "dist/index.js",

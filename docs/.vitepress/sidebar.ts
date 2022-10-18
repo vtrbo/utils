@@ -7,4 +7,5 @@ export default [
   { text: 'Is', link: '/method/is' },
   { text: 'Object', link: '/method/object' },
   { text: 'String', link: '/method/string' },
+  { text: 'Tree', link: '/method/tree' },
 ]

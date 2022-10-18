@@ -6,6 +6,7 @@ import guard from './core/guard/entry'
 import is from './core/is/entry'
 import object from './core/object/entry'
 import string from './core/string/entry'
+import tree from './core/tree/entry'
 
 export {
   array,
@@ -16,6 +17,7 @@ export {
   is,
   object,
   string,
+  tree,
 }
 
 export default {
@@ -27,4 +29,5 @@ export default {
   is,
   object,
   string,
+  tree,
 }
