@@ -6,6 +6,6 @@
     "serve": "vitepress serve . --port 5175"
   },
   "devDependencies": {
-    "vitepress": "1.0.0-alpha.4"
+    "vitepress": "1.0.0-alpha.21"
   }
 }
