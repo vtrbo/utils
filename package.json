@@ -17,50 +17,10 @@
       "require": "./dist/index.js",
       "import": "./dist/index.mjs"
     },
-    "./array": {
-      "types": "./dist/array.d.ts",
-      "require": "./dist/array.js",
-      "import": "./dist/array.mjs"
-    },
-    "./color": {
-      "types": "./dist/color.d.ts",
-      "require": "./dist/color.js",
-      "import": "./dist/color.mjs"
-    },
-    "./date": {
-      "types": "./dist/date.d.ts",
-      "require": "./dist/date.js",
-      "import": "./dist/date.mjs"
-    },
-    "./fn": {
-      "types": "./dist/fn.d.ts",
-      "require": "./dist/fn.js",
-      "import": "./dist/fn.mjs"
-    },
-    "./guard": {
-      "types": "./dist/guard.d.ts",
-      "require": "./dist/guard.js",
-      "import": "./dist/guard.mjs"
-    },
-    "./is": {
-      "types": "./dist/is.d.ts",
-      "require": "./dist/is.js",
-      "import": "./dist/is.mjs"
-    },
-    "./object": {
-      "types": "./dist/object.d.ts",
-      "require": "./dist/object.js",
-      "import": "./dist/object.mjs"
-    },
-    "./string": {
-      "types": "./dist/string.d.ts",
-      "require": "./dist/string.js",
-      "import": "./dist/string.mjs"
-    },
-    "./tree": {
-      "types": "./dist/tree.d.ts",
-      "require": "./dist/tree.js",
-      "import": "./dist/tree.mjs"
+    "./*": {
+      "types": "./dist/*/index.d.ts",
+      "require": "./dist/*/index.js",
+      "import": "./dist/*/index.mjs"
     }
   },
   "main": "dist/index.js",
@@ -69,6 +29,7 @@
   "typesVersions": {
     "*": {
       "*": [
+        "./dist/*/index.d.ts",
         "./dist/*"
       ]
     }

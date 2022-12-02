@@ -1,6 +1,6 @@
 import fs from 'fs'
 import fg from 'fast-glob'
-import { firstUpperCase } from './../packages/string'
+import { firstUpperCase } from './../packages/string/firstUpperCase'
 
 /**
  * 生成入口文件主函数
@@ -8,10 +8,11 @@ import { firstUpperCase } from './../packages/string'
 const generateEntries = () => {
   // fn files
   const fnFiles = fg.sync([
-    'packages/core/**/*.ts',
-    '!packages/core/**/*.test.ts',
-    '!packages/core/*/entry.ts',
-    '!packages/core/types.ts',
+    'packages/**/*.ts',
+    '!packages/**/*.test.ts',
+    '!packages/**/*/types.ts',
+    '!packages/index.ts',
+    '!packages/*/index.ts',
   ])
 
   // fn entries
@@ -33,19 +34,19 @@ const generateEntries = () => {
 
   fnFiles.forEach((f: string) => {
     const fsp = f.split('/')
-    const mark = fsp[2]
-    const path = fsp.slice(1, 3).join('/')
+    const mark = fsp[1]
+    const path = fsp.slice(1, 2).join('/')
 
     if (!pkWrote.includes(mark)) {
       pkWrote.push(mark)
       if (writeModuleEntry({ mark, path })) {
         // write packages/{module}.ts
-        fs.writeFileSync(
-          `packages/${mark}.ts`,
-          `export * from './${path}/entry'\n`,
-          {},
-        )
-        indexImport += `import ${mark} from './${path}/entry'\n`
+        // fs.writeFileSync(
+        //   `packages/${mark}.ts`,
+        //   `export * from './${path}'\n`,
+        //   {},
+        // )
+        indexImport += `import ${mark} from './${path}'\n`
         indexExport += `\n  ${mark},`
       }
     }
@@ -61,7 +62,7 @@ const generateEntries = () => {
   )
 
   // write doc sidebar
-  const entries = fg.sync(['packages/core/*/entry.ts'])
+  const entries = fg.sync(['packages/*/index.ts'])
   const topic = fg.sync(['docs/.vitepress/sidebar.ts'])
 
   topic.forEach(f => fs.unlinkSync(f))
@@ -88,13 +89,14 @@ function writeModuleEntry(params: { mark: string; path: string }) {
   const { mark } = params
   // module fn files
   const fnFiles = fg.sync([
-    `packages/core/${mark}/**/*.ts`,
-    `!packages/core/${mark}/**/*.test.ts`,
-    `!packages/core/${mark}/entry.ts`,
+    `packages/${mark}/**/*.ts`,
+    `!packages/${mark}/**/*.test.ts`,
+    `!packages/${mark}/**/*/types.ts`,
+    `!packages/${mark}/*/index.ts`,
   ])
 
   // create module entry
-  const fnEntry = `packages/core/${mark}/entry.ts`
+  const fnEntry = `packages/${mark}/index.ts`
   fs.writeFileSync(
     fnEntry,
     '',
@@ -130,7 +132,7 @@ function writeModuleEntry(params: { mark: string; path: string }) {
         .sort((A, B) => A.localeCompare(B, 'zh-CN'))
         .join(',\n  ')
 
-      const filePath = f.replace(/packages\/core\/.*?\/(.*?).ts/g, '$1')
+      const filePath = f.replace(/packages\/.*?\/(.*?).ts/g, '$1')
 
       fs.appendFileSync(
         fnEntry,

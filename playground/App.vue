@@ -6,10 +6,15 @@
 
 <script lang="ts" setup>
 import utils, { string } from '@vtrbo/utils'
-import { first } from '@vtrbo/utils/string'
+import { firstUpperCase, getLeft } from '@vtrbo/utils/string'
+import { merge } from '@vtrbo/utils/object'
+import { toArray } from '@vtrbo/utils/array'
 console.log('utils', utils)
 console.log('string', string)
-console.log('first', first)
+console.log('firstUpperCase', firstUpperCase)
+console.log('getLeft', getLeft)
+console.log('merge', merge)
+console.log('toArray', toArray)
 </script>
 
 <style scoped>

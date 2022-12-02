@@ -1,12 +1,12 @@
-import array from './core/array/entry'
-import color from './core/color/entry'
-import date from './core/date/entry'
-import fn from './core/fn/entry'
-import guard from './core/guard/entry'
-import is from './core/is/entry'
-import object from './core/object/entry'
-import string from './core/string/entry'
-import tree from './core/tree/entry'
+import array from './array'
+import color from './color'
+import date from './date'
+import fn from './fn'
+import guard from './guard'
+import is from './is'
+import object from './object'
+import string from './string'
+import tree from './tree'
 
 export {
   array,

@@ -1,43 +1,39 @@
-export interface IOption {
+type Options = {
   // 开始寻找位置
   startPosition?: number
-
   // 区分大小写
   matchCase?: boolean
-
   // 返回寻找文本
   returnTarget?: boolean
 }
 
-const defaultOption: IOption = {
+const defaultOption: Options = {
   // 开始寻找位置
   startPosition: 0,
-
   // 区分大小写
   matchCase: false,
-
   // 返回寻找文本
   returnTarget: false,
 }
 
 /**
- * @description 取左边文本
+ * @description 取右边文本
  *
- * @function getLeft
+ * @function getRight
  * @param { string } source - 源文本
  * @param { string } target - 目标文本
- * @param { IOption } [option] - 配置项
+ * @param { Options } [option] - 配置项
  * @param { number } [option.startPosition = 0] - 配置项.开始寻找位置
  * @param { boolean } [option.matchCase = false] - 配置项.是否区分大小写
  * @param { boolean } [option.returnTarget = false] - 配置项.是否返回寻找文本
- * @returns { string } - 左边的文本
+ * @returns { string } - 右边的文本
  */
-export const getLeft = (
+export const getRight = (
   source: string,
   target: string,
-  option?: IOption,
+  option?: Options,
 ): string => {
-  const tOption: IOption = { ...defaultOption, ...(option || {}) }
+  const tOption: Options = { ...defaultOption, ...(option || {}) }
   let tSource: string = source
   let tTarget: string = target
 
@@ -51,7 +47,7 @@ export const getLeft = (
 
   // returnTarget
   return position !== -1
-    ? source.substring(0, position + (tOption?.returnTarget ? target.length : 0))
+    ? source.substring(position + (!tOption?.returnTarget ? target.length : 0))
     : ''
 }
 

@@ -1,6 +1,7 @@
 {
   "extends": "@vtrbo",
   "rules": {
-    "@typescript-eslint/no-inferrable-types": "off"
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/consistent-type-definitions": "off"
   }
 }

@@ -1,21 +1,17 @@
-export interface IOption {
+type Options = {
   // 开始寻找位置
   startPosition?: number
-
   // 区分大小写
   matchCase?: boolean
-
   // 返回寻找文本
   returnTarget?: boolean
 }
 
-const defaultOption: IOption = {
+const defaultOption: Options = {
   // 开始寻找位置
   startPosition: 0,
-
   // 区分大小写
   matchCase: false,
-
   // 返回寻找文本
   returnTarget: false,
 }
@@ -27,7 +23,7 @@ const defaultOption: IOption = {
  * @param { string } source - 源文本
  * @param { string } before - 前面文本
  * @param { string } after - 后面文本
- * @param { IOption } [option] - 配置项
+ * @param { Options } [option] - 配置项
  * @param { number } [option.startPosition = 0] - 配置项.开始寻找位置
  * @param { boolean } [option.matchCase = false] - 配置项.是否区分大小写
  * @param { boolean } [option.returnTarget = false] - 配置项.是否返回寻找文本
@@ -37,9 +33,9 @@ export const getCenter = (
   source: string,
   before: string,
   after: string,
-  option?: IOption,
+  option?: Options,
 ): string => {
-  const tOption: IOption = { ...defaultOption, ...(option || {}) }
+  const tOption: Options = { ...defaultOption, ...(option || {}) }
   let tSource: string = source
   let tBefore: string = before
   let tAfter: string = after

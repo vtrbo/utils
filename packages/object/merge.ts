@@ -2,12 +2,12 @@ import { isObject } from '../is/isObject'
 import { isArray } from '../is/isArray'
 import { keys } from './keys'
 
-export type MergeInsertions<T> =
+type MergeInsertions<T> =
   T extends object
     ? { [K in keyof T]: MergeInsertions<T[K]> }
     : T
 
-export type Merge<F, S> = MergeInsertions<{
+type Merge<F, S> = MergeInsertions<{
   [K in keyof F | keyof S]: K extends keyof S & keyof F
     ? Merge<F[K], S[K]>
     : K extends keyof S

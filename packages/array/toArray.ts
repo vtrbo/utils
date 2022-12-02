@@ -1,6 +1,6 @@
-export type Arrayable<T> = T | Array<T>
+type Arrayable<T> = T | Array<T>
 
-export type Nullable<T> = T | null | undefined
+type Nullable<T> = T | null | undefined
 
 /**
  * @description 转换为数组

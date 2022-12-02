@@ -86,7 +86,7 @@
  * @param { string } source - 源文本
  * @param { string } before - 前面文本
  * @param { string } after - 后面文本
- * @param { IOption } [option] - 配置项
+ * @param { Options } [option] - 配置项
  * @param { number } [option.startPosition = 0] - 配置项.开始寻找位置
  * @param { boolean } [option.matchCase = false] - 配置项.是否区分大小写
  * @param { boolean } [option.returnTarget = false] - 配置项.是否返回寻找文本
@@ -103,7 +103,7 @@
  * @function getLeft
  * @param { string } source - 源文本
  * @param { string } target - 目标文本
- * @param { IOption } [option] - 配置项
+ * @param { Options } [option] - 配置项
  * @param { number } [option.startPosition = 0] - 配置项.开始寻找位置
  * @param { boolean } [option.matchCase = false] - 配置项.是否区分大小写
  * @param { boolean } [option.returnTarget = false] - 配置项.是否返回寻找文本
@@ -120,7 +120,7 @@
  * @function getRight
  * @param { string } source - 源文本
  * @param { string } target - 目标文本
- * @param { IOption } [option] - 配置项
+ * @param { Options } [option] - 配置项
  * @param { number } [option.startPosition = 0] - 配置项.开始寻找位置
  * @param { boolean } [option.matchCase = false] - 配置项.是否区分大小写
  * @param { boolean } [option.returnTarget = false] - 配置项.是否返回寻找文本
