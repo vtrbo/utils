@@ -70,7 +70,7 @@ const generateEntries = () => {
   let exportTopic = 'export default ['
   entries.forEach((f: string) => {
     const fsp = f.split('/')
-    const mark = fsp[2]
+    const mark = fsp[1]
     exportTopic += `\n  { text: '${firstUpperCase(mark)}', link: '/method/${mark}' },`
   })
   exportTopic += '\n]\n'

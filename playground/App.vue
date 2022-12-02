@@ -5,11 +5,12 @@
 </template>
 
 <script lang="ts" setup>
-import utils, { string } from '@vtrbo/utils'
-import { firstUpperCase, getLeft } from '@vtrbo/utils/string'
+import utils, { string as utilsString } from '@vtrbo/utils'
+import string, { firstUpperCase, getLeft } from '@vtrbo/utils/string'
 import { merge } from '@vtrbo/utils/object'
 import { toArray } from '@vtrbo/utils/array'
 console.log('utils', utils)
+console.log('utilsString', utilsString)
 console.log('string', string)
 console.log('firstUpperCase', firstUpperCase)
 console.log('getLeft', getLeft)
