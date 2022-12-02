@@ -1,7 +1,6 @@
 {
   "name": "@vtrbo/utils",
   "version": "0.1.1",
-  "packageManager": "pnpm@7.9.0",
   "description": "Collection of common JavaScript or TypeScript utils.",
   "author": {
     "name": "Victor Bo",
@@ -92,17 +91,17 @@
     "docs:serve": "nr -C docs serve"
   },
   "devDependencies": {
-    "@types/node": "^18.11.0",
-    "@vtrbo/eslint-config": "^0.0.7",
-    "@vtrbo/ni": "^0.0.3",
+    "@types/node": "^18.11.10",
+    "@vtrbo/eslint-config": "^0.1.1",
+    "@vtrbo/ni": "^0.0.5",
     "bumpp": "^8.2.1",
-    "eslint": "^8.25.0",
+    "eslint": "^8.28.0",
     "esno": "^0.16.3",
     "fast-glob": "^3.2.12",
-    "pnpm": "^7.13.5",
-    "tsup": "^6.2.3",
-    "typescript": "^4.8.4",
-    "vite": "^3.1.8",
-    "vitest": "^0.24.3"
+    "pnpm": "^7.17.1",
+    "tsup": "^6.5.0",
+    "typescript": "^4.9.3",
+    "vite": "^3.2.4",
+    "vitest": "^0.25.3"
   }
 }
