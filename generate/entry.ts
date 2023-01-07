@@ -16,7 +16,7 @@ const generateEntries = () => {
   ])
 
   // fn entries
-  const fnEntries = fg.sync(['packages/*.ts'])
+  const fnEntries = fg.sync(['packages/*.ts', '!packages/*.test.ts'])
   // rm entries
   fnEntries.forEach(f => fs.unlinkSync(f))
 
@@ -28,6 +28,7 @@ const generateEntries = () => {
   // index content
   let indexImport = ''
   let indexExport = ''
+  let indexResolve = ''
 
   // wrote module entry list
   const pkWrote: string[] = []
@@ -46,20 +47,54 @@ const generateEntries = () => {
         //   `export * from './${path}'\n`,
         //   {},
         // )
-        indexImport += `import ${mark} from './${path}'\n`
+        indexImport += `import ${mark}, { resolve${firstUpperCase(mark)}Utils } from './${path}'\n`
         indexExport += `\n  ${mark},`
+        indexResolve += `\n    ...resolve${firstUpperCase(mark)}Utils(aliasPrefix),`
       }
     }
   })
 
   // write packages/index.ts
-  fs.writeFileSync(
-    'packages/index.ts',
-    `${indexImport}\n`
-    + `export {${indexExport}\n}\n\n`
-    + `export default {${indexExport}\n}\n`,
-    {},
-  )
+  fs.writeFileSync('packages/index.ts',
+`// 此文件为自动生成的导出文件
+// 请务必不要在此文件进行修改或其他操作
+// 因为你做的所有修改和操作都不会生效
+${indexImport}
+// 自动导入函数的方法，仅适用于 unplugin-auto-import 插件
+// https://github.com/antfu/unplugin-auto-import
+// @param aliasPrefix 别名前缀
+// @returns 符合 unplugin-auto-import custom import 的格式
+//
+// @example 以 vite 为例
+// import autoImports from 'unplugin-auto-import/vite'
+//
+// 全局引入和按需引入原则上不同时使用
+// 如果非要使用，请传入不同的 aliasPrefix
+// // 全局引入
+// // import { resolveUtils } from '@vtrbo/utils'
+// // 按需引入 Array 和 Tree 函数库
+// import { resolveArrayUtils } from '@vtrbo/utils/array'
+// import { resolveTreeUtils } from '@vtrbo/utils/tree'
+//
+// autoImports({
+//   imports: [
+//     // 全局引入
+//     // resolveUtils(),
+//     // 按需引入 Array 和 Tree 函数库
+//     resolveArrayUtils(),
+//     resolveTreeUtils(),
+//   ]
+// })
+export const resolveUtils = (aliasPrefix?: string): Record<string, [string, string][]> => {
+  return {${indexResolve}\n
+  }
+}
+
+export {${indexExport}\n}
+
+export default {${indexExport}\n}
+`
+, {})
 
   // write doc sidebar
   const entries = fg.sync(['packages/*/index.ts'])
@@ -97,11 +132,11 @@ function writeModuleEntry(params: { mark: string; path: string }) {
 
   // create module entry
   const fnEntry = `packages/${mark}/index.ts`
-  fs.writeFileSync(
-    fnEntry,
-    '',
-    {},
-  )
+  fs.writeFileSync(fnEntry,
+`// 此文件为自动生成的导出文件
+// 请务必不要在此文件进行修改或其他操作
+// 因为你做的所有修改和操作都不会生效
+`, {})
 
   // create module doc
   const fnDoc = `docs/method/${mark}.md`
@@ -134,11 +169,12 @@ function writeModuleEntry(params: { mark: string; path: string }) {
 
       const filePath = f.replace(/packages\/.*?\/(.*?).ts/g, '$1')
 
-      fs.appendFileSync(
-        fnEntry,
-        `import {\n  ${fnNameImport},\n} from './${filePath}'\n\n`,
-        {},
-      )
+      fs.appendFileSync(fnEntry,
+`import {
+  ${fnNameImport},
+} from './${filePath}'
+
+`, {})
 
       entryExport.push(...fnNameExport)
     }
@@ -165,14 +201,47 @@ function writeModuleEntry(params: { mark: string; path: string }) {
     // 写入口文件函数的导出
     const exportContent = [...new Set(entryExport)]
       .sort((A, B) => A.localeCompare(B, 'zh-CN'))
-      .join(',\n  ')
 
-    fs.appendFileSync(
-      fnEntry,
-      `export {\n  ${exportContent},\n}\n`
-      + `\nexport default {\n  ${exportContent},\n}\n`,
-      {},
-    )
+    fs.appendFileSync(fnEntry,
+`// 自动导入函数的方法，仅适用于 unplugin-auto-import 插件
+// https://github.com/antfu/unplugin-auto-import
+// @param aliasPrefix 别名前缀
+// @returns 符合 unplugin-auto-import custom import 的格式
+//
+// @example 以 vite 为例
+// import autoImports from 'unplugin-auto-import/vite'
+//
+// 全局引入和按需引入原则上不同时使用
+// 如果非要使用，请传入不同的 aliasPrefix
+// // 全局引入
+// // import { resolveUtils } from '@vtrbo/utils'
+// // 按需引入 ${firstUpperCase(mark)} 的函数库
+// import { resolveArrayUtils } from '@vtrbo/utils/array'
+//
+// autoImports({
+//   imports: [
+//     // 全局引入
+//     // resolveUtils(),
+//     // 按需引入 ${firstUpperCase(mark)} 的函数库
+//     resolve${firstUpperCase(mark)}Utils(),
+//   ]
+// })
+export const resolve${firstUpperCase(mark)}Utils = (aliasPrefix?: string): Record<string, [string, string][]> => {
+  return {
+    '@vtrbo/utils/${mark}': [
+      ${exportContent.map(name => `[\'${name}\', aliasPrefix ? \`\${aliasPrefix}${firstUpperCase(name)}\` : '${name}']`).join(',\n      ')},
+    ],
+  }
+}
+
+export {
+  ${exportContent.join(',\n  ')},
+}
+
+export default {
+  ${exportContent.join(',\n  ')},
+}
+`, {})
     return true
   }
   return false
