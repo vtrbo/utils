@@ -20,7 +20,7 @@
  *
  * @function decrypt
  * @param { string } data - 欲解密数据
- * @param { string } salt - 盐
+ * @param { string } source - 字符库
  * @returns { string } - 解密数据
  */
 ```
@@ -33,7 +33,7 @@
  *
  * @function encrypt
  * @param { string } data - 欲加密数据
- * @param { string } salt - 盐
+ * @param { string } source - 字符库
  * @returns { string } - 加密数据
  */
 ```

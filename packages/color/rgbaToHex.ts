@@ -2,7 +2,7 @@
  * @description RGBA 转 HEX
  *
  * @function rgbaToHex
- * @param { number[] } rgba - 红
+ * @param { number[] } rgba - RGBA颜色
  * @returns { string } - 16进制颜色
  */
 export const rgbaToHex = (rgba: number[]): string => {
