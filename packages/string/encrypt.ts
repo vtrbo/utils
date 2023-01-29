@@ -3,13 +3,12 @@
  *
  * @function encrypt
  * @param { string } data - 欲加密数据
- * @param { string } salt - 盐
+ * @param { string } source - 字符库
  * @returns { string } - 加密数据
  */
-export function encrypt(data: string, salt?: string): string {
-  salt = salt || 'vtrbo-zRsEQxkJMUHiDlpST74wG512nF0c6gB3uX8_K9qCOWLNjPaYmhAZVdyIfe'
-  const sl = salt.length
-  const sa = salt.split('')
+export function encrypt(data: string, source: string = 'vtrbo-zRsEQxkJMUHiDlpST74wG512nF0c6gB3uX8_K9qCOWLNjPaYmhAZVdyIfe'): string {
+  const sl = source.length
+  const sa = source.split('')
   let rs = ''
   let cc = 0
   let crd = 0

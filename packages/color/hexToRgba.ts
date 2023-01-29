@@ -14,5 +14,5 @@ export const hexToRgba = (hex: string): number[] => {
     7: [parseInt(`0x${hex.slice(1, 3)}`), parseInt(`0x${hex.slice(3, 5)}`), parseInt(`0x${hex.slice(5, 7)}`)],
     9: [parseInt(`0x${hex.slice(1, 3)}`), parseInt(`0x${hex.slice(3, 5)}`), parseInt(`0x${hex.slice(5, 7)}`), Math.round(parseInt(`0x${hex.slice(7, 9)}`) / 255 * 100) / 100],
   }
-  return lengthStrategy[hex.length]
+  return lengthStrategy[hex.length] || []
 }
