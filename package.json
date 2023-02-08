@@ -42,6 +42,7 @@
     "build": "nr generate && tsup",
     "dev": "nr generate && tsup --watch",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "release": "nr build && bumpp && npm publish --access=public",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
@@ -52,17 +53,17 @@
     "docs:serve": "nr -C docs serve"
   },
   "devDependencies": {
-    "@types/node": "^18.11.10",
-    "@vtrbo/eslint-config": "^0.1.1",
-    "@vtrbo/ni": "^0.0.5",
+    "@types/node": "^18.13.0",
+    "@vtrbo/eslint-config": "^0.2.2",
+    "@vtrbo/ni": "^0.1.0",
     "bumpp": "^8.2.1",
-    "eslint": "^8.28.0",
+    "eslint": "^8.33.0",
     "esno": "^0.16.3",
     "fast-glob": "^3.2.12",
-    "pnpm": "^7.17.1",
-    "tsup": "^6.5.0",
-    "typescript": "^4.9.3",
-    "vite": "^3.2.4",
-    "vitest": "^0.25.3"
+    "pnpm": "^7.26.3",
+    "tsup": "^6.6.0",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.1",
+    "vitest": "^0.28.4"
   }
 }

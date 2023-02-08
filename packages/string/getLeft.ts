@@ -52,4 +52,3 @@ export const getLeft = (
     ? source.substring(0, position + (tOption?.returnTarget ? target.length : 0))
     : ''
 }
-

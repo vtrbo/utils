@@ -21,4 +21,3 @@ it('rgbaToHex', () => {
   expect(rgbaToHex([0, 0, 0, 0])).toMatchInlineSnapshot('"#00000000"')
   expect(rgbaToHex([0, 0, 0, 1])).toMatchInlineSnapshot('"#000000ff"')
 })
-

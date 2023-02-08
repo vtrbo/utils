@@ -60,4 +60,3 @@ export const getCenter = (
     ? source.substring(beforePosition, afterPosition + after.length)
     : source.substring(beforePosition + before.length, afterPosition)
 }
-

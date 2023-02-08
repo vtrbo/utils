@@ -50,4 +50,3 @@ export const getRight = (
     ? source.substring(position + (!tOption?.returnTarget ? target.length : 0))
     : ''
 }
-

@@ -35,4 +35,3 @@ export function toList<T>(tree: T[], options: Options = defaultOption): T[] {
 
   return list
 }
-
