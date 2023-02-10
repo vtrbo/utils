@@ -1,5 +1,6 @@
 {
   "name": "@vtrbo/utils",
+  "type": "module",
   "version": "0.2.2",
   "description": "Collection of common JavaScript or TypeScript utils.",
   "author": {
@@ -14,23 +15,28 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js",
+      "browser": "./dist/index.global.js"
     },
     "./*": {
       "types": "./dist/*/index.d.ts",
-      "require": "./dist/*/index.js",
-      "import": "./dist/*/index.mjs"
+      "require": "./dist/*/index.cjs",
+      "import": "./dist/*/index.js",
+      "browser": "./dist/*/index.global.js"
     }
   },
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "index.d.ts",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "browser": "dist/index.global.js",
+  "unpkg": "dist/index.global.js",
+  "jsdelivr": "dist/index.global.js",
+  "types": "dist/index.d.ts",
   "typesVersions": {
     "*": {
       "*": [
         "./dist/*/index.d.ts",
-        "./dist/*"
+        "./dist/index.d.ts"
       ]
     }
   },
