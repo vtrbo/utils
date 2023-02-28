@@ -16,6 +16,14 @@ it('resolveUtils', () => {
       ],
       "@vtrbo/utils/color": [
         [
+          "colorDarken",
+          "utilColorDarken",
+        ],
+        [
+          "colorLighten",
+          "utilColorLighten",
+        ],
+        [
           "hexToRgba",
           "utilHexToRgba",
         ],
