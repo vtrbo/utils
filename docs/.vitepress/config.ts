@@ -22,17 +22,13 @@ export default defineConfig({
     },
 
     outlineTitle: '快速定位',
-    lastUpdatedText: '最后更新',
+    lastUpdatedText: '最近更新时间',
+    docFooter: { prev: '上一篇', next: '下一篇' },
 
     socialLinks: [
       { icon: 'twitter', link: 'https://twitter.com/vtrbo88' },
       { icon: 'github', link: 'https://github.com/vtrbo/utils' },
     ],
-
-    localeLinks: {
-      text: '简体中文',
-      items: [],
-    },
 
     footer: {
       message: 'Released under the MIT License',
@@ -41,7 +37,7 @@ export default defineConfig({
 
     nav: [
       { text: '指引', link: '/guide/what-is-utils', activeMatch: '/guide/' },
-      { text: '函数', link: sideMethods[0].link || '/method/string', activeMatch: '/method/' },
+      { text: '函数', link: sideMethods[0].items[0].link || '/method/string', activeMatch: '/method/' },
     ],
 
     sidebar: {
@@ -49,7 +45,6 @@ export default defineConfig({
       '/method/': [
         {
           text: '函数库',
-          collapsible: false,
           items: sideMethods,
         },
       ],

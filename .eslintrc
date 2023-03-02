@@ -1,5 +1,13 @@
 {
   "extends": "@vtrbo",
+  "overrides": [
+    {
+      "files": ["*.exam.ts"],
+      "rules": {
+        "no-console": "off"
+      }
+    }
+  ],
   "rules": {
     "@typescript-eslint/no-inferrable-types": "off",
     "@typescript-eslint/consistent-type-definitions": "off"

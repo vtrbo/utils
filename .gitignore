@@ -84,3 +84,4 @@ dist
 *.lerna_backup
 *.vsix
 temp
+cache

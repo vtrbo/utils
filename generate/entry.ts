@@ -10,25 +10,31 @@ const generateEntries = () => {
   const fnFiles = fg.sync([
     'packages/**/*.ts',
     '!packages/**/*.test.ts',
+    '!packages/**/*.exam.ts',
     '!packages/**/*/types.ts',
     '!packages/index.ts',
     '!packages/*/index.ts',
   ])
 
   // fn entries
-  const fnEntries = fg.sync(['packages/*.ts', '!packages/*.test.ts'])
-  // rm entries
+  const fnEntries = fg.sync(['packages/*.ts', '!packages/*.test.ts', '!packages/*.exam.ts'])
   fnEntries.forEach(f => fs.unlinkSync(f))
 
-  // fn docs
-  const fnDocs = fg.sync(['docs/method/*.md'])
-  // rm docs
-  fnDocs.forEach(f => fs.unlinkSync(f))
+  // doc sidebar
+  const topic = fg.sync(['docs/.vitepress/sidebar.ts'])
+  topic.forEach(f => fs.unlinkSync(f))
 
   // index content
   let indexImport = ''
   let indexExport = ''
   let indexResolve = ''
+  const sidebarContent: {
+    text: string
+    items: {
+      text: string
+      link: string
+    }[]
+  }[] = []
 
   // wrote module entry list
   const pkWrote: string[] = []
@@ -39,14 +45,21 @@ const generateEntries = () => {
     const path = fsp.slice(1, 2).join('/')
 
     if (!pkWrote.includes(mark)) {
+      // record write module
       pkWrote.push(mark)
-      if (writeModuleEntry({ mark, path })) {
-        // write packages/{module}.ts
-        // fs.writeFileSync(
-        //   `packages/${mark}.ts`,
-        //   `export * from './${path}'\n`,
-        //   {},
-        // )
+
+      // doc dirs
+      removeDir(`docs/method/${mark}`)
+      fs.mkdirSync(`docs/method/${mark}`)
+
+      const [status, sidebarItems] = writeModuleEntry({ mark, path })
+
+      if (status) {
+        sidebarContent.push({
+          text: mark,
+          items: sidebarItems,
+        })
+
         indexImport += `import ${mark}, { resolve${firstUpperCase(mark)}Utils } from './${path}'\n`
         indexExport += `\n  ${mark},`
         indexResolve += `\n    ...resolve${firstUpperCase(mark)}Utils(aliasPrefix),`
@@ -97,18 +110,27 @@ export default {${indexExport}\n}
 , {})
 
   // write doc sidebar
-  const entries = fg.sync(['packages/*/index.ts'])
-  const topic = fg.sync(['docs/.vitepress/sidebar.ts'])
-
-  topic.forEach(f => fs.unlinkSync(f))
-
-  let exportTopic = 'export default ['
-  entries.forEach((f: string) => {
-    const fsp = f.split('/')
-    const mark = fsp[1]
-    exportTopic += `\n  { text: '${firstUpperCase(mark)}', link: '/method/${mark}' },`
+  let exportTopic = 'export default [\n'
+  const sidebar = sidebarContent.map((m) => {
+    const { text, items } = m
+    const sidebarItems = items.map((im) => {
+      const { text, link } = im
+      return `      { text: '${text}', link: '${link}' }`
+    })
+    return `  {
+    text: '${firstUpperCase(text)}',
+    items: ${sidebarItems.length ? `[\n${sidebarItems.join(',\n')},\n    ],\n` : '[],\n'}  }`
   })
-  exportTopic += '\n]\n'
+  exportTopic += `${sidebar.join(',\n')},`
+  exportTopic += `
+] as {
+  text: string
+  items: {
+    text: string
+    link: string
+  }[]
+}[]
+`
 
   fs.writeFileSync(
     'docs/.vitepress/sidebar.ts',
@@ -120,12 +142,13 @@ export default {${indexExport}\n}
 /**
  * 写模块入口文件函数
  */
-function writeModuleEntry(params: { mark: string; path: string }) {
+function writeModuleEntry(params: { mark: string; path: string }): [boolean, { text: string; link: string }[]] {
   const { mark } = params
   // module fn files
   const fnFiles = fg.sync([
     `packages/${mark}/**/*.ts`,
     `!packages/${mark}/**/*.test.ts`,
+    `!packages/${mark}/**/*.exam.ts`,
     `!packages/${mark}/**/*/types.ts`,
     `!packages/${mark}/*/index.ts`,
   ])
@@ -138,30 +161,22 @@ function writeModuleEntry(params: { mark: string; path: string }) {
 // 因为你做的所有修改和操作都不会生效
 `, {})
 
-  // create module doc
-  const fnDoc = `docs/method/${mark}.md`
-  fs.writeFileSync(
-    fnDoc,
-    `# ${firstUpperCase(mark)} 函数库\n\n`,
-    {},
-  )
-
   const entryExport: string[] = []
+  const sidebarItems: { text: string; link: string }[] = []
 
   fnFiles.forEach((f: string): void => {
-    // 读文件内容
-    const data = fs.readFileSync(
+    // read fn file content
+    const fnData = fs.readFileSync(
       f,
       { encoding: 'utf-8' },
     )
 
-    // 取出所有导出的函数名称
-    const fnNamesRegEx = /export.*?function(.*?)\(|export.*?(const|let|var)(.*?)=/g
-    const fnNameExport = (data.match(fnNamesRegEx) || [])
-      .map(m => m.replace(fnNamesRegEx, '$1$3').replace(/(.*?)<.*?>/g, '$1').trim())
-      .sort((A, B) => A.localeCompare(B, 'zh-CN'))
+    // get all fn name
+    const fnNamesRegEx = /export function(.*?)(<|\()|export (const|let|var)(.*?)=/g
+    const fnNameExport = (fnData.match(fnNamesRegEx) || [])
+      .map(m => m.replace(fnNamesRegEx, '$1$4').trim())
 
-    // 写单个文件函数的导入
+    // write single fn import
     if ((fnNameExport || []).length) {
       const fnNameImport = [...new Set(fnNameExport)]
         .sort((A, B) => A.localeCompare(B, 'zh-CN'))
@@ -179,26 +194,77 @@ function writeModuleEntry(params: { mark: string; path: string }) {
       entryExport.push(...fnNameExport)
     }
 
-    // 取出所有导出的函数注释
-    const fnDocsRegEx = /(\/)([\*]){2}(.|\n)+?(\*){1}(\/)/g
-    const fnDocsMatch = data.match(fnDocsRegEx) || []
-    if (fnDocsMatch.length) {
-      fnDocsMatch.forEach((f: string) => {
-        const fnName = f.replace(/(\/\*{2}(.|\n)+?@function\s+?)(\S+)(\n{1}(.|\n)+?\*\/)/g, '$3').trim()
-        fs.appendFileSync(
-          fnDoc,
-          `## ${fnName}\n\n`
-          + '```ts\n'
-          + `${f}\n`
-          + '```\n\n',
-          {},
-        )
-      })
+    // doc example path
+    const exPath = f.replace('.ts', '.exam.ts')
+
+    if (fs.existsSync(exPath)) {
+      const desc = fnData.replace(/[\S\s]*\* @desc (.*)\n \*[\S\s]*/g, '$1')
+      const func = fnData.replace(/[\S\s]*\* @func (.*)\n \*[\S\s]*/g, '$1')
+      const docPath = `docs/method/${mark}/${func}.md`
+
+      fs.writeFileSync(
+        docPath,
+        `# ${firstUpperCase(func)}\n\n## Description\n${desc}\n\n`,
+        {},
+      )
+
+      const exData = fs.readFileSync(
+        exPath,
+        { encoding: 'utf-8' },
+      )
+
+      const jsCode = exData.replace(/import.*?from.*?\n/g, '').replace(fnNameExport[0], `return ${func}`)
+      fs.appendFileSync(
+        docPath,
+        `## Run Online
+
+<RunCode>
+
+\`\`\`js
+${jsCode.trim()}
+\`\`\`
+
+</RunCode>
+
+`,
+        {},
+      )
+
+      const paramsRegEx = /\* @param(\.option)? \{ (.*) \}(.*)-(.*)?=(.*)/g
+      paramsRegEx.lastIndex = 0
+      // const options = (fnData.match(paramsRegEx) || []).map(m => m.replace(paramsRegEx, '| $4 | $6 | $2 | |'))
+
+      const options = (fnData.match(paramsRegEx) || []).map(m => m.replaceAll(paramsRegEx, (_, ...mat) => {
+        const [m1, m2, m3, m4, m5] = mat
+        const sxm = (m1 ? `${m1.replace('.', '').trim()}.` : '') + m3.replace(/\[|\]/g, '').trim()
+        const ms = m4.trim()
+        const lx = m2.replace(/\|/g, '\\|').trim()
+        const mrz = m5.trim()
+        return `| ${sxm} | ${ms} | ${lx} | ${mrz} |`
+      }))
+
+      const paramsTable = `## Options
+
+<div class="utils-table">
+
+| 属性名 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+${options.join('\n')}
+
+</div>`
+
+      fs.appendFileSync(
+        docPath,
+        paramsTable,
+        {},
+      )
+
+      sidebarItems.push({ text: func, link: `/method/${mark}/${func}` })
     }
   })
 
   if ((entryExport || []).length) {
-    // 写入口文件函数的导出
+    // module entry
     const exportContent = [...new Set(entryExport)]
       .sort((A, B) => A.localeCompare(B, 'zh-CN'))
 
@@ -242,9 +308,28 @@ export default {
   ${exportContent.join(',\n  ')},
 }
 `, {})
-    return true
+    return [true, sidebarItems]
   }
-  return false
+  return [false, []]
+}
+
+/**
+ * 删除文件夹
+ */
+function removeDir(path: string) {
+  let files = []
+  if (fs.existsSync(path)) {
+    files = fs.readdirSync(path)
+    files.forEach((file) => {
+      const curPath = `${path}/${file}`
+      if (fs.statSync(curPath).isDirectory())
+        removeDir(curPath)
+
+      else
+        fs.unlinkSync(curPath)
+    })
+    fs.rmdirSync(path)
+  }
 }
 
 generateEntries()

@@ -1,8 +1,9 @@
 /**
- * @description 转换为数组
+ * @desc 转换为数组
  *
- * @function toArray
- * @param { T | T[] } [data] - 欲转换的值
+ * @func toArray
+ * @param { T | T[] } [data] - 欲转换的值 = 1df
+ * @param.option { T | T[] } [data] - 欲转换的值
  * @returns { T[] } - 数组
  */
 export function toArray<T>(data?: T | T[]): T[] {

@@ -14,7 +14,6 @@ importers:
       pnpm: ^7.28.0
       tsup: ^6.6.3
       typescript: ^4.9.5
-      vite: ^4.1.4
       vitest: ^0.29.1
     devDependencies:
       '@types/node': 18.14.2
@@ -27,14 +26,15 @@ importers:
       pnpm: 7.28.0
       tsup: 6.6.3_typescript@4.9.5
       typescript: 4.9.5
-      vite: 4.1.4_@types+node@18.14.2
       vitest: 0.29.1
 
   docs:
     specifiers:
       vitepress: 1.0.0-alpha.48
+      vitepress-plugin-runcode: ^0.0.9
     devDependencies:
       vitepress: 1.0.0-alpha.48_2r467mdhb7mblpaox4bg7fatdi
+      vitepress-plugin-runcode: 0.0.9
 
   playground:
     specifiers:
@@ -4096,6 +4096,10 @@ packages:
       rollup: 3.14.0
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /vitepress-plugin-runcode/0.0.9:
+    resolution: {integrity: sha512-a6MX4U50mGPZ6+8KaImkew4vyiRJPmP2omfxod+6/WLRFf+Fu51px79WQIqEqGJvG1gwUeMkPKcqAido10uAlw==}
     dev: true
 
   /vitepress/1.0.0-alpha.48_2r467mdhb7mblpaox4bg7fatdi:
