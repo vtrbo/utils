@@ -68,7 +68,8 @@ const generateEntries = () => {
   })
 
   // write packages/index.ts
-  fs.writeFileSync('packages/index.ts',
+  fs.writeFileSync(
+    'packages/index.ts',
 `// 此文件为自动生成的导出文件
 // 请务必不要在此文件进行修改或其他操作
 // 因为你做的所有修改和操作都不会生效
@@ -155,7 +156,8 @@ function writeModuleEntry(params: { mark: string; path: string }): [boolean, { t
 
   // create module entry
   const fnEntry = `packages/${mark}/index.ts`
-  fs.writeFileSync(fnEntry,
+  fs.writeFileSync(
+    fnEntry,
 `// 此文件为自动生成的导出文件
 // 请务必不要在此文件进行修改或其他操作
 // 因为你做的所有修改和操作都不会生效
@@ -173,18 +175,16 @@ function writeModuleEntry(params: { mark: string; path: string }): [boolean, { t
 
     // get all fn name
     const fnNamesRegEx = /export function(.*?)(<|\()|export (const|let|var)(.*?)=/g
-    const fnNameExport = (fnData.match(fnNamesRegEx) || [])
-      .map(m => m.replace(fnNamesRegEx, '$1$4').trim())
+    const fnNameExport = (fnData.match(fnNamesRegEx) || []).map(m => m.replace(fnNamesRegEx, '$1$4').trim())
 
     // write single fn import
     if ((fnNameExport || []).length) {
-      const fnNameImport = [...new Set(fnNameExport)]
-        .sort((A, B) => A.localeCompare(B, 'zh-CN'))
-        .join(',\n  ')
+      const fnNameImport = [...new Set(fnNameExport)].sort((A, B) => A.localeCompare(B, 'zh-CN')).join(',\n  ')
 
       const filePath = f.replace(/packages\/.*?\/(.*?).ts/g, '$1')
 
-      fs.appendFileSync(fnEntry,
+      fs.appendFileSync(
+        fnEntry,
 `import {
   ${fnNameImport},
 } from './${filePath}'
@@ -204,36 +204,36 @@ function writeModuleEntry(params: { mark: string; path: string }): [boolean, { t
 
       fs.writeFileSync(
         docPath,
-        `# ${firstUpperCase(func)}\n\n## Description\n${desc}\n\n`,
-        {},
-      )
+`# ${firstUpperCase(func)}
+
+## Description
+${desc}
+
+`, {})
 
       const exData = fs.readFileSync(
         exPath,
         { encoding: 'utf-8' },
       )
 
-      const jsCode = exData.replace(/import.*?from.*?\n/g, '').replace(fnNameExport[0], `return ${func}`)
+      const jsCode = exData.replace(/import.*?from.*?\n/g, '').replace(fnNameExport[0], func)
+
       fs.appendFileSync(
         docPath,
-        `## Run Online
+`## Run Online
 
 <RunCode>
 
-\`\`\`js
+\`\`\`ts
 ${jsCode.trim()}
 \`\`\`
 
 </RunCode>
 
-`,
-        {},
-      )
+`, {})
 
       const paramsRegEx = /\* @param(\.option)? \{ (.*) \}(.*)-(.*)?=(.*)/g
       paramsRegEx.lastIndex = 0
-      // const options = (fnData.match(paramsRegEx) || []).map(m => m.replace(paramsRegEx, '| $4 | $6 | $2 | |'))
-
       const options = (fnData.match(paramsRegEx) || []).map(m => m.replaceAll(paramsRegEx, (_, ...mat) => {
         const [m1, m2, m3, m4, m5] = mat
         const sxm = (m1 ? `${m1.replace('.', '').trim()}.` : '') + m3.replace(/\[|\]/g, '').trim()
@@ -268,7 +268,8 @@ ${options.join('\n')}
     const exportContent = [...new Set(entryExport)]
       .sort((A, B) => A.localeCompare(B, 'zh-CN'))
 
-    fs.appendFileSync(fnEntry,
+    fs.appendFileSync(
+      fnEntry,
 `// 自动导入函数的方法，仅适用于 unplugin-auto-import 插件
 // https://github.com/antfu/unplugin-auto-import
 // @param aliasPrefix 别名前缀

@@ -1,10 +1,10 @@
 /**
- * @description 根据条件分组
+ * @desc 根据条件分组
  *
- * @function groupBy
+ * @func groupBy
  * @param { T[] } list - 欲分组的列表
- * @callback { (single: T) => string } fn - 分组条件
- * @returns { T[]  } - 数组
+ * @param { (single: T) => string } fn - 分组条件
+ * @returns { Map<string, T[]>  } - 分组后的集合
  */
 export function groupBy<T>(list: T[], fn: (single: T) => string): Map<string, T[]> {
   const map = new Map<string, T[]>()
