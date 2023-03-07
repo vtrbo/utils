@@ -3,11 +3,11 @@ import { isObject } from '../fn/isObject'
 import { isRegExp } from '../fn/isRegExp'
 
 /**
- * @description 复制数据
+ * @desc 复制数据
  *
- * @function clone
+ * @func clone
  * @param { T } target - 源数据
- * @returns { T } - copyTarget
+ * @returns { T } 复制之后的数据
  */
 export function clone<T>(target: T): T {
   let cloneTarget: any = null

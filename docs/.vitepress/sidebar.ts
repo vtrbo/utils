@@ -42,7 +42,9 @@ export default [
   },
   {
     text: 'Object工具库',
-    items: [],
+    items: [
+      { text: 'clone', link: '/method/object/clone' },
+    ],
   },
   {
     text: 'Random工具库',
