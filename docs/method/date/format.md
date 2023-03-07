@@ -1,12 +1,12 @@
-/**
- * @desc 格式化时间
- *
- * @func format
- * @param { Date } date - 日期时间
- * @param { string } pattern - 格式 Y年 M月 D日 H时 m分 s秒 W周
- * @returns { string } - 格式化时间
- */
-export function format(date: Date, pattern: string): string {
+# Format
+
+## Description
+格式化时间
+
+## Run Online
+
+<RunCode :dependency="`
+function format(date: Date, pattern: string): string {
   const dateTime = new Date(date)
   const format = {
     YYYY: dateTime.getFullYear(),
@@ -22,7 +22,26 @@ export function format(date: Date, pattern: string): string {
     if (key === 'W')
       return ['日', '一', '二', '三', '四', '五', '六'][value]
     if (key.length === 2 && value < 10)
-      return `0${value}`
-    return `${value}`
+      return \`0\${value}\`
+    return \`\${value}\`
   })
-}
+}`">
+
+```ts
+console.log(format(new Date('2022/2/22'), 'YYYY'))
+console.log(format(new Date(), 'YYYY年MM月'))
+console.log(format(new Date('2022-8'), 'DD/MM YYYY'))
+```
+
+</RunCode>
+
+## Options
+
+<div class="utils-table">
+
+| 属性名 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| date | 日期时间 | Date | - |
+| pattern | 格式 Y年 M月 D日 H时 m分 s秒 W周 | string | - |
+
+</div>

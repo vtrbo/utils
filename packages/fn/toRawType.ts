@@ -1,7 +1,7 @@
 /**
- * @description 提取数据原始类型
+ * @desc 提取数据原始类型
  *
- * @function toRawType
+ * @func toRawType
  * @param { any } data - 欲提取的值
  * @returns { string } - 原始类型
  */

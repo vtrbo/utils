@@ -18,11 +18,18 @@ export default [
   },
   {
     text: 'Date',
-    items: [],
+    items: [
+      { text: 'format', link: '/method/date/format' },
+    ],
   },
   {
     text: 'Fn',
-    items: [],
+    items: [
+      { text: 'no', link: '/method/fn/no' },
+      { text: 'noop', link: '/method/fn/noop' },
+      { text: 'once', link: '/method/fn/once' },
+      { text: 'toRawType', link: '/method/fn/toRawType' },
+    ],
   },
   {
     text: 'Guard',

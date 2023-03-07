@@ -1,6 +1,6 @@
 /**
- * @description 永远返回 false 的函数
+ * @desc 永远返回 false 的函数
  *
- * @function no
+ * @func no
  */
 export const no = () => false

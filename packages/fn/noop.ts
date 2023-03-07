@@ -1,6 +1,6 @@
 /**
- * @description 空函数
+ * @desc 空函数
  *
- * @function noop
+ * @func noop
  */
 export const noop = () => {}
