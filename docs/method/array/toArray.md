@@ -5,14 +5,14 @@
 
 ## Run Online
 
-<RunCode>
+<RunCode :dependency="`
+function toArray<T>(data?: T | T[]): T[] {
+  data = data || []
+  return Array.isArray(data) ? data : [data]
+}`">
 
 ```ts
-const obj = {
-  a: 1,
-}
-
-console.log(toArray(obj))
+console.log(toArray('@vtrbo/utils'))
 ```
 
 </RunCode>

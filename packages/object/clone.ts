@@ -1,6 +1,6 @@
 import { isArray } from '../is/isArray'
 import { isObject } from '../is/isObject'
-import { isRegExp } from './../is/isRegExp'
+import { isRegExp } from '../is/isRegExp'
 
 /**
  * @description 复制数据

@@ -1,6 +1,8 @@
 import fs from 'fs'
 import fg from 'fast-glob'
-import { firstUpperCase } from './../packages/string/firstUpperCase'
+import { getCenter } from '../packages/string/getCenter'
+import { firstUpperCase } from '../packages/string/firstUpperCase'
+import { ensureSuffix } from '../packages/string/ensureSuffix'
 
 /**
  * 生成入口文件主函数
@@ -216,13 +218,23 @@ ${desc}
         { encoding: 'utf-8' },
       )
 
-      const jsCode = exData.replace(/import.*?from.*?\n/g, '').replace(fnNameExport[0], func)
+      const imports = exData.match(/import {.*} from '.*'\n/g) || []
+      const depCode = removeAnnotation(
+        replaceImport(imports.join('\n'), mark)
+          .replace(/export /g, '')
+          .replace(/`/g, '\\`')
+          .replace(/\$/g, '\\$')
+          .trim(),
+      )
+      const dependency = imports.length ? ` :dependency="\`${depCode}\`"` : ''
+      const codes = exData.replace(/import.*from.*\n/g, '').trim()
+      const jsCode = codes
 
       fs.appendFileSync(
         docPath,
 `## Run Online
 
-<RunCode>
+<RunCode${dependency}>
 
 \`\`\`ts
 ${jsCode.trim()}
@@ -232,16 +244,17 @@ ${jsCode.trim()}
 
 `, {})
 
-      const paramsRegEx = /\* @param(\.option)? \{ (.*) \}(.*)-(.*)?=(.*)/g
-      paramsRegEx.lastIndex = 0
-      const options = (fnData.match(paramsRegEx) || []).map(m => m.replaceAll(paramsRegEx, (_, ...mat) => {
-        const [m1, m2, m3, m4, m5] = mat
-        const sxm = (m1 ? `${m1.replace('.', '').trim()}.` : '') + m3.replace(/\[|\]/g, '').trim()
-        const ms = m4.trim()
-        const lx = m2.replace(/\|/g, '\\|').trim()
-        const mrz = m5.trim()
-        return `| ${sxm} | ${ms} | ${lx} | ${mrz} |`
-      }))
+      const paramsRegEx = /\* @param(\.option)? \{ (.*) \}(.*)-(.*)/g
+      const options = (fnData.match(paramsRegEx) || [])
+        .map(m => m.replaceAll(paramsRegEx, (_, ...mat) => {
+          const [m1, m2, m3, g1] = mat
+          const [m4, m5] = g1.split('=')
+          const sxm = (m1 ? `${m1.replace('.', '').trim()}.` : '') + m3.replace(/\[|\]/g, '').trim()
+          const ms = m4 ? m4.trim() : '-'
+          const lx = m2.replace(/\|/g, '\\|').trim()
+          const mrz = m5 ? m5.trim() : '-'
+          return `| ${sxm} | ${ms} | ${lx} | ${mrz} |`
+        }))
 
       const paramsTable = `## Options
 
@@ -331,6 +344,48 @@ function removeDir(path: string) {
     })
     fs.rmdirSync(path)
   }
+}
+
+/**
+ * 替换所有引入
+ */
+function replaceImport(code: string, mark: string): string {
+  const fnArr: string[] = []
+
+  // 递归替换
+  const recursionReplace = (code: string, mark: string): string => {
+    const lineReg = /import {.*} from '.*'\n/g
+    const lines = code.match(lineReg) || []
+    if (lines.length) {
+      lines.forEach((line) => {
+        const itemReg = /import {(.*)} from '(.*)'\n/
+        const items = line.match(itemReg) || []
+        if (items.length) {
+          const name = items[1]
+          const path = ensureSuffix(`/${name.trim()}`, items[2])
+          const tMark = getCenter(path, '../', '/') || mark
+          const filePath = `${path.replace('./../', 'packages/').replace('../', 'packages/').replace('..', 'packages/').replace('./', `packages/${mark}/`).replace('.', `packages/${mark}/`)}.ts`
+          const fileData = fs.readFileSync(
+            filePath,
+            { encoding: 'utf-8' },
+          )
+          code = code.replace(line, !fnArr.includes(name) ? recursionReplace(fileData, tMark) : '')
+          fnArr.push(name)
+        }
+      })
+    }
+    return code
+  }
+
+  return recursionReplace(code, mark)
+}
+
+/**
+ * 移除所有的注释
+ */
+function removeAnnotation(code: string): string {
+  const reg = /("([^\\\"]*(\\.)?)*")|('([^\\\']*(\\.)?)*')|(\/{2,}.*?(\r|\n|$))|(\/\*(\n|.)*?\*\/)/g
+  return code.replace(reg, word => (/^\/{2,}/.test(word) || /^\/\*/.test(word)) ? '' : word).replace(/\n+/g, '\n')
 }
 
 generateEntries()

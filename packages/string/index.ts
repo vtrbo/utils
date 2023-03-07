@@ -45,10 +45,6 @@ import {
   templateEngine,
 } from './templateEngine'
 
-import {
-  toString,
-} from './toString'
-
 // 自动导入函数的方法，仅适用于 unplugin-auto-import 插件
 // https://github.com/antfu/unplugin-auto-import
 // @param aliasPrefix 别名前缀
@@ -86,7 +82,6 @@ export const resolveStringUtils = (aliasPrefix?: string): Record<string, [string
       ['getRight', aliasPrefix ? `${aliasPrefix}GetRight` : 'getRight'],
       ['randomString', aliasPrefix ? `${aliasPrefix}RandomString` : 'randomString'],
       ['templateEngine', aliasPrefix ? `${aliasPrefix}TemplateEngine` : 'templateEngine'],
-      ['toString', aliasPrefix ? `${aliasPrefix}ToString` : 'toString'],
     ],
   }
 }
@@ -103,7 +98,6 @@ export {
   getRight,
   randomString,
   templateEngine,
-  toString,
 }
 
 export default {
@@ -118,5 +112,4 @@ export default {
   getRight,
   randomString,
   templateEngine,
-  toString,
 }

@@ -1,13 +1,14 @@
-import { isString } from './../is/isString'
+import { isString } from '../is/isString'
 import { hexToRgba } from './hexToRgba'
 import { rgbaToHex } from './rgbaToHex'
 
 /**
- * @description 加深颜色
+ * @desc 加深颜色
  *
- * @function colorDarken
+ * @func colorDarken
  * @param { string | number[] } color - 16进制颜色 | RGBA颜色
- * @param { number } level - 加深权重 0 - 10 0 自身 10 黑色
+ * @param { number } level - 加深权重 0 自身 10 黑色 = 0
+ * @param { 'HEX' | 'RGBA' } type - 加深权重 = 'HEX'
  * @returns { string | number[] } - HEX | [R, G, B, A]
  */
 export function colorDarken(color: string | number[], level: number = 0, type: 'HEX' | 'RGBA' = 'HEX'): string | number[] {

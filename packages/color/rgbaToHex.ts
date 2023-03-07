@@ -1,7 +1,7 @@
 /**
- * @description RGBA 转 HEX
+ * @desc RGBA 转 HEX
  *
- * @function rgbaToHex
+ * @func rgbaToHex
  * @param { number[] } rgba - RGBA颜色
  * @returns { string } - 16进制颜色
  */
