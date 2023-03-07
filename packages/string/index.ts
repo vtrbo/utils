@@ -2,16 +2,8 @@
 // 请务必不要在此文件进行修改或其他操作
 // 因为你做的所有修改和操作都不会生效
 import {
-  backslashToSlash,
-} from './backslashToSlash'
-
-import {
-  decrypt,
-} from './decrypt'
-
-import {
-  encrypt,
-} from './encrypt'
+  capitalize,
+} from './capitalize'
 
 import {
   ensurePrefix,
@@ -20,10 +12,6 @@ import {
 import {
   ensureSuffix,
 } from './ensureSuffix'
-
-import {
-  firstUpperCase,
-} from './firstUpperCase'
 
 import {
   getCenter,
@@ -38,12 +26,12 @@ import {
 } from './getRight'
 
 import {
-  randomString,
-} from './randomString'
+  template,
+} from './template'
 
 import {
-  templateEngine,
-} from './templateEngine'
+  toSlash,
+} from './toSlash'
 
 // 自动导入函数的方法，仅适用于 unplugin-auto-import 插件
 // https://github.com/antfu/unplugin-auto-import
@@ -71,45 +59,36 @@ import {
 export const resolveStringUtils = (aliasPrefix?: string): Record<string, [string, string][]> => {
   return {
     '@vtrbo/utils/string': [
-      ['backslashToSlash', aliasPrefix ? `${aliasPrefix}BackslashToSlash` : 'backslashToSlash'],
-      ['decrypt', aliasPrefix ? `${aliasPrefix}Decrypt` : 'decrypt'],
-      ['encrypt', aliasPrefix ? `${aliasPrefix}Encrypt` : 'encrypt'],
+      ['capitalize', aliasPrefix ? `${aliasPrefix}Capitalize` : 'capitalize'],
       ['ensurePrefix', aliasPrefix ? `${aliasPrefix}EnsurePrefix` : 'ensurePrefix'],
       ['ensureSuffix', aliasPrefix ? `${aliasPrefix}EnsureSuffix` : 'ensureSuffix'],
-      ['firstUpperCase', aliasPrefix ? `${aliasPrefix}FirstUpperCase` : 'firstUpperCase'],
       ['getCenter', aliasPrefix ? `${aliasPrefix}GetCenter` : 'getCenter'],
       ['getLeft', aliasPrefix ? `${aliasPrefix}GetLeft` : 'getLeft'],
       ['getRight', aliasPrefix ? `${aliasPrefix}GetRight` : 'getRight'],
-      ['randomString', aliasPrefix ? `${aliasPrefix}RandomString` : 'randomString'],
-      ['templateEngine', aliasPrefix ? `${aliasPrefix}TemplateEngine` : 'templateEngine'],
+      ['template', aliasPrefix ? `${aliasPrefix}Template` : 'template'],
+      ['toSlash', aliasPrefix ? `${aliasPrefix}ToSlash` : 'toSlash'],
     ],
   }
 }
 
 export {
-  backslashToSlash,
-  decrypt,
-  encrypt,
+  capitalize,
   ensurePrefix,
   ensureSuffix,
-  firstUpperCase,
   getCenter,
   getLeft,
   getRight,
-  randomString,
-  templateEngine,
+  template,
+  toSlash,
 }
 
 export default {
-  backslashToSlash,
-  decrypt,
-  encrypt,
+  capitalize,
   ensurePrefix,
   ensureSuffix,
-  firstUpperCase,
   getCenter,
   getLeft,
   getRight,
-  randomString,
-  templateEngine,
+  template,
+  toSlash,
 }

@@ -1,5 +1,5 @@
-import { isObject } from '../is/isObject'
-import { isArray } from '../is/isArray'
+import { isObject } from '../fn/isObject'
+import { isArray } from '../fn/isArray'
 import { keys } from './keys'
 
 type MergeInsertions<T> =

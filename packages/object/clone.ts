@@ -1,6 +1,6 @@
-import { isArray } from '../is/isArray'
-import { isObject } from '../is/isObject'
-import { isRegExp } from '../is/isRegExp'
+import { isArray } from '../fn/isArray'
+import { isObject } from '../fn/isObject'
+import { isRegExp } from '../fn/isRegExp'
 
 /**
  * @description 复制数据

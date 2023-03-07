@@ -5,9 +5,9 @@ import array, { resolveArrayUtils } from './array'
 import color, { resolveColorUtils } from './color'
 import date, { resolveDateUtils } from './date'
 import fn, { resolveFnUtils } from './fn'
-import guard, { resolveGuardUtils } from './guard'
-import is, { resolveIsUtils } from './is'
 import object, { resolveObjectUtils } from './object'
+import random, { resolveRandomUtils } from './random'
+import regex, { resolveRegexUtils } from './regex'
 import string, { resolveStringUtils } from './string'
 import tree, { resolveTreeUtils } from './tree'
 
@@ -42,9 +42,9 @@ export const resolveUtils = (aliasPrefix?: string): Record<string, [string, stri
     ...resolveColorUtils(aliasPrefix),
     ...resolveDateUtils(aliasPrefix),
     ...resolveFnUtils(aliasPrefix),
-    ...resolveGuardUtils(aliasPrefix),
-    ...resolveIsUtils(aliasPrefix),
     ...resolveObjectUtils(aliasPrefix),
+    ...resolveRandomUtils(aliasPrefix),
+    ...resolveRegexUtils(aliasPrefix),
     ...resolveStringUtils(aliasPrefix),
     ...resolveTreeUtils(aliasPrefix),
 
@@ -56,9 +56,9 @@ export {
   color,
   date,
   fn,
-  guard,
-  is,
   object,
+  random,
+  regex,
   string,
   tree,
 }
@@ -68,9 +68,9 @@ export default {
   color,
   date,
   fn,
-  guard,
-  is,
   object,
+  random,
+  regex,
   string,
   tree,
 }

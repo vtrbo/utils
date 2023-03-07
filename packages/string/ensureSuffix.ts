@@ -1,13 +1,13 @@
 /**
- * @description 确保字符串后缀
+ * @desc 确保字符串后缀
  *
- * @function ensureSuffix
+ * @func ensureSuffix
+ * @param { string } str - 字符串
  * @param { string } suffix - 后缀
- * @param { string } data - 源数据
- * @returns { string } - 确保后缀的数据
+ * @returns { string } 确保后缀的字符串
  */
-export function ensureSuffix(suffix: string, data: string): string {
-  if (!data.endsWith(suffix))
-    return data + suffix
-  return data
+export function ensureSuffix(str: string, suffix: string): string {
+  if (!str.endsWith(suffix))
+    return str + suffix
+  return str
 }

@@ -1,15 +1,17 @@
 # ToRawType
 
 ## Description
-提取数据原始类型
+获取数据的原始类型
 
 ## Run Online
 
 <RunCode :dependency="`
-const toRawType = (data: any): string => Object.prototype.toString.call(data).slice(8, -1)`">
+function toRawType(data: any): string {
+  return Object.prototype.toString.call(data).slice(8, -1)
+}`">
 
 ```ts
-const str: string = 'victor bo'
+const str: string = 'hello @vtrbo/utils!'
 
 console.log(toRawType(str))
 ```
@@ -22,6 +24,6 @@ console.log(toRawType(str))
 
 | 属性名 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| data | 欲提取的值 | any | - |
+| data | 欲获取类型的数据 | any | - |
 
 </div>

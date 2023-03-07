@@ -1,52 +1,41 @@
-type Options = {
-  // 开始寻找位置
-  startPosition?: number
-  // 区分大小写
-  matchCase?: boolean
-  // 返回寻找文本
-  returnTarget?: boolean
-}
-
-const defaultOption: Options = {
-  // 开始寻找位置
-  startPosition: 0,
-  // 区分大小写
-  matchCase: false,
-  // 返回寻找文本
-  returnTarget: false,
-}
-
 /**
- * @description 取右边文本
+ * @desc 取右边文本
  *
- * @function getRight
+ * @func getRight
  * @param { string } source - 源文本
  * @param { string } target - 目标文本
- * @param { Options } [option] - 配置项
- * @param { number } [option.startPosition = 0] - 配置项.开始寻找位置
- * @param { boolean } [option.matchCase = false] - 配置项.是否区分大小写
- * @param { boolean } [option.returnTarget = false] - 配置项.是否返回寻找文本
- * @returns { string } - 右边的文本
+ * @param { number } [options.findPosition] - 起始搜寻位置 = 0
+ * @param { boolean } [options.isMatchCase] - 是否区分大小写 true区分 false不区分 = true
+ * @param { boolean } [options.isReturnFind] - 是否返回寻找文本 true返回 false不返回 = false
+ * @returns { string } 找到的右边文本
  */
 export const getRight = (
   source: string,
   target: string,
-  option?: Options,
+  options?: {
+    findPosition?: number
+    isMatchCase?: boolean
+    isReturnFind?: boolean
+  },
 ): string => {
-  const tOption: Options = { ...defaultOption, ...(option || {}) }
+  const tOption = Object.assign({
+    findPosition: 0,
+    isMatchCase: true,
+    isReturnFind: false,
+  }, options || {})
+
   let tSource: string = source
   let tTarget: string = target
 
-  // matchCase
-  if (!tOption?.matchCase) {
+  // 不区分大小写
+  if (!tOption.isMatchCase) {
     tSource = tSource.toLowerCase()
     tTarget = target.toLowerCase()
   }
 
-  const position = tSource.indexOf(tTarget, tOption?.startPosition)
+  const position = tSource.indexOf(tTarget, tOption.findPosition)
 
-  // returnTarget
   return position !== -1
-    ? source.substring(position + (!tOption?.returnTarget ? target.length : 0))
+    ? source.substring(position + (!tOption.isReturnFind ? target.length : 0))
     : ''
 }

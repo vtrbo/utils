@@ -1,5 +1,5 @@
 import { hexToRgba } from './hexToRgba'
 
-const hexColor: string = '#006688'
+const hex: string = '#438275'
 
-console.log(hexToRgba(hexColor))
+console.log(hexToRgba(hex))

@@ -6,7 +6,9 @@
 ## Run Online
 
 <RunCode :dependency="`
-const no = () => false`">
+function no(): false {
+  return false
+}`">
 
 ```ts
 console.log(no())

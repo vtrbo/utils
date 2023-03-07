@@ -3,4 +3,4 @@
  *
  * @func noop
  */
-export const noop = () => {}
+export function noop() {}

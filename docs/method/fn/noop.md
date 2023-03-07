@@ -6,7 +6,7 @@
 ## Run Online
 
 <RunCode :dependency="`
-const noop = () => {}`">
+function noop() {}`">
 
 ```ts
 console.log(noop())

@@ -2,12 +2,68 @@
 // 请务必不要在此文件进行修改或其他操作
 // 因为你做的所有修改和操作都不会生效
 import {
+  isArray,
+} from './isArray'
+
+import {
+  isBoolean,
+} from './isBoolean'
+
+import {
+  isFunction,
+} from './isFunction'
+
+import {
+  isNull,
+} from './isNull'
+
+import {
+  isNumber,
+} from './isNumber'
+
+import {
+  isObject,
+} from './isObject'
+
+import {
+  isRegExp,
+} from './isRegExp'
+
+import {
+  isString,
+} from './isString'
+
+import {
+  isType,
+} from './isType'
+
+import {
+  isUndefined,
+} from './isUndefined'
+
+import {
   no,
 } from './no'
 
 import {
   noop,
 } from './noop'
+
+import {
+  notFalsy,
+} from './notFalsy'
+
+import {
+  notNull,
+} from './notNull'
+
+import {
+  notNullish,
+} from './notNullish'
+
+import {
+  notUndefined,
+} from './notUndefined'
 
 import {
   once,
@@ -43,8 +99,22 @@ import {
 export const resolveFnUtils = (aliasPrefix?: string): Record<string, [string, string][]> => {
   return {
     '@vtrbo/utils/fn': [
+      ['isArray', aliasPrefix ? `${aliasPrefix}IsArray` : 'isArray'],
+      ['isBoolean', aliasPrefix ? `${aliasPrefix}IsBoolean` : 'isBoolean'],
+      ['isFunction', aliasPrefix ? `${aliasPrefix}IsFunction` : 'isFunction'],
+      ['isNull', aliasPrefix ? `${aliasPrefix}IsNull` : 'isNull'],
+      ['isNumber', aliasPrefix ? `${aliasPrefix}IsNumber` : 'isNumber'],
+      ['isObject', aliasPrefix ? `${aliasPrefix}IsObject` : 'isObject'],
+      ['isRegExp', aliasPrefix ? `${aliasPrefix}IsRegExp` : 'isRegExp'],
+      ['isString', aliasPrefix ? `${aliasPrefix}IsString` : 'isString'],
+      ['isType', aliasPrefix ? `${aliasPrefix}IsType` : 'isType'],
+      ['isUndefined', aliasPrefix ? `${aliasPrefix}IsUndefined` : 'isUndefined'],
       ['no', aliasPrefix ? `${aliasPrefix}No` : 'no'],
       ['noop', aliasPrefix ? `${aliasPrefix}Noop` : 'noop'],
+      ['notFalsy', aliasPrefix ? `${aliasPrefix}NotFalsy` : 'notFalsy'],
+      ['notNull', aliasPrefix ? `${aliasPrefix}NotNull` : 'notNull'],
+      ['notNullish', aliasPrefix ? `${aliasPrefix}NotNullish` : 'notNullish'],
+      ['notUndefined', aliasPrefix ? `${aliasPrefix}NotUndefined` : 'notUndefined'],
       ['once', aliasPrefix ? `${aliasPrefix}Once` : 'once'],
       ['toRawType', aliasPrefix ? `${aliasPrefix}ToRawType` : 'toRawType'],
     ],
@@ -52,15 +122,43 @@ export const resolveFnUtils = (aliasPrefix?: string): Record<string, [string, st
 }
 
 export {
+  isArray,
+  isBoolean,
+  isFunction,
+  isNull,
+  isNumber,
+  isObject,
+  isRegExp,
+  isString,
+  isType,
+  isUndefined,
   no,
   noop,
+  notFalsy,
+  notNull,
+  notNullish,
+  notUndefined,
   once,
   toRawType,
 }
 
 export default {
+  isArray,
+  isBoolean,
+  isFunction,
+  isNull,
+  isNumber,
+  isObject,
+  isRegExp,
+  isString,
+  isType,
+  isUndefined,
   no,
   noop,
+  notFalsy,
+  notNull,
+  notNullish,
+  notUndefined,
   once,
   toRawType,
 }

@@ -2,20 +2,16 @@
 // 请务必不要在此文件进行修改或其他操作
 // 因为你做的所有修改和操作都不会生效
 import {
-  colorDarken,
-} from './colorDarken'
-
-import {
-  colorLighten,
-} from './colorLighten'
+  darken,
+} from './darken'
 
 import {
   hexToRgba,
 } from './hexToRgba'
 
 import {
-  randomHex,
-} from './randomHex'
+  lighten,
+} from './lighten'
 
 import {
   rgbaToHex,
@@ -47,27 +43,24 @@ import {
 export const resolveColorUtils = (aliasPrefix?: string): Record<string, [string, string][]> => {
   return {
     '@vtrbo/utils/color': [
-      ['colorDarken', aliasPrefix ? `${aliasPrefix}ColorDarken` : 'colorDarken'],
-      ['colorLighten', aliasPrefix ? `${aliasPrefix}ColorLighten` : 'colorLighten'],
+      ['darken', aliasPrefix ? `${aliasPrefix}Darken` : 'darken'],
       ['hexToRgba', aliasPrefix ? `${aliasPrefix}HexToRgba` : 'hexToRgba'],
-      ['randomHex', aliasPrefix ? `${aliasPrefix}RandomHex` : 'randomHex'],
+      ['lighten', aliasPrefix ? `${aliasPrefix}Lighten` : 'lighten'],
       ['rgbaToHex', aliasPrefix ? `${aliasPrefix}RgbaToHex` : 'rgbaToHex'],
     ],
   }
 }
 
 export {
-  colorDarken,
-  colorLighten,
+  darken,
   hexToRgba,
-  randomHex,
+  lighten,
   rgbaToHex,
 }
 
 export default {
-  colorDarken,
-  colorLighten,
+  darken,
   hexToRgba,
-  randomHex,
+  lighten,
   rgbaToHex,
 }

@@ -1,7 +1,7 @@
 import fs from 'fs'
 import fg from 'fast-glob'
 import { getCenter } from '../packages/string/getCenter'
-import { firstUpperCase } from '../packages/string/firstUpperCase'
+import { capitalize } from '../packages/string/capitalize'
 import { ensureSuffix } from '../packages/string/ensureSuffix'
 
 /**
@@ -62,9 +62,9 @@ const generateEntries = () => {
           items: sidebarItems,
         })
 
-        indexImport += `import ${mark}, { resolve${firstUpperCase(mark)}Utils } from './${path}'\n`
+        indexImport += `import ${mark}, { resolve${capitalize(mark)}Utils } from './${path}'\n`
         indexExport += `\n  ${mark},`
-        indexResolve += `\n    ...resolve${firstUpperCase(mark)}Utils(aliasPrefix),`
+        indexResolve += `\n    ...resolve${capitalize(mark)}Utils(aliasPrefix),`
       }
     }
   })
@@ -121,7 +121,7 @@ export default {${indexExport}\n}
       return `      { text: '${text}', link: '${link}' }`
     })
     return `  {
-    text: '${firstUpperCase(text)}',
+    text: '${capitalize(text)}',
     items: ${sidebarItems.length ? `[\n${sidebarItems.join(',\n')},\n    ],\n` : '[],\n'}  }`
   })
   exportTopic += `${sidebar.join(',\n')},`
@@ -206,7 +206,7 @@ function writeModuleEntry(params: { mark: string; path: string }): [boolean, { t
 
       fs.writeFileSync(
         docPath,
-`# ${firstUpperCase(func)}
+`# ${capitalize(func)}
 
 ## Description
 ${desc}
@@ -295,21 +295,21 @@ ${options.join('\n')}
 // 如果非要使用，请传入不同的 aliasPrefix
 // // 全局引入
 // // import { resolveUtils } from '@vtrbo/utils'
-// // 按需引入 ${firstUpperCase(mark)} 的函数库
+// // 按需引入 ${capitalize(mark)} 的函数库
 // import { resolveArrayUtils } from '@vtrbo/utils/array'
 //
 // autoImports({
 //   imports: [
 //     // 全局引入
 //     // resolveUtils(),
-//     // 按需引入 ${firstUpperCase(mark)} 的函数库
-//     resolve${firstUpperCase(mark)}Utils(),
+//     // 按需引入 ${capitalize(mark)} 的函数库
+//     resolve${capitalize(mark)}Utils(),
 //   ]
 // })
-export const resolve${firstUpperCase(mark)}Utils = (aliasPrefix?: string): Record<string, [string, string][]> => {
+export const resolve${capitalize(mark)}Utils = (aliasPrefix?: string): Record<string, [string, string][]> => {
   return {
     '@vtrbo/utils/${mark}': [
-      ${exportContent.map(name => `[\'${name}\', aliasPrefix ? \`\${aliasPrefix}${firstUpperCase(name)}\` : '${name}']`).join(',\n      ')},
+      ${exportContent.map(name => `[\'${name}\', aliasPrefix ? \`\${aliasPrefix}${capitalize(name)}\` : '${name}']`).join(',\n      ')},
     ],
   }
 }
@@ -362,7 +362,7 @@ function replaceImport(code: string, mark: string): string {
         const items = line.match(itemReg) || []
         if (items.length) {
           const name = items[1]
-          const path = ensureSuffix(`/${name.trim()}`, items[2])
+          const path = ensureSuffix(items[2], `/${name.trim()}`)
           const tMark = getCenter(path, '../', '/') || mark
           const filePath = `${path.replace('./../', 'packages/').replace('../', 'packages/').replace('..', 'packages/').replace('./', `packages/${mark}/`).replace('.', `packages/${mark}/`)}.ts`
           const fileData = fs.readFileSync(

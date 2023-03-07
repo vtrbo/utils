@@ -1,5 +1,6 @@
 import { format } from './format'
 
-console.log(format(new Date('2022/2/22'), 'YYYY'))
-console.log(format(new Date(), 'YYYY年MM月'))
-console.log(format(new Date('2022-8'), 'DD/MM YYYY'))
+const date = new Date('2022/2/22')
+const pattern = 'DD/MM YYYY'
+
+console.log(format(date, pattern))

@@ -1,53 +1,43 @@
-type Options = {
-  // 开始寻找位置
-  startPosition?: number
-  // 区分大小写
-  matchCase?: boolean
-  // 返回寻找文本
-  returnTarget?: boolean
-}
-
-const defaultOption: Options = {
-  // 开始寻找位置
-  startPosition: 0,
-  // 区分大小写
-  matchCase: false,
-  // 返回寻找文本
-  returnTarget: false,
-}
-
 /**
- * @description 取中间文本
+ * @desc 取中间文本
  *
- * @function getCenter
+ * @func getCenter
  * @param { string } source - 源文本
  * @param { string } before - 前面文本
  * @param { string } after - 后面文本
- * @param { Options } [option] - 配置项
- * @param { number } [option.startPosition = 0] - 配置项.开始寻找位置
- * @param { boolean } [option.matchCase = false] - 配置项.是否区分大小写
- * @param { boolean } [option.returnTarget = false] - 配置项.是否返回寻找文本
- * @returns { string } - 中间的文本
+ * @param { number } [options.findPosition] - 起始搜寻位置 = 0
+ * @param { boolean } [options.isMatchCase] - 是否区分大小写 true区分 false不区分 = true
+ * @param { boolean } [options.isReturnFind] - 是否返回寻找文本 true返回 false不返回 = false
+ * @returns { string } 找到的中间文本
  */
 export const getCenter = (
   source: string,
   before: string,
   after: string,
-  option?: Options,
+  options?: {
+    findPosition?: number
+    isMatchCase?: boolean
+    isReturnFind?: boolean
+  },
 ): string => {
-  const tOption: Options = { ...defaultOption, ...(option || {}) }
+  const tOption = Object.assign({
+    findPosition: 0,
+    isMatchCase: true,
+    isReturnFind: false,
+  }, options || {})
+
   let tSource: string = source
   let tBefore: string = before
   let tAfter: string = after
 
-  // matchCase
-  if (!tOption?.matchCase) {
+  // 不区分大小写
+  if (!tOption.isMatchCase) {
     tSource = tSource.toLowerCase()
     tBefore = before.toLowerCase()
     tAfter = after.toLowerCase()
   }
 
-  const beforePosition = tSource.indexOf(tBefore, tOption?.startPosition)
+  const beforePosition = tSource.indexOf(tBefore, tOption.findPosition)
   if (beforePosition === -1)
     return ''
 
@@ -55,8 +45,7 @@ export const getCenter = (
   if (afterPosition === -1)
     return ''
 
-  // returnTarget
-  return tOption?.returnTarget
+  return tOption.isReturnFind
     ? source.substring(beforePosition, afterPosition + after.length)
     : source.substring(beforePosition + before.length, afterPosition)
 }

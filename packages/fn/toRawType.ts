@@ -1,8 +1,10 @@
 /**
- * @desc 提取数据原始类型
+ * @desc 获取数据的原始类型
  *
  * @func toRawType
- * @param { any } data - 欲提取的值
- * @returns { string } - 原始类型
+ * @param { any } data - 欲获取类型的数据
+ * @returns { string } 原始类型
  */
-export const toRawType = (data: any): string => Object.prototype.toString.call(data).slice(8, -1)
+export function toRawType(data: any): string {
+  return Object.prototype.toString.call(data).slice(8, -1)
+}

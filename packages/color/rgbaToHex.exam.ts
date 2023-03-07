@@ -1,5 +1,5 @@
 import { rgbaToHex } from './rgbaToHex'
 
-const rgbaColor: number[] = [128, 255, 76, 0.4]
+const rgba: string = 'rgba(128, 99, 36, .6)'
 
-console.log(rgbaToHex(rgbaColor))
+console.log(rgbaToHex(rgba))

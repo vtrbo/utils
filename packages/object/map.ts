@@ -1,4 +1,4 @@
-import { notNullish } from '../guard/notNullish'
+import { notNullish } from '../fn/notNullish'
 
 /**
  * @description 对象的 Map

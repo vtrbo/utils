@@ -4,7 +4,7 @@
  * @func format
  * @param { Date } date - 日期时间
  * @param { string } pattern - 格式 Y年 M月 D日 H时 m分 s秒 W周
- * @returns { string } - 格式化时间
+ * @returns { string } 格式化后的日期时间
  */
 export function format(date: Date, pattern: string): string {
   const dateTime = new Date(date)

@@ -1,13 +1,13 @@
 /**
- * @description 确保字符串前缀
+ * @desc 确保字符串前缀
  *
- * @function ensurePrefix
+ * @func ensurePrefix
+ * @param { string } str - 字符串
  * @param { string } prefix - 前缀
- * @param { string } data - 源数据
- * @returns { string } - 确保前缀的数据
+ * @returns { string } 确保前缀的字符串
  */
-export function ensurePrefix(prefix: string, data: string): string {
-  if (!data.startsWith(prefix))
-    return prefix + data
-  return data
+export function ensurePrefix(str: string, prefix: string): string {
+  if (!str.startsWith(prefix))
+    return prefix + str
+  return str
 }
