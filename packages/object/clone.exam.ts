@@ -1,6 +1,6 @@
 import { clone } from './clone'
 
-const obj = {
+const object = {
   name: '@vtrbo/utils',
   fnNum: 100,
   isPublish: true,
@@ -28,4 +28,4 @@ const obj = {
   },
 }
 
-console.log(clone(obj))
+console.log(clone(object))

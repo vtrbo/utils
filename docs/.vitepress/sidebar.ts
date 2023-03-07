@@ -44,6 +44,10 @@ export default [
     text: 'Object工具库',
     items: [
       { text: 'clone', link: '/method/object/clone' },
+      { text: 'entries', link: '/method/object/entries' },
+      { text: 'hasOwn', link: '/method/object/hasOwn' },
+      { text: 'keyIn', link: '/method/object/keyIn' },
+      { text: 'keys', link: '/method/object/keys' },
     ],
   },
   {
