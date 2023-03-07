@@ -1,13 +1,13 @@
 export default [
   {
-    text: 'Array',
+    text: 'Array工具库',
     items: [
       { text: 'groupBy', link: '/method/array/groupBy' },
       { text: 'toArray', link: '/method/array/toArray' },
     ],
   },
   {
-    text: 'Color',
+    text: 'Color工具库',
     items: [
       { text: 'darken', link: '/method/color/darken' },
       { text: 'hexToRgba', link: '/method/color/hexToRgba' },
@@ -16,13 +16,13 @@ export default [
     ],
   },
   {
-    text: 'Date',
+    text: 'Date工具库',
     items: [
       { text: 'format', link: '/method/date/format' },
     ],
   },
   {
-    text: 'Fn',
+    text: 'Fn工具库',
     items: [
       { text: 'isArray', link: '/method/fn/isArray' },
       { text: 'isBoolean', link: '/method/fn/isBoolean' },
@@ -41,24 +41,24 @@ export default [
     ],
   },
   {
-    text: 'Object',
+    text: 'Object工具库',
     items: [],
   },
   {
-    text: 'Random',
+    text: 'Random工具库',
     items: [
       { text: 'randomColor', link: '/method/random/randomColor' },
       { text: 'randomString', link: '/method/random/randomString' },
     ],
   },
   {
-    text: 'Regex',
+    text: 'Regex工具库',
     items: [
       { text: 'isColor', link: '/method/regex/isColor' },
     ],
   },
   {
-    text: 'String',
+    text: 'String工具库',
     items: [
       { text: 'capitalize', link: '/method/string/capitalize' },
       { text: 'ensurePrefix', link: '/method/string/ensurePrefix' },
@@ -71,7 +71,7 @@ export default [
     ],
   },
   {
-    text: 'Tree',
+    text: 'Tree工具库',
     items: [],
   },
 ] as {

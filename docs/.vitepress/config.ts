@@ -42,12 +42,7 @@ export default defineConfig({
 
     sidebar: {
       '/guide/': sideGuide(),
-      '/method/': [
-        {
-          text: '函数库',
-          items: sideMethods,
-        },
-      ],
+      '/method/': sideMethods,
     },
   },
 

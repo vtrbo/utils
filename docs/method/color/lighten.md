@@ -9,8 +9,8 @@
 function isColor(color: string, type: 'HEX' | 'RGB' | 'RGBA'): boolean {
   const typeMap = {
     HEX: /^#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})\$/g,
-    RGB: /^[rR][gG][bB][\(]([\\s]*(2[0-4][0-9]|25[0-5]|[01]?[0-9][0-9]?)[\\s]*,){2}[\\s]*(2[0-4]\\d|25[0-5]|[01]?\\d\\d?)[\\s]*[\)]{1}\$/g,
-    RGBA: /^[rR][gG][bB][aA][\(]([\\s]*(2[0-4][0-9]|25[0-5]|[01]?[0-9][0-9]?)[\\s]*,){3}[\\s]*(1|1.0|0|0.[0-9])[\\s]*[\)]{1}\$/g,
+    RGB: /^[rR][gG][bB][\\(]([\\s]*(2[0-4][0-9]|25[0-5]|[01]?[0-9][0-9]?)[\\s]*,[\\s]*){2}([\\s]*(2[0-4][0-9]|25[0-5]|[01]?[0-9][0-9]?)[\\s]*){1}[\\)]\$/g,
+    RGBA: /^[rR][gG][bB][aA][\\(]([\\s]*(2[0-4][0-9]|25[0-5]|[01]?[0-9][0-9]?)[\\s]*,[\\s]*){3}[\\s]*(1|1.0|0|0.[0-9])[\\s]*[\\)]{1}\$/g,
   }
   return typeMap[type].test(color)
 }
@@ -57,15 +57,15 @@ function lighten(color: string, level: number = 10): string {
   for (let i = 0; i < 3; i++) rgba[i] = Math.floor((255 - rgba[i]) * level / 10 + rgba[i])
   const typeMap = {
     HEX: '',
-    RGB: \`rgb(\${rgba.join(',')})\`,
-    RGBA: \`rgba(\${rgba.join(',')},\${rgba[3]})\`,
+    RGB: \`rgb(\${rgba.join(', ')})\`,
+    RGBA: \`rgba(\${rgba.join(', ')})\`,
   }
   const lightenColor = typeMap[type]
   return lightenColor || rgbaToHex(lightenColor)
 }`">
 
 ```ts
-const color: string = 'rgba(128,56,32,.8)'
+const color: string = 'rgb(128, 56, 32)'
 const level: number = 5
 
 console.log(lighten(color, level))

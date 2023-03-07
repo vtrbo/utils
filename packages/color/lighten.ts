@@ -33,8 +33,8 @@ export function lighten(color: string, level: number = 10): string {
 
   const typeMap = {
     HEX: '',
-    RGB: `rgb(${rgba.join(',')})`,
-    RGBA: `rgba(${rgba.join(',')},${rgba[3]})`,
+    RGB: `rgb(${rgba.join(', ')})`,
+    RGBA: `rgba(${rgba.join(', ')})`,
   }
 
   const lightenColor = typeMap[type]

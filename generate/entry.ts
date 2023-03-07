@@ -58,7 +58,7 @@ const generateEntries = () => {
 
       if (status) {
         sidebarContent.push({
-          text: mark,
+          text: `${mark}工具库`,
           items: sidebarItems,
         })
 
@@ -222,6 +222,7 @@ ${desc}
       const depCode = removeAnnotation(
         replaceImport(imports.join('\n'), mark)
           .replace(/export /g, '')
+          .replace(/\\/g, '\\\\')
           .replace(/`/g, '\\`')
           .replace(/\$/g, '\\$')
           .trim(),

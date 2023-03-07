@@ -16,20 +16,16 @@ it('resolveUtils', () => {
       ],
       "@vtrbo/utils/color": [
         [
-          "colorDarken",
-          "utilColorDarken",
-        ],
-        [
-          "colorLighten",
-          "utilColorLighten",
+          "darken",
+          "utilDarken",
         ],
         [
           "hexToRgba",
           "utilHexToRgba",
         ],
         [
-          "randomHex",
-          "utilRandomHex",
+          "lighten",
+          "utilLighten",
         ],
         [
           "rgbaToHex",
@@ -44,42 +40,6 @@ it('resolveUtils', () => {
       ],
       "@vtrbo/utils/fn": [
         [
-          "no",
-          "utilNo",
-        ],
-        [
-          "noop",
-          "utilNoop",
-        ],
-        [
-          "once",
-          "utilOnce",
-        ],
-        [
-          "toRawType",
-          "utilToRawType",
-        ],
-      ],
-      "@vtrbo/utils/guard": [
-        [
-          "notFalsy",
-          "utilNotFalsy",
-        ],
-        [
-          "notNull",
-          "utilNotNull",
-        ],
-        [
-          "notNullish",
-          "utilNotNullish",
-        ],
-        [
-          "notUndefined",
-          "utilNotUndefined",
-        ],
-      ],
-      "@vtrbo/utils/is": [
-        [
           "isArray",
           "utilIsArray",
         ],
@@ -90,10 +50,6 @@ it('resolveUtils', () => {
         [
           "isFunction",
           "utilIsFunction",
-        ],
-        [
-          "isIntegerString",
-          "utilIsIntegerString",
         ],
         [
           "isNull",
@@ -122,6 +78,38 @@ it('resolveUtils', () => {
         [
           "isUndefined",
           "utilIsUndefined",
+        ],
+        [
+          "no",
+          "utilNo",
+        ],
+        [
+          "noop",
+          "utilNoop",
+        ],
+        [
+          "notFalsy",
+          "utilNotFalsy",
+        ],
+        [
+          "notNull",
+          "utilNotNull",
+        ],
+        [
+          "notNullish",
+          "utilNotNullish",
+        ],
+        [
+          "notUndefined",
+          "utilNotUndefined",
+        ],
+        [
+          "once",
+          "utilOnce",
+        ],
+        [
+          "toRawType",
+          "utilToRawType",
         ],
       ],
       "@vtrbo/utils/object": [
@@ -162,18 +150,26 @@ it('resolveUtils', () => {
           "utilPick",
         ],
       ],
+      "@vtrbo/utils/random": [
+        [
+          "randomColor",
+          "utilRandomColor",
+        ],
+        [
+          "randomString",
+          "utilRandomString",
+        ],
+      ],
+      "@vtrbo/utils/regex": [
+        [
+          "isColor",
+          "utilIsColor",
+        ],
+      ],
       "@vtrbo/utils/string": [
         [
-          "backslashToSlash",
-          "utilBackslashToSlash",
-        ],
-        [
-          "decrypt",
-          "utilDecrypt",
-        ],
-        [
-          "encrypt",
-          "utilEncrypt",
+          "capitalize",
+          "utilCapitalize",
         ],
         [
           "ensurePrefix",
@@ -182,10 +178,6 @@ it('resolveUtils', () => {
         [
           "ensureSuffix",
           "utilEnsureSuffix",
-        ],
-        [
-          "firstUpperCase",
-          "utilFirstUpperCase",
         ],
         [
           "getCenter",
@@ -200,16 +192,12 @@ it('resolveUtils', () => {
           "utilGetRight",
         ],
         [
-          "randomString",
-          "utilRandomString",
+          "template",
+          "utilTemplate",
         ],
         [
-          "templateEngine",
-          "utilTemplateEngine",
-        ],
-        [
-          "toString",
-          "utilToString",
+          "toSlash",
+          "utilToSlash",
         ],
       ],
       "@vtrbo/utils/tree": [

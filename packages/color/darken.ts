@@ -33,8 +33,8 @@ export function darken(color: string, level: number = 0): string {
 
   const typeMap = {
     HEX: '',
-    RGB: `rgb(${rgba.join(',')})`,
-    RGBA: `rgba(${rgba.join(',')},${rgba[3]})`,
+    RGB: `rgb(${rgba.join(', ')})`,
+    RGBA: `rgba(${rgba.join(', ')})`,
   }
 
   const darkenColor = typeMap[type]

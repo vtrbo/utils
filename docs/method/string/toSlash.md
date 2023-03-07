@@ -7,7 +7,7 @@
 
 <RunCode :dependency="`
 function toSlash(str: string): string {
-  return str.replace(/\\/g, '/')
+  return str.replace(/\\\\/g, '/')
 }`">
 
 ```ts
