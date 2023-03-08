@@ -6,8 +6,8 @@
 ## Run Online
 
 <RunCode :dependency="`
-function notNullish<T>(data: T | null | undefined): data is NonNullable<T> {
-  return data != null
+function notNullish<T>(value: T | null | undefined): value is NonNullable<T> {
+  return value != null
 }
 function objectMap<K extends string, V, NK = K, NV = V>(object: Record<K, V>, fn: (key: K, value: V) => [NK, NV] | undefined): Record<K, V> {
   return Object.fromEntries(

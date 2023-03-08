@@ -2,10 +2,6 @@
 // 请务必不要在此文件进行修改或其他操作
 // 因为你做的所有修改和操作都不会生效
 import {
-  filter,
-} from './filter'
-
-import {
   findNodes,
 } from './findNodes'
 
@@ -14,8 +10,12 @@ import {
 } from './findPaths'
 
 import {
-  toList,
-} from './toList'
+  treeFilter,
+} from './treeFilter'
+
+import {
+  treeToList,
+} from './treeToList'
 
 // 自动导入函数的方法，仅适用于 unplugin-auto-import 插件
 // https://github.com/antfu/unplugin-auto-import
@@ -43,24 +43,24 @@ import {
 export const resolveTreeUtils = (aliasPrefix?: string): Record<string, [string, string][]> => {
   return {
     '@vtrbo/utils/tree': [
-      ['filter', aliasPrefix ? `${aliasPrefix}Filter` : 'filter'],
       ['findNodes', aliasPrefix ? `${aliasPrefix}FindNodes` : 'findNodes'],
       ['findPaths', aliasPrefix ? `${aliasPrefix}FindPaths` : 'findPaths'],
-      ['toList', aliasPrefix ? `${aliasPrefix}ToList` : 'toList'],
+      ['treeFilter', aliasPrefix ? `${aliasPrefix}TreeFilter` : 'treeFilter'],
+      ['treeToList', aliasPrefix ? `${aliasPrefix}TreeToList` : 'treeToList'],
     ],
   }
 }
 
 export {
-  filter,
   findNodes,
   findPaths,
-  toList,
+  treeFilter,
+  treeToList,
 }
 
 export default {
-  filter,
   findNodes,
   findPaths,
-  toList,
+  treeFilter,
+  treeToList,
 }

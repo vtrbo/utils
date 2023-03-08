@@ -1,10 +1,10 @@
 /**
- * @description 非 nullish value
+ * @desc 非 nullish 值
  *
- * @function notNullish
- * @param { T | null | undefined } data
- * @returns { boolean }
+ * @func notNullish
+ * @param { T | null | undefined } value - 欲校验的值
+ * @returns { value is NonNullable<T> } 校验结果
  */
-export function notNullish<T>(data: T | null | undefined): data is NonNullable<T> {
-  return data != null
+export function notNullish<T>(value: T | null | undefined): value is NonNullable<T> {
+  return value != null
 }

@@ -214,8 +214,8 @@ it('resolveUtils', () => {
           "utilFindPaths",
         ],
         [
-          "toList",
-          "utilToList",
+          "treeToList",
+          "utilTreeToList",
         ],
       ],
     }

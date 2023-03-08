@@ -36,6 +36,10 @@ export default [
       { text: 'isUndefined', link: '/method/fn/isUndefined' },
       { text: 'no', link: '/method/fn/no' },
       { text: 'noop', link: '/method/fn/noop' },
+      { text: 'notFalsy', link: '/method/fn/notFalsy' },
+      { text: 'notNull', link: '/method/fn/notNull' },
+      { text: 'notNullish', link: '/method/fn/notNullish' },
+      { text: 'notUndefined', link: '/method/fn/notUndefined' },
       { text: 'once', link: '/method/fn/once' },
       { text: 'toRawType', link: '/method/fn/toRawType' },
     ],
@@ -82,7 +86,12 @@ export default [
   },
   {
     text: 'Tree工具库',
-    items: [],
+    items: [
+      { text: 'findNodes', link: '/method/tree/findNodes' },
+      { text: 'findPaths', link: '/method/tree/findPaths' },
+      { text: 'treeFilter', link: '/method/tree/treeFilter' },
+      { text: 'treeToList', link: '/method/tree/treeToList' },
+    ],
   },
 ] as {
   text: string
