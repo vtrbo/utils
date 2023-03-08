@@ -1,7 +1,7 @@
 {
   "name": "@vtrbo/utils",
   "type": "module",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Collection of common JavaScript or TypeScript utils.",
   "author": {
     "name": "Victor Bo",
