@@ -1,15 +1,13 @@
-# HasOwn
+# ObjectKeys
 
 ## Description
-是否存在键
+严格类型的 `Object.keys`
 
 ## Run Online
 
 <RunCode :dependency="`
-function hasOwn<T>(object: T, key: PropertyKey): boolean {
-  if (object === null)
-    return false
-  return Object.prototype.hasOwnProperty.call(object, key)
+function objectKeys<T extends object>(object: T): Array<\`\${keyof T & (string | number | boolean | null | undefined)}\`> {
+  return Object.keys(object) as Array<\`\${keyof T & (string | number | boolean | null | undefined)}\`>
 }`">
 
 ```ts
@@ -20,7 +18,7 @@ const object = {
   isPublish: true,
 }
 
-console.log(hasOwn(object, 'name'))
+console.log(objectKeys(object))
 ```
 
 </RunCode>
@@ -32,6 +30,5 @@ console.log(hasOwn(object, 'name'))
 | 属性名 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | object | 源对象 | T | - |
-| key | 键名 | PropertyKey | - |
 
 </div>

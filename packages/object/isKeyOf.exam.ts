@@ -1,4 +1,4 @@
-import { hasOwn } from './hasOwn'
+import { isKeyOf } from './isKeyOf'
 
 const object = {
   name: '@vtrbo/utils',
@@ -7,4 +7,4 @@ const object = {
   isPublish: true,
 }
 
-console.log(hasOwn(object, 'name'))
+console.log(isKeyOf(object, 'name'))

@@ -43,11 +43,15 @@ export default [
   {
     text: 'Object工具库',
     items: [
-      { text: 'clone', link: '/method/object/clone' },
-      { text: 'entries', link: '/method/object/entries' },
-      { text: 'hasOwn', link: '/method/object/hasOwn' },
-      { text: 'keyIn', link: '/method/object/keyIn' },
-      { text: 'keys', link: '/method/object/keys' },
+      { text: 'deepClone', link: '/method/object/deepClone' },
+      { text: 'deepMerge', link: '/method/object/deepMerge' },
+      { text: 'hasOwnProperty', link: '/method/object/hasOwnProperty' },
+      { text: 'isKeyOf', link: '/method/object/isKeyOf' },
+      { text: 'objectEntries', link: '/method/object/objectEntries' },
+      { text: 'objectKeys', link: '/method/object/objectKeys' },
+      { text: 'objectMap', link: '/method/object/objectMap' },
+      { text: 'objectOmit', link: '/method/object/objectOmit' },
+      { text: 'objectPick', link: '/method/object/objectPick' },
     ],
   },
   {

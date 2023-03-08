@@ -2,40 +2,40 @@
 // 请务必不要在此文件进行修改或其他操作
 // 因为你做的所有修改和操作都不会生效
 import {
-  clone,
-} from './clone'
+  deepClone,
+} from './deepClone'
 
 import {
-  entries,
-} from './entries'
+  deepMerge,
+} from './deepMerge'
 
 import {
-  hasOwn,
-} from './hasOwn'
+  hasOwnProperty,
+} from './hasOwnProperty'
 
 import {
-  keyIn,
-} from './keyIn'
+  isKeyOf,
+} from './isKeyOf'
 
 import {
-  keys,
-} from './keys'
+  objectEntries,
+} from './objectEntries'
 
 import {
-  map,
-} from './map'
+  objectKeys,
+} from './objectKeys'
 
 import {
-  merge,
-} from './merge'
+  objectMap,
+} from './objectMap'
 
 import {
-  omit,
-} from './omit'
+  objectOmit,
+} from './objectOmit'
 
 import {
-  pick,
-} from './pick'
+  objectPick,
+} from './objectPick'
 
 // 自动导入函数的方法，仅适用于 unplugin-auto-import 插件
 // https://github.com/antfu/unplugin-auto-import
@@ -63,39 +63,39 @@ import {
 export const resolveObjectUtils = (aliasPrefix?: string): Record<string, [string, string][]> => {
   return {
     '@vtrbo/utils/object': [
-      ['clone', aliasPrefix ? `${aliasPrefix}Clone` : 'clone'],
-      ['entries', aliasPrefix ? `${aliasPrefix}Entries` : 'entries'],
-      ['hasOwn', aliasPrefix ? `${aliasPrefix}HasOwn` : 'hasOwn'],
-      ['keyIn', aliasPrefix ? `${aliasPrefix}KeyIn` : 'keyIn'],
-      ['keys', aliasPrefix ? `${aliasPrefix}Keys` : 'keys'],
-      ['map', aliasPrefix ? `${aliasPrefix}Map` : 'map'],
-      ['merge', aliasPrefix ? `${aliasPrefix}Merge` : 'merge'],
-      ['omit', aliasPrefix ? `${aliasPrefix}Omit` : 'omit'],
-      ['pick', aliasPrefix ? `${aliasPrefix}Pick` : 'pick'],
+      ['deepClone', aliasPrefix ? `${aliasPrefix}DeepClone` : 'deepClone'],
+      ['deepMerge', aliasPrefix ? `${aliasPrefix}DeepMerge` : 'deepMerge'],
+      ['hasOwnProperty', aliasPrefix ? `${aliasPrefix}HasOwnProperty` : 'hasOwnProperty'],
+      ['isKeyOf', aliasPrefix ? `${aliasPrefix}IsKeyOf` : 'isKeyOf'],
+      ['objectEntries', aliasPrefix ? `${aliasPrefix}ObjectEntries` : 'objectEntries'],
+      ['objectKeys', aliasPrefix ? `${aliasPrefix}ObjectKeys` : 'objectKeys'],
+      ['objectMap', aliasPrefix ? `${aliasPrefix}ObjectMap` : 'objectMap'],
+      ['objectOmit', aliasPrefix ? `${aliasPrefix}ObjectOmit` : 'objectOmit'],
+      ['objectPick', aliasPrefix ? `${aliasPrefix}ObjectPick` : 'objectPick'],
     ],
   }
 }
 
 export {
-  clone,
-  entries,
-  hasOwn,
-  keyIn,
-  keys,
-  map,
-  merge,
-  omit,
-  pick,
+  deepClone,
+  deepMerge,
+  hasOwnProperty,
+  isKeyOf,
+  objectEntries,
+  objectKeys,
+  objectMap,
+  objectOmit,
+  objectPick,
 }
 
 export default {
-  clone,
-  entries,
-  hasOwn,
-  keyIn,
-  keys,
-  map,
-  merge,
-  omit,
-  pick,
+  deepClone,
+  deepMerge,
+  hasOwnProperty,
+  isKeyOf,
+  objectEntries,
+  objectKeys,
+  objectMap,
+  objectOmit,
+  objectPick,
 }

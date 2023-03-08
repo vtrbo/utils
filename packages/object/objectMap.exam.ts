@@ -1,4 +1,4 @@
-import { clone } from './clone'
+import { objectMap } from './objectMap'
 
 const object = {
   name: '@vtrbo/utils',
@@ -28,4 +28,4 @@ const object = {
   },
 }
 
-console.log(clone(object))
+console.log(objectMap(object, (k, v) => k === 'includes' ? [k, v] : undefined))

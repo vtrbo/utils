@@ -1,13 +1,15 @@
-# KeyIn
+# HasOwnProperty
 
 ## Description
-是否存在键
+确定对象是否具有具名的键
 
 ## Run Online
 
 <RunCode :dependency="`
-function keyIn<T extends object>(object: T, key: PropertyKey): key is keyof T {
-  return key in object
+function hasOwnProperty<T>(object: T, key: PropertyKey): boolean {
+  if (object === null)
+    return false
+  return Object.prototype.hasOwnProperty.call(object, key)
 }`">
 
 ```ts
@@ -18,7 +20,7 @@ const object = {
   isPublish: true,
 }
 
-console.log(keyIn(object, 'name'))
+console.log(hasOwnProperty(object, 'name'))
 ```
 
 </RunCode>

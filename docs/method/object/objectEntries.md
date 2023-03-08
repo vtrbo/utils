@@ -1,13 +1,13 @@
-# Keys
+# ObjectEntries
 
 ## Description
-对象的 Keys
+严格类型的 `Object.entries`
 
 ## Run Online
 
 <RunCode :dependency="`
-function keys<T extends object>(object: T): (keyof T)[] {
-  return Object.keys(object) as (keyof T)[]
+function objectEntries<T extends object>(object: T): Array<[keyof T, T[keyof T]]> {
+  return Object.entries(object) as Array<[keyof T, T[keyof T]]>
 }`">
 
 ```ts
@@ -18,7 +18,7 @@ const object = {
   isPublish: true,
 }
 
-console.log(keys(object))
+console.log(objectEntries(object))
 ```
 
 </RunCode>

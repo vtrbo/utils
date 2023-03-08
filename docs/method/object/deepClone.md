@@ -1,4 +1,4 @@
-# Clone
+# DeepClone
 
 ## Description
 复制数据
@@ -21,7 +21,7 @@ function isObject(data: any): boolean {
 function isRegExp(data: any): boolean {
   return isType(data, 'RegExp')
 }
-function clone<T>(target: T): T {
+function deepClone<T>(target: T): T {
   let cloneTarget: any = null
   if (isRegExp(target)) {
     cloneTarget = target
@@ -29,12 +29,12 @@ function clone<T>(target: T): T {
   else if (isArray(target)) {
     cloneTarget = []
     for (const key in target)
-      cloneTarget.push(clone(target[key]))
+      cloneTarget.push(deepClone(target[key]))
   }
   else if (isObject(target)) {
     cloneTarget = {}
     for (const key in target)
-      cloneTarget[key] = clone(target[key])
+      cloneTarget[key] = deepClone(target[key])
   }
   else {
     cloneTarget = target
@@ -71,7 +71,7 @@ const object = {
   },
 }
 
-console.log(clone(object))
+console.log(deepClone(object))
 ```
 
 </RunCode>

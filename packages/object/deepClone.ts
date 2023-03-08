@@ -5,11 +5,11 @@ import { isRegExp } from '../fn/isRegExp'
 /**
  * @desc 复制数据
  *
- * @func clone
+ * @func deepClone
  * @param { T } target - 源数据
  * @returns { T } 复制之后的数据
  */
-export function clone<T>(target: T): T {
+export function deepClone<T>(target: T): T {
   let cloneTarget: any = null
   if (isRegExp(target)) {
     cloneTarget = target
@@ -17,12 +17,12 @@ export function clone<T>(target: T): T {
   else if (isArray(target)) {
     cloneTarget = []
     for (const key in target)
-      cloneTarget.push(clone(target[key]))
+      cloneTarget.push(deepClone(target[key]))
   }
   else if (isObject(target)) {
     cloneTarget = {}
     for (const key in target)
-      cloneTarget[key] = clone(target[key])
+      cloneTarget[key] = deepClone(target[key])
   }
   else {
     cloneTarget = target

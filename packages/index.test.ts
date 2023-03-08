@@ -114,40 +114,40 @@ it('resolveUtils', () => {
       ],
       "@vtrbo/utils/object": [
         [
-          "clone",
-          "utilClone",
+          "deepClone",
+          "utilDeepClone",
         ],
         [
-          "entries",
-          "utilEntries",
+          "deepMerge",
+          "utilDeepMerge",
         ],
         [
-          "hasOwn",
-          "utilHasOwn",
+          "hasOwnProperty",
+          "utilHasOwnProperty",
         ],
         [
-          "keyIn",
-          "utilKeyIn",
+          "isKeyOf",
+          "utilIsKeyOf",
         ],
         [
-          "keys",
-          "utilKeys",
+          "objectEntries",
+          "utilObjectEntries",
         ],
         [
-          "map",
-          "utilMap",
+          "objectKeys",
+          "utilObjectKeys",
         ],
         [
-          "merge",
-          "utilMerge",
+          "objectMap",
+          "utilObjectMap",
         ],
         [
-          "omit",
-          "utilOmit",
+          "objectOmit",
+          "utilObjectOmit",
         ],
         [
-          "pick",
-          "utilPick",
+          "objectPick",
+          "utilObjectPick",
         ],
       ],
       "@vtrbo/utils/random": [

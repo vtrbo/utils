@@ -1,4 +1,4 @@
-import { keyIn } from './keyIn'
+import { objectEntries } from './objectEntries'
 
 const object = {
   name: '@vtrbo/utils',
@@ -7,4 +7,4 @@ const object = {
   isPublish: true,
 }
 
-console.log(keyIn(object, 'name'))
+console.log(objectEntries(object))

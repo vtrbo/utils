@@ -1,13 +1,13 @@
-# Entries
+# IsKeyOf
 
 ## Description
-对象的 Entries
+确定对象是否具有具名的键，旨在约束 in 操作符中的键类型
 
 ## Run Online
 
 <RunCode :dependency="`
-function entries<T extends object>(object: T): [keyof T, T[keyof T]][] {
-  return Object.entries(object) as [keyof T, T[keyof T]][]
+function isKeyOf<T extends object>(object: T, key: keyof any): key is keyof T {
+  return key in object
 }`">
 
 ```ts
@@ -18,7 +18,7 @@ const object = {
   isPublish: true,
 }
 
-console.log(entries(object))
+console.log(isKeyOf(object, 'name'))
 ```
 
 </RunCode>
@@ -30,5 +30,6 @@ console.log(entries(object))
 | 属性名 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | object | 源对象 | T | - |
+| key | 键名 | keyof any | - |
 
 </div>
