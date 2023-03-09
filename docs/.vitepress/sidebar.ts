@@ -81,6 +81,8 @@ export default [
       { text: 'getLeft', link: '/method/string/getLeft' },
       { text: 'getRight', link: '/method/string/getRight' },
       { text: 'template', link: '/method/string/template' },
+      { text: 'toCamelCase', link: '/method/string/toCamelCase' },
+      { text: 'toKebabCase', link: '/method/string/toKebabCase' },
       { text: 'toSlash', link: '/method/string/toSlash' },
     ],
   },

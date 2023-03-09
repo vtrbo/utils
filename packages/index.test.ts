@@ -196,15 +196,19 @@ it('resolveUtils', () => {
           "utilTemplate",
         ],
         [
+          "toCamelCase",
+          "utilToCamelCase",
+        ],
+        [
+          "toKebabCase",
+          "utilToKebabCase",
+        ],
+        [
           "toSlash",
           "utilToSlash",
         ],
       ],
       "@vtrbo/utils/tree": [
-        [
-          "filter",
-          "utilFilter",
-        ],
         [
           "findNodes",
           "utilFindNodes",
@@ -212,6 +216,10 @@ it('resolveUtils', () => {
         [
           "findPaths",
           "utilFindPaths",
+        ],
+        [
+          "treeFilter",
+          "utilTreeFilter",
         ],
         [
           "treeToList",

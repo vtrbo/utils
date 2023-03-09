@@ -30,6 +30,14 @@ import {
 } from './template'
 
 import {
+  toCamelCase,
+} from './toCamelCase'
+
+import {
+  toKebabCase,
+} from './toKebabCase'
+
+import {
   toSlash,
 } from './toSlash'
 
@@ -66,6 +74,8 @@ export const resolveStringUtils = (aliasPrefix?: string): Record<string, [string
       ['getLeft', aliasPrefix ? `${aliasPrefix}GetLeft` : 'getLeft'],
       ['getRight', aliasPrefix ? `${aliasPrefix}GetRight` : 'getRight'],
       ['template', aliasPrefix ? `${aliasPrefix}Template` : 'template'],
+      ['toCamelCase', aliasPrefix ? `${aliasPrefix}ToCamelCase` : 'toCamelCase'],
+      ['toKebabCase', aliasPrefix ? `${aliasPrefix}ToKebabCase` : 'toKebabCase'],
       ['toSlash', aliasPrefix ? `${aliasPrefix}ToSlash` : 'toSlash'],
     ],
   }
@@ -79,6 +89,8 @@ export {
   getLeft,
   getRight,
   template,
+  toCamelCase,
+  toKebabCase,
   toSlash,
 }
 
@@ -90,5 +102,7 @@ export default {
   getLeft,
   getRight,
   template,
+  toCamelCase,
+  toKebabCase,
   toSlash,
 }

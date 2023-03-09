@@ -247,7 +247,7 @@ ${jsCode.trim()}
 
       const paramsRegEx = /\* @param(\.option)? \{ (.*) \}(.*)-(.*)/g
       const options = (fnData.match(paramsRegEx) || [])
-        .map(m => m.replaceAll(paramsRegEx, (_, ...mat) => {
+        .map(m => m.replace(paramsRegEx, (_, ...mat) => {
           const [m1, m2, m3, g1] = mat
           const [m4, m5] = g1.split('=')
           const sxm = (m1 ? `${m1.replace('.', '').trim()}.` : '') + m3.replace(/\[|\]/g, '').trim()
