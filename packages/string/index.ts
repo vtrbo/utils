@@ -34,6 +34,10 @@ import {
 } from './toCamelCase'
 
 import {
+  toEscape,
+} from './toEscape'
+
+import {
   toLinesCase,
 } from './toLinesCase'
 
@@ -75,6 +79,7 @@ export const resolveStringUtils = (aliasPrefix?: string): Record<string, [string
       ['getRight', aliasPrefix ? `${aliasPrefix}GetRight` : 'getRight'],
       ['template', aliasPrefix ? `${aliasPrefix}Template` : 'template'],
       ['toCamelCase', aliasPrefix ? `${aliasPrefix}ToCamelCase` : 'toCamelCase'],
+      ['toEscape', aliasPrefix ? `${aliasPrefix}ToEscape` : 'toEscape'],
       ['toLinesCase', aliasPrefix ? `${aliasPrefix}ToLinesCase` : 'toLinesCase'],
       ['toSlash', aliasPrefix ? `${aliasPrefix}ToSlash` : 'toSlash'],
     ],
@@ -90,6 +95,7 @@ export {
   getRight,
   template,
   toCamelCase,
+  toEscape,
   toLinesCase,
   toSlash,
 }
@@ -103,6 +109,7 @@ export default {
   getRight,
   template,
   toCamelCase,
+  toEscape,
   toLinesCase,
   toSlash,
 }

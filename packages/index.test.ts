@@ -200,6 +200,10 @@ it('resolveUtils', () => {
           "utilToCamelCase",
         ],
         [
+          "toEscape",
+          "utilToEscape",
+        ],
+        [
           "toLinesCase",
           "utilToLinesCase",
         ],

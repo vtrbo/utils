@@ -11,7 +11,7 @@ function toSlash(str: string): string {
 }`">
 
 ```ts
-const filePath: string = '\src\string/toSlash'
+const filePath: string = '\hello\\vtrbo\\\string/toSlash\\\\'
 
 console.log(toSlash(filePath))
 ```

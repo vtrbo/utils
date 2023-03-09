@@ -200,7 +200,7 @@ function writeModuleEntry(params: { mark: string; path: string }): [boolean, { t
     const exPath = f.replace('.ts', '.exam.ts')
 
     if (fs.existsSync(exPath)) {
-      const desc = fnData.replace(/[\S\s]*\* @desc (.*)\n \*[\S\s]*/g, '$1')
+      const desc = getCenter(fnData, '@desc', '@func').replace(/\*|[\x20]+\*[\x20]+/g, '').replace(/\r+|\n+|[\r\n]+/g, '  \n').trim()
       const func = fnData.replace(/[\S\s]*\* @func (.*)\n \*[\S\s]*/g, '$1')
       const docPath = `docs/method/${mark}/${func}.md`
 

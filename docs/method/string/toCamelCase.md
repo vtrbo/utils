@@ -9,8 +9,11 @@
 function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
-const toCamelCase = (str: string, isUpper: boolean = false): string => {
-  const camelCase = str.replace(/^[-|_]+|[-|_]+\$/g, '').replace(/[-|_]+([a-z])/g, (_, key) => key.toUpperCase()).replace(/[-|_]+/g, '')
+function toCamelCase(str: string, isUpper: boolean = false): string {
+  const camelCase = str
+    .replace(/^[-|_]+|[-|_]+\$/g, '')
+    .replace(/[-|_]+([a-z])/g, (_, key) => key.toUpperCase())
+    .replace(/[-|_]+/g, '')
   return isUpper ? capitalize(camelCase) : camelCase
 }`">
 

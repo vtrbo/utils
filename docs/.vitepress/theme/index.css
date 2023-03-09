@@ -10,6 +10,8 @@
   width: 100%;
   font-size: 14px;
   line-height: 1.5em;
+  margin: 0;
+  display: table;
 }
 
 .vp-doc > div .utils-table > table th,
