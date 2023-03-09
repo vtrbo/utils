@@ -200,8 +200,8 @@ it('resolveUtils', () => {
           "utilToCamelCase",
         ],
         [
-          "toKebabCase",
-          "utilToKebabCase",
+          "toLinesCase",
+          "utilToLinesCase",
         ],
         [
           "toSlash",

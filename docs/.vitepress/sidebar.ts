@@ -82,7 +82,7 @@ export default [
       { text: 'getRight', link: '/method/string/getRight' },
       { text: 'template', link: '/method/string/template' },
       { text: 'toCamelCase', link: '/method/string/toCamelCase' },
-      { text: 'toKebabCase', link: '/method/string/toKebabCase' },
+      { text: 'toLinesCase', link: '/method/string/toLinesCase' },
       { text: 'toSlash', link: '/method/string/toSlash' },
     ],
   },

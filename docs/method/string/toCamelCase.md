@@ -1,7 +1,7 @@
 # ToCamelCase
 
 ## Description
-转换成驼峰
+转换成大驼峰或小驼峰写法
 
 ## Run Online
 
@@ -10,7 +10,7 @@ function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
 const toCamelCase = (str: string, isUpper: boolean = false): string => {
-  const camelCase = str.replace(/-([a-z])/g, key => key.toUpperCase())
+  const camelCase = str.replace(/^[-|_]+|[-|_]+\$/g, '').replace(/[-|_]+([a-z])/g, (_, key) => key.toUpperCase()).replace(/[-|_]+/g, '')
   return isUpper ? capitalize(camelCase) : camelCase
 }`">
 
