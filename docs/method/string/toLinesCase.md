@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode symbolize="to-lines-case-b6VwTKom" :language="ts" :dependency="`
+<RunCode :language="ts" :dependency="`
 function toLinesCase(str: string, isUnder: boolean = false): string {
   return str
     .replace(/^[-|_]+|[-|_]+\$/g, '')

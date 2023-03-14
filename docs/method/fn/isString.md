@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode symbolize="is-string-YOG2_ois" :language="ts" :dependency="`
+<RunCode :language="ts" :dependency="`
 function toRawType(data: any): string {
   return Object.prototype.toString.call(data).slice(8, -1)
 }

@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode symbolize="has-own-property-yKH2jBwP" :language="ts" :dependency="`
+<RunCode :language="ts" :dependency="`
 function hasOwnProperty<T>(object: T, key: PropertyKey): boolean {
   if (object === null)
     return false

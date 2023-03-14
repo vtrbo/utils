@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode symbolize="noop-vPsWn1py" :language="ts" :dependency="`
+<RunCode :language="ts" :dependency="`
 function noop() {}`">
 
 ```ts

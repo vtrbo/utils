@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode symbolize="not-null-_ARVInkg" :language="ts" :dependency="`
+<RunCode :language="ts" :dependency="`
 function notNull<T>(value: T | null): value is Exclude<T, null> {
   return value !== null
 }`">

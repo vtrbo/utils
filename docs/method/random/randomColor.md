@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode symbolize="random-color-lC48ju3O" :language="ts" :dependency="`
+<RunCode :language="ts" :dependency="`
 function randomColor(type: 'HEX' | 'RGBA' = 'HEX'): string {
   const typeMap = {
     HEX: \`#\${Math.floor(Math.random() * 0xFFFFFF).toString(16).padEnd(8, '0')}\`,

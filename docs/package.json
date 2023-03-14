@@ -7,6 +7,6 @@
   },
   "devDependencies": {
     "vitepress": "1.0.0-alpha.56",
-    "vitepress-plugin-runcode": "^0.1.1"
+    "vitepress-plugin-runcode": "^0.1.2"
   }
 }

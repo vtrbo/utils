@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode symbolize="no-7Y07Kw5e" :language="ts" :dependency="`
+<RunCode :language="ts" :dependency="`
 function no(): false {
   return false
 }`">

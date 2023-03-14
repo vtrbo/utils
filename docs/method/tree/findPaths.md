@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode symbolize="find-paths-8WGFL9a3" :language="ts" :dependency="`
+<RunCode :language="ts" :dependency="`
 function findPaths<T>(tree: T[], callback: (node: T) => boolean, options?: {
   children?: string
   isFindAll?: boolean

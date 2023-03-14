@@ -3,8 +3,6 @@ import fg from 'fast-glob'
 import { getCenter } from '../packages/string/getCenter'
 import { capitalize } from '../packages/string/capitalize'
 import { ensureSuffix } from '../packages/string/ensureSuffix'
-import { toLinesCase } from '../packages/string/toLinesCase'
-import { randomString } from '../packages/random/randomString'
 
 /**
  * 生成入口文件主函数
@@ -234,13 +232,11 @@ ${desc}
       const regStr = `^(${func})`
       const jsCode = codes.replace(new RegExp(regStr, 'gm'), 'return $1')
 
-      const symbolize = `${toLinesCase(func)}-${randomString(8)}`
-
       fs.appendFileSync(
         docPath,
 `## Run Online
 
-<RunCode symbolize="${symbolize}" :language="ts"${dependency}>
+<RunCode :language="ts"${dependency}>
 
 \`\`\`ts
 ${jsCode.trim()}

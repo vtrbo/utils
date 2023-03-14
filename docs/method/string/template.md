@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode symbolize="template-EsC526i3" :language="ts" :dependency="`
+<RunCode :language="ts" :dependency="`
 function template(str: string, ...args: any[]): string {
   return str.replace(/{(\\d+)}/g, (match, key) => {
     const index = Number(key)

@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode symbolize="get-right-YLn7eaU-" :language="ts" :dependency="`
+<RunCode :language="ts" :dependency="`
 const getRight = (
   source: string,
   target: string,

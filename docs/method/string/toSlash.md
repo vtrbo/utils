@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode symbolize="to-slash-USihRmo4" :language="ts" :dependency="`
+<RunCode :language="ts" :dependency="`
 function toSlash(str: string): string {
   return str.replace(/\\\\/g, '/')
 }`">

@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode symbolize="object-omit-_-9_mRVj" :language="ts" :dependency="`
+<RunCode :language="ts" :dependency="`
 function objectKeys<T extends object>(object: T): Array<\`\${keyof T & (string | number | boolean | null | undefined)}\`> {
   return Object.keys(object) as Array<\`\${keyof T & (string | number | boolean | null | undefined)}\`>
 }

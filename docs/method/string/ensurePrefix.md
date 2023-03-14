@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode symbolize="ensure-prefix-trY0CDXt" :language="ts" :dependency="`
+<RunCode :language="ts" :dependency="`
 function ensurePrefix(str: string, prefix: string): string {
   if (!str.startsWith(prefix))
     return prefix + str

@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode symbolize="find-nodes-TzCJ3SlX" :language="ts" :dependency="`
+<RunCode :language="ts" :dependency="`
 function findNodes<T>(tree: T[], callback: (node: T) => boolean, options?: {
   children?: string
   isFindAll?: boolean

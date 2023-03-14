@@ -59,7 +59,7 @@
     "docs:serve": "nr -C docs serve"
   },
   "devDependencies": {
-    "@types/node": "^18.15.1",
+    "@types/node": "^18.15.2",
     "@vtrbo/eslint-config": "^0.2.2",
     "@vtrbo/ni": "^0.1.0",
     "bumpp": "^9.0.0",
