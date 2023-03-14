@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode :dependency="`
+<RunCode symbolize="is-key-of-uxGtthsV" :language="ts" :dependency="`
 function isKeyOf<T extends object>(object: T, key: keyof any): key is keyof T {
   return key in object
 }`">

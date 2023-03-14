@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode :dependency="`
+<RunCode symbolize="is-type-WL2MM09w" :language="ts" :dependency="`
 function toRawType(data: any): string {
   return Object.prototype.toString.call(data).slice(8, -1)
 }

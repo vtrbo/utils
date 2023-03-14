@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode :dependency="`
+<RunCode symbolize="format-kFqRcSxo" :language="ts" :dependency="`
 function format(date: Date, pattern: string): string {
   const dateTime = new Date(date)
   const format = {

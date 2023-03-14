@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode :dependency="`
+<RunCode symbolize="not-falsy-rf1QkH5l" :language="ts" :dependency="`
 function notFalsy<T>(value: T): value is NonNullable<T> {
   return Boolean(value)
 }`">

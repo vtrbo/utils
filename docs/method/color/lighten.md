@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode :dependency="`
+<RunCode symbolize="lighten-I96IGxOX" :language="ts" :dependency="`
 function isColor(color: string, type: 'HEX' | 'RGB' | 'RGBA'): boolean {
   const typeMap = {
     HEX: /^#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})\$/g,

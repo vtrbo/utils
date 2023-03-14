@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode :dependency="`
+<RunCode symbolize="object-map-L2rcjXw1" :language="ts" :dependency="`
 function notNullish<T>(value: T | null | undefined): value is NonNullable<T> {
   return value != null
 }

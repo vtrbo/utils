@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode :dependency="`
+<RunCode symbolize="to-array-olOWqpEt" :language="ts" :dependency="`
 function toArray<T>(data?: T | T[]): T[] {
   data = data || []
   return Array.isArray(data) ? data : [data]

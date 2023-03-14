@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode :dependency="`
+<RunCode symbolize="get-left-bCd1AxMe" :language="ts" :dependency="`
 const getLeft = (
   source: string,
   target: string,

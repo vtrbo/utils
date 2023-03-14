@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode :dependency="`
+<RunCode symbolize="capitalize-aGwtEQZj" :language="ts" :dependency="`
 function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }`">

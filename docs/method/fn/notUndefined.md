@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode :dependency="`
+<RunCode symbolize="not-undefined-G3NxI1tY" :language="ts" :dependency="`
 function notUndefined<T>(value: T): value is Exclude<T, undefined> {
   return value !== undefined
 }`">

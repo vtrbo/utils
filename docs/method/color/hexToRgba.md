@@ -5,7 +5,7 @@ HEX 转 RGBA
 
 ## Run Online
 
-<RunCode :dependency="`
+<RunCode symbolize="hex-to-rgba--0tvUrrO" :language="ts" :dependency="`
 function isColor(color: string, type: 'HEX' | 'RGB' | 'RGBA'): boolean {
   const typeMap = {
     HEX: /^#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})\$/g,

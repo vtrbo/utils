@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode :dependency="`
+<RunCode symbolize="tree-filter-qLRePlBi" :language="ts" :dependency="`
 function treeFilter<T>(tree: T[], callback: (node: T) => boolean, options?: {
   children?: string
 }): T[] {

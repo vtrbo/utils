@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode :dependency="`
+<RunCode symbolize="ensure-suffix-IGqZ2i0y" :language="ts" :dependency="`
 function ensureSuffix(str: string, suffix: string): string {
   if (!str.endsWith(suffix))
     return str + suffix

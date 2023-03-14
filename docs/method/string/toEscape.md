@@ -12,7 +12,7 @@
 
 ## Run Online
 
-<RunCode>
+<RunCode symbolize="to-escape-zcj5egYG" :language="ts">
 
 ```ts
 console.log('toEscape')

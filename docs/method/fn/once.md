@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode :dependency="`
+<RunCode symbolize="once-N4bb_Va1" :language="ts" :dependency="`
 function once<A extends any[], R, T>(
   fn: (this: T, ...arg: A) => R,
 ): ((this: T, ...arg: A) => R | undefined) {

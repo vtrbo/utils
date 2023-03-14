@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode :dependency="`
+<RunCode symbolize="tree-to-list-FBdv-WCD" :language="ts" :dependency="`
 function treeToList<T>(tree: T[], options?: {
   children?: string
 }): T[] {

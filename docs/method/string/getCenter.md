@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode :dependency="`
+<RunCode symbolize="get-center-f6ju4W8m" :language="ts" :dependency="`
 const getCenter = (
   source: string,
   before: string,

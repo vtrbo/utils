@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode :dependency="`
+<RunCode symbolize="random-string-ASz0-qsS" :language="ts" :dependency="`
 function randomString(size?: number, dict?: string): string {
   size = size || 16
   dict = dict || 'vtrbo-zRsEQxkJMUHiDlpST74wG512nF0c6gB3uX8_K9qCOWLNjPaYmhAZVdyIfe'

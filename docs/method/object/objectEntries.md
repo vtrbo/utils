@@ -5,7 +5,7 @@
 
 ## Run Online
 
-<RunCode :dependency="`
+<RunCode symbolize="object-entries-CIhPTw6i" :language="ts" :dependency="`
 function objectEntries<T extends object>(object: T): Array<[keyof T, T[keyof T]]> {
   return Object.entries(object) as Array<[keyof T, T[keyof T]]>
 }`">
