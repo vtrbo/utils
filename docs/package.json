@@ -6,7 +6,7 @@
     "serve": "vitepress serve . --port 9999"
   },
   "devDependencies": {
-    "vitepress": "1.0.0-alpha.56",
+    "vitepress": "1.0.0-alpha.58",
     "vitepress-plugin-runcode": "^0.2.0"
   }
 }
