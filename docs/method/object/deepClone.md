@@ -15,7 +15,7 @@ function isType(data: any, type: string): boolean {
 function isArray(data: any): data is any[] {
   return isType(data, 'Array')
 }
-function isObject(data: any): data is object {
+function isObject(data: any): data is Record<any, any> {
   return isType(data, 'Object')
 }
 function isRegExp(data: any): data is RegExp {

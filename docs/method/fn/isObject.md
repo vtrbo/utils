@@ -12,7 +12,7 @@ function toRawType(data: any): string {
 function isType(data: any, type: string): boolean {
   return toRawType(data).toLowerCase() === type.toLowerCase()
 }
-function isObject(data: any): data is object {
+function isObject(data: any): data is Record<any, any> {
   return isType(data, 'Object')
 }`">
 

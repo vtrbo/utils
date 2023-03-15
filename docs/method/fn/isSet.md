@@ -1,7 +1,7 @@
-# IsFunction
+# IsSet
 
 ## Description
-是否是函数
+是否为 SET
 
 ## Run Online
 
@@ -12,14 +12,14 @@ function toRawType(data: any): string {
 function isType(data: any, type: string): boolean {
   return toRawType(data).toLowerCase() === type.toLowerCase()
 }
-function isFunction<T extends Function>(data: any): data is T {
-  return isType(data, 'Function')
+function isSet(data: any): data is Set<any> {
+  return isType(data, 'Set')
 }`">
 
 ```ts
-const data: Function = () => {}
+const data: Set<number> = new Set([1, 2, 3, 3])
 
-console.log(isFunction(data))
+console.log(isSet(data))
 ```
 
 </RunCode>

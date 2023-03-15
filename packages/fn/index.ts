@@ -18,6 +18,10 @@ import {
 } from './isFunction'
 
 import {
+  isMap,
+} from './isMap'
+
+import {
   isNull,
 } from './isNull'
 
@@ -32,6 +36,10 @@ import {
 import {
   isRegExp,
 } from './isRegExp'
+
+import {
+  isSet,
+} from './isSet'
 
 import {
   isString,
@@ -107,10 +115,12 @@ export const resolveFnUtils = (aliasPrefix?: string): Record<string, [string, st
       ['isBoolean', aliasPrefix ? `${aliasPrefix}IsBoolean` : 'isBoolean'],
       ['isDate', aliasPrefix ? `${aliasPrefix}IsDate` : 'isDate'],
       ['isFunction', aliasPrefix ? `${aliasPrefix}IsFunction` : 'isFunction'],
+      ['isMap', aliasPrefix ? `${aliasPrefix}IsMap` : 'isMap'],
       ['isNull', aliasPrefix ? `${aliasPrefix}IsNull` : 'isNull'],
       ['isNumber', aliasPrefix ? `${aliasPrefix}IsNumber` : 'isNumber'],
       ['isObject', aliasPrefix ? `${aliasPrefix}IsObject` : 'isObject'],
       ['isRegExp', aliasPrefix ? `${aliasPrefix}IsRegExp` : 'isRegExp'],
+      ['isSet', aliasPrefix ? `${aliasPrefix}IsSet` : 'isSet'],
       ['isString', aliasPrefix ? `${aliasPrefix}IsString` : 'isString'],
       ['isType', aliasPrefix ? `${aliasPrefix}IsType` : 'isType'],
       ['isUndefined', aliasPrefix ? `${aliasPrefix}IsUndefined` : 'isUndefined'],
@@ -131,10 +141,12 @@ export {
   isBoolean,
   isDate,
   isFunction,
+  isMap,
   isNull,
   isNumber,
   isObject,
   isRegExp,
+  isSet,
   isString,
   isType,
   isUndefined,
@@ -153,10 +165,12 @@ export default {
   isBoolean,
   isDate,
   isFunction,
+  isMap,
   isNull,
   isNumber,
   isObject,
   isRegExp,
+  isSet,
   isString,
   isType,
   isUndefined,

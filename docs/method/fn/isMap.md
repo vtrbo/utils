@@ -1,7 +1,7 @@
-# IsFunction
+# IsMap
 
 ## Description
-是否是函数
+是否为 MAP
 
 ## Run Online
 
@@ -12,14 +12,18 @@ function toRawType(data: any): string {
 function isType(data: any, type: string): boolean {
   return toRawType(data).toLowerCase() === type.toLowerCase()
 }
-function isFunction<T extends Function>(data: any): data is T {
-  return isType(data, 'Function')
+function isMap(data: any): data is Map<any, any> {
+  return isType(data, 'Map')
 }`">
 
 ```ts
-const data: Function = () => {}
+const data: Map<string, number> = new Map([
+  ['Michael', 95],
+  ['Bob', 75],
+  ['Tracy', 85],
+])
 
-console.log(isFunction(data))
+console.log(isMap(data))
 ```
 
 </RunCode>

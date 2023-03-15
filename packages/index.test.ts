@@ -56,6 +56,10 @@ it('resolveUtils', () => {
           "utilIsFunction",
         ],
         [
+          "isMap",
+          "utilIsMap",
+        ],
+        [
           "isNull",
           "utilIsNull",
         ],
@@ -70,6 +74,10 @@ it('resolveUtils', () => {
         [
           "isRegExp",
           "utilIsRegExp",
+        ],
+        [
+          "isSet",
+          "utilIsSet",
         ],
         [
           "isString",

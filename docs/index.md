@@ -8,7 +8,7 @@ hero:
   name: Victor Bo Utils
   text: Collection of common JavaScript or TypeScript utils.
   image:
-    src: /logo-shadow.png
+    src: /logo-shadow.svg
     alt: '@vtrbo/utils'
   actions:
     - theme: brand

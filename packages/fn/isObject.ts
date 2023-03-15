@@ -5,8 +5,8 @@ import { isType } from './isType'
  *
  * @func isObject
  * @param { any } data - 欲校验类型的数据
- * @returns { data is object } 校验结果
+ * @returns { data is Record<any, any> } 校验结果
  */
-export function isObject(data: any): data is object {
+export function isObject(data: any): data is Record<any, any> {
   return isType(data, 'Object')
 }

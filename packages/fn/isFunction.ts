@@ -5,8 +5,8 @@ import { isType } from './isType'
  *
  * @func isFunction
  * @param { any } data - 欲校验类型的数据
- * @returns { data is Function } 校验结果
+ * @returns { data is T } 校验结果
  */
-export function isFunction(data: any): data is Function {
+export function isFunction<T extends Function>(data: any): data is T {
   return isType(data, 'Function')
 }
