@@ -1,1 +1,7 @@
-/docs/**/*.md
+~
+node_modules
+dist
+cache
+temp
+.temp
+docs/**/*.md
