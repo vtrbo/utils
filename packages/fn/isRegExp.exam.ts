@@ -1,5 +1,5 @@
 import { isRegExp } from './isRegExp'
 
-const str: string = 'hello @vtrbo/utils!'
+const data: RegExp = /abc/
 
-console.log(isRegExp(str))
+console.log(isRegExp(data))

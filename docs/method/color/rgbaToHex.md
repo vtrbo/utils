@@ -8,13 +8,15 @@ RGBA 转 HEX
 <RunCode :language="ts" :dependency="`
 function isColor(color: string, type: 'HEX' | 'RGB' | 'RGBA'): boolean {
   const typeMap = {
-    HEX: /^#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})\$/g,
+    HEX: /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})\$/g,
     RGB: /^[rR][gG][bB][\\(]([\\s]*(2[0-4][0-9]|25[0-5]|[01]?[0-9][0-9]?)[\\s]*,[\\s]*){2}([\\s]*(2[0-4][0-9]|25[0-5]|[01]?[0-9][0-9]?)[\\s]*){1}[\\)]\$/g,
     RGBA: /^[rR][gG][bB][aA][\\(]([\\s]*(2[0-4][0-9]|25[0-5]|[01]?[0-9][0-9]?)[\\s]*,[\\s]*){3}[\\s]*(1|1.0|0|0.[0-9])[\\s]*[\\)]{1}\$/g,
   }
   return typeMap[type].test(color)
 }
 const rgbaToHex = (rgba: string): string => {
+  if (isColor(rgba, 'HEX'))
+    return rgba
   if (!isColor(rgba, 'RGB') && !isColor(rgba, 'RGBA'))
     return ''
   const rgbaValue = rgba.replace('rgba(', '').replace('rgb(', '').replace(')', '')

@@ -1,9 +1,10 @@
 import { once } from './once'
 
-const func = (num: number) => {
-  return num++
+let count: number = 0
+const func = () => {
+  count += 1
+  return count
 }
-
 const onceFunc = once(func)
 
-console.log(onceFunc((6)))
+console.log(onceFunc())

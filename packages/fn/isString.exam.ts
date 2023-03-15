@@ -1,5 +1,5 @@
 import { isString } from './isString'
 
-const str: string = 'hello @vtrbo/utils!'
+const data: string = 'abc'
 
-console.log(isString(str))
+console.log(isString(data))

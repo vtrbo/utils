@@ -12,14 +12,14 @@ function toRawType(data: any): string {
 function isType(data: any, type: string): boolean {
   return toRawType(data).toLowerCase() === type.toLowerCase()
 }
-function isNull(data: any): boolean {
+function isNull(data: any): data is null {
   return isType(data, 'Null')
 }`">
 
 ```ts
-const str: string = 'hello @vtrbo/utils!'
+const data: null = null
 
-console.log(isNull(str))
+console.log(isNull(data))
 ```
 
 </RunCode>

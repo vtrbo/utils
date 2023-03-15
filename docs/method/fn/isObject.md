@@ -12,14 +12,14 @@ function toRawType(data: any): string {
 function isType(data: any, type: string): boolean {
   return toRawType(data).toLowerCase() === type.toLowerCase()
 }
-function isObject(data: any): boolean {
+function isObject(data: any): data is object {
   return isType(data, 'Object')
 }`">
 
 ```ts
-const str: string = 'hello @vtrbo/utils!'
+const data: Record<string, any> = { a: 1, b: '2' }
 
-console.log(isObject(str))
+console.log(isObject(data))
 ```
 
 </RunCode>

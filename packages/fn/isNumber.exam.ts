@@ -1,5 +1,5 @@
 import { isNumber } from './isNumber'
 
-const str: string = 'hello @vtrbo/utils!'
+const data: number = 3.1415926
 
-console.log(isNumber(str))
+console.log(isNumber(data))

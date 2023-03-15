@@ -5,8 +5,8 @@ import { isType } from './isType'
  *
  * @func isBoolean
  * @param { any } data - 欲校验类型的数据
- * @returns { boolean } 校验结果
+ * @returns { data is boolean } 校验结果
  */
-export function isBoolean(data: any): boolean {
+export function isBoolean(data: any): data is boolean {
   return isType(data, 'Boolean')
 }

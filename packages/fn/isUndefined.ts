@@ -5,8 +5,8 @@ import { isType } from './isType'
  *
  * @func isUndefined
  * @param { any } data - 欲校验的值
- * @returns { boolean } 校验结果
+ * @returns { data is undefined } 校验结果
  */
-export function isUndefined(data: any): boolean {
+export function isUndefined(data: any): data is undefined {
   return isType(data, 'Undefined')
 }

@@ -48,6 +48,10 @@ it('resolveUtils', () => {
           "utilIsBoolean",
         ],
         [
+          "isDate",
+          "utilIsDate",
+        ],
+        [
           "isFunction",
           "utilIsFunction",
         ],
@@ -110,6 +114,12 @@ it('resolveUtils', () => {
         [
           "toRawType",
           "utilToRawType",
+        ],
+      ],
+      "@vtrbo/utils/number": [
+        [
+          "toThousands",
+          "utilToThousands",
         ],
       ],
       "@vtrbo/utils/object": [

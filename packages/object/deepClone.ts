@@ -12,7 +12,7 @@ import { isRegExp } from '../fn/isRegExp'
 export function deepClone<T>(target: T): T {
   let cloneTarget: any = null
   if (isRegExp(target)) {
-    cloneTarget = target
+    cloneTarget = new RegExp(target)
   }
   else if (isArray(target)) {
     cloneTarget = []

@@ -1,5 +1,5 @@
 import { isUndefined } from './isUndefined'
 
-const str: string = 'hello @vtrbo/utils!'
+const data: undefined = undefined
 
-console.log(isUndefined(str))
+console.log(isUndefined(data))

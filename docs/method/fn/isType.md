@@ -14,10 +14,10 @@ function isType(data: any, type: string): boolean {
 }`">
 
 ```ts
-const str: string = 'hello @vtrbo/utils'
+const data: string = 'hello world'
 const type: string = 'string'
 
-console.log(isType(str, type))
+console.log(isType(data, type))
 ```
 
 </RunCode>

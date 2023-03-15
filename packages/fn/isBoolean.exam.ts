@@ -1,5 +1,5 @@
 import { isBoolean } from './isBoolean'
 
-const str: string = 'hello @vtrbo/utils!'
+const data: boolean = true
 
-console.log(isBoolean(str))
+console.log(isBoolean(data))

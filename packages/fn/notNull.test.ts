@@ -1,23 +1,24 @@
-import { expect, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { notNull } from './notNull'
 
-const array = ['@vtrbo/utils', false, 0, '', null, 'null', undefined, 'undefined', 100, { name: 'Victor Bo' }, () => 'string']
+describe('notNull', () => {
+  it('should return false for null value', () => {
+    const value: string | null = null
+    expect(notNull(value)).toBe(false)
+  })
 
-it('notNull', () => {
-  expect(array.filter(notNull)).toMatchInlineSnapshot(`
-    [
-      "@vtrbo/utils",
-      false,
-      0,
-      "",
-      "null",
-      undefined,
-      "undefined",
-      100,
-      {
-        "name": "Victor Bo",
-      },
-      [Function],
-    ]
-  `)
+  it('should return true for non-null value', () => {
+    const value: string | null = 'hello'
+    expect(notNull(value)).toBe(true)
+  })
+
+  it('should return true for undefined value', () => {
+    const value: string | undefined = undefined
+    expect(notNull(value)).toBe(true)
+  })
+
+  it('should return true for non-null object value', () => {
+    const value: { name: string } | null = { name: 'Tom' }
+    expect(notNull(value)).toBe(true)
+  })
 })

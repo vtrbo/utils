@@ -12,14 +12,14 @@ function toRawType(data: any): string {
 function isType(data: any, type: string): boolean {
   return toRawType(data).toLowerCase() === type.toLowerCase()
 }
-function isArray(data: any): boolean {
+function isArray(data: any): data is any[] {
   return isType(data, 'Array')
 }`">
 
 ```ts
-const str: string = 'hello @vtrbo/utils!'
+const data: number[] = [1, 2, 3]
 
-console.log(isArray(str))
+console.log(isArray(data))
 ```
 
 </RunCode>

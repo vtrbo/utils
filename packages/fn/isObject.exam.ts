@@ -1,5 +1,5 @@
 import { isObject } from './isObject'
 
-const str: string = 'hello @vtrbo/utils!'
+const data: Record<string, any> = { a: 1, b: '2' }
 
-console.log(isObject(str))
+console.log(isObject(data))

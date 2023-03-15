@@ -10,6 +10,10 @@ import {
 } from './isBoolean'
 
 import {
+  isDate,
+} from './isDate'
+
+import {
   isFunction,
 } from './isFunction'
 
@@ -101,6 +105,7 @@ export const resolveFnUtils = (aliasPrefix?: string): Record<string, [string, st
     '@vtrbo/utils/fn': [
       ['isArray', aliasPrefix ? `${aliasPrefix}IsArray` : 'isArray'],
       ['isBoolean', aliasPrefix ? `${aliasPrefix}IsBoolean` : 'isBoolean'],
+      ['isDate', aliasPrefix ? `${aliasPrefix}IsDate` : 'isDate'],
       ['isFunction', aliasPrefix ? `${aliasPrefix}IsFunction` : 'isFunction'],
       ['isNull', aliasPrefix ? `${aliasPrefix}IsNull` : 'isNull'],
       ['isNumber', aliasPrefix ? `${aliasPrefix}IsNumber` : 'isNumber'],
@@ -124,6 +129,7 @@ export const resolveFnUtils = (aliasPrefix?: string): Record<string, [string, st
 export {
   isArray,
   isBoolean,
+  isDate,
   isFunction,
   isNull,
   isNumber,
@@ -145,6 +151,7 @@ export {
 export default {
   isArray,
   isBoolean,
+  isDate,
   isFunction,
   isNull,
   isNumber,

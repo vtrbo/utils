@@ -12,14 +12,14 @@ function toRawType(data: any): string {
 function isType(data: any, type: string): boolean {
   return toRawType(data).toLowerCase() === type.toLowerCase()
 }
-function isRegExp(data: any): boolean {
+function isRegExp(data: any): data is RegExp {
   return isType(data, 'RegExp')
 }`">
 
 ```ts
-const str: string = 'hello @vtrbo/utils!'
+const data: RegExp = /abc/
 
-console.log(isRegExp(str))
+console.log(isRegExp(data))
 ```
 
 </RunCode>

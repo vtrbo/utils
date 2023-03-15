@@ -1,3 +1,5 @@
+import { isDate } from '../fn/isDate'
+
 /**
  * @desc 格式化时间
  *
@@ -7,6 +9,8 @@
  * @returns { string } 格式化后的日期时间
  */
 export function format(date: Date, pattern: string): string {
+  if (!isDate(date))
+    return ''
   const dateTime = new Date(date)
   const format = {
     YYYY: dateTime.getFullYear(),

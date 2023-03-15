@@ -5,6 +5,7 @@ import array, { resolveArrayUtils } from './array'
 import color, { resolveColorUtils } from './color'
 import date, { resolveDateUtils } from './date'
 import fn, { resolveFnUtils } from './fn'
+import number, { resolveNumberUtils } from './number'
 import object, { resolveObjectUtils } from './object'
 import random, { resolveRandomUtils } from './random'
 import regex, { resolveRegexUtils } from './regex'
@@ -42,6 +43,7 @@ export const resolveUtils = (aliasPrefix?: string): Record<string, [string, stri
     ...resolveColorUtils(aliasPrefix),
     ...resolveDateUtils(aliasPrefix),
     ...resolveFnUtils(aliasPrefix),
+    ...resolveNumberUtils(aliasPrefix),
     ...resolveObjectUtils(aliasPrefix),
     ...resolveRandomUtils(aliasPrefix),
     ...resolveRegexUtils(aliasPrefix),
@@ -56,6 +58,7 @@ export {
   color,
   date,
   fn,
+  number,
   object,
   random,
   regex,
@@ -68,6 +71,7 @@ export default {
   color,
   date,
   fn,
+  number,
   object,
   random,
   regex,

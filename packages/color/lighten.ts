@@ -39,5 +39,5 @@ export function lighten(color: string, level: number = 10): string {
 
   const lightenColor = typeMap[type]
 
-  return lightenColor || rgbaToHex(lightenColor)
+  return lightenColor || rgbaToHex(rgba.length === 3 ? typeMap.RGB : typeMap.RGBA)
 }

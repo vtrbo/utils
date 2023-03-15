@@ -1,17 +1,18 @@
 import { groupBy } from './groupBy'
 
-interface Person {
+interface Item {
+  type: string
   name: string
-  age: number
-  grade: string
 }
 
-const list: Person[] = [
-  { name: '小明', age: 2, grade: '小一班' },
-  { name: '小张', age: 5, grade: '大二班' },
-  { name: '小夏', age: 3, grade: '中一班' },
-  { name: '小王', age: 3, grade: '小一班' },
-  { name: '小李', age: 4, grade: '中一班' },
+const list: Item[] = [
+  { type: 'fruit', name: 'apple' },
+  { type: 'fruit', name: 'banana' },
+  { type: 'vegetable', name: 'carrot' },
+  { type: 'vegetable', name: 'spinach' },
+  { type: 'meat', name: 'beef' },
 ]
 
-console.log(groupBy(list, (single: Person) => single.grade))
+const groupByCondition = (item: Item) => item.type
+
+console.log(groupBy(list, groupByCondition))

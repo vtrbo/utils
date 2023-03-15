@@ -5,8 +5,8 @@ import { isType } from './isType'
  *
  * @func isRegExp
  * @param { any } data - 欲校验类型的数据
- * @returns { boolean } 校验结果
+ * @returns { data is RegExp } 校验结果
  */
-export function isRegExp(data: any): boolean {
+export function isRegExp(data: any): data is RegExp {
   return isType(data, 'RegExp')
 }

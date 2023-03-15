@@ -1,5 +1,5 @@
 import { isNull } from './isNull'
 
-const str: string = 'hello @vtrbo/utils!'
+const data: null = null
 
-console.log(isNull(str))
+console.log(isNull(data))

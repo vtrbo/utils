@@ -6,7 +6,18 @@
 ## Run Online
 
 <RunCode :language="ts" :dependency="`
+function toRawType(data: any): string {
+  return Object.prototype.toString.call(data).slice(8, -1)
+}
+function isType(data: any, type: string): boolean {
+  return toRawType(data).toLowerCase() === type.toLowerCase()
+}
+function isDate(data: any): data is Date {
+  return isType(data, 'Date')
+}
 function format(date: Date, pattern: string): string {
+  if (!isDate(date))
+    return ''
   const dateTime = new Date(date)
   const format = {
     YYYY: dateTime.getFullYear(),

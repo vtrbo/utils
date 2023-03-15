@@ -26,6 +26,7 @@ export default [
     items: [
       { text: 'isArray', link: '/method/fn/isArray' },
       { text: 'isBoolean', link: '/method/fn/isBoolean' },
+      { text: 'isDate', link: '/method/fn/isDate' },
       { text: 'isFunction', link: '/method/fn/isFunction' },
       { text: 'isNull', link: '/method/fn/isNull' },
       { text: 'isNumber', link: '/method/fn/isNumber' },
@@ -42,6 +43,12 @@ export default [
       { text: 'notUndefined', link: '/method/fn/notUndefined' },
       { text: 'once', link: '/method/fn/once' },
       { text: 'toRawType', link: '/method/fn/toRawType' },
+    ],
+  },
+  {
+    text: 'Number工具库',
+    items: [
+      { text: 'toThousands', link: '/method/number/toThousands' },
     ],
   },
   {

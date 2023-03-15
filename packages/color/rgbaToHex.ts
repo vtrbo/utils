@@ -8,6 +8,9 @@ import { isColor } from '../regex/isColor'
  * @returns { string } HEX 颜色
  */
 export const rgbaToHex = (rgba: string): string => {
+  if (isColor(rgba, 'HEX'))
+    return rgba
+
   if (!isColor(rgba, 'RGB') && !isColor(rgba, 'RGBA'))
     return ''
 

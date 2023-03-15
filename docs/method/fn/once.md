@@ -1,7 +1,7 @@
 # Once
 
 ## Description
-一次函数
+只执行一次的函数
 
 ## Run Online
 
@@ -9,20 +9,21 @@
 function once<A extends any[], R, T>(
   fn: (this: T, ...arg: A) => R,
 ): ((this: T, ...arg: A) => R | undefined) {
-  let done = false
+  let done: boolean = false
   return function (this: T, ...args: A) {
     return done ? undefined : ((done = true), fn.apply(this, args))
   }
 }`">
 
 ```ts
-const func = (num: number) => {
-  return num++
+let count: number = 0
+const func = () => {
+  count += 1
+  return count
 }
-
 const onceFunc = once(func)
 
-console.log(onceFunc((6)))
+console.log(onceFunc())
 ```
 
 </RunCode>

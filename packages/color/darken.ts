@@ -39,5 +39,5 @@ export function darken(color: string, level: number = 0): string {
 
   const darkenColor = typeMap[type]
 
-  return darkenColor || rgbaToHex(darkenColor)
+  return darkenColor || rgbaToHex(rgba.length === 3 ? typeMap.RGB : typeMap.RGBA)
 }

@@ -1,22 +1,24 @@
-import { expect, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { notNullish } from './notNullish'
 
-const array = ['@vtrbo/utils', false, 0, '', null, 'null', undefined, 'undefined', 100, { name: 'Victor Bo' }, () => 'string']
+describe('notNullish', () => {
+  it('should return false for null value', () => {
+    const value: string | null = null
+    expect(notNullish(value)).toBe(false)
+  })
 
-it('notNullish', () => {
-  expect(array.filter(notNullish)).toMatchInlineSnapshot(`
-    [
-      "@vtrbo/utils",
-      false,
-      0,
-      "",
-      "null",
-      "undefined",
-      100,
-      {
-        "name": "Victor Bo",
-      },
-      [Function],
-    ]
-  `)
+  it('should return false for undefined value', () => {
+    const value: string | undefined = undefined
+    expect(notNullish(value)).toBe(false)
+  })
+
+  it('should return true for non-nullish value', () => {
+    const value: string | null | undefined = 'hello'
+    expect(notNullish(value)).toBe(true)
+  })
+
+  it('should return true for non-nullish object value', () => {
+    const value: { name: string } | null | undefined = { name: 'Tom' }
+    expect(notNullish(value)).toBe(true)
+  })
 })

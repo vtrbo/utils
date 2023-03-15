@@ -12,14 +12,14 @@ function toRawType(data: any): string {
 function isType(data: any, type: string): boolean {
   return toRawType(data).toLowerCase() === type.toLowerCase()
 }
-function isFunction(data: any): boolean {
+function isFunction(data: any): data is Function {
   return isType(data, 'Function')
 }`">
 
 ```ts
-const str: string = 'hello @vtrbo/utils!'
+const data: Function = () => {}
 
-console.log(isFunction(str))
+console.log(isFunction(data))
 ```
 
 </RunCode>

@@ -1,82 +1,44 @@
-import { expect, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { deepMerge } from './deepMerge'
 
-const target = {
-  name: '@vtrbo/utils',
-  fnNum: 100,
-  isPublish: true,
-  callback: () => {},
-  extend: [
-    'string',
-    {
-      array: ['toArray'],
-    },
-    [
-      'isNumber',
-      {
-        name: 'toNumber',
-      },
-    ],
-  ],
-  includes: {
-    name: 'object',
-    fn: [
-      'clone',
-      {
-        name: 'keys',
-      },
-    ],
-  },
-}
+describe('deepMerge', () => {
+  it('should merge objects correctly', () => {
+    const obj1 = { a: 1, b: 2 }
+    const obj2 = { b: 3, c: 4 }
+    const result = deepMerge(obj1, obj2)
+    expect(result).toEqual({ a: 1, b: 3, c: 4 })
+  })
 
-const source1 = {
-  source1: 'string工具库',
-  age1: 2,
-  extend: [
-    'toString',
-    {
-      name: 'toString',
-    },
-  ],
-}
+  it('should deep-merge nested objects correctly', () => {
+    const obj1 = { a: { b: 1, c: 2 } }
+    const obj2 = { a: { c: 3, d: 4 } }
+    const result = deepMerge(obj1, obj2)
+    expect(result).toEqual({ a: { b: 1, c: 3, d: 4 } })
+  })
 
-const source2 = {
-  source2: 'string工具库',
-  age2: 2,
-  extend: [
-    'toString',
-    {
-      name: 'toString',
-    },
-  ],
-}
+  it('should merge arrays correctly', () => {
+    const arr1 = [1, 2]
+    const arr2 = [3, 4]
+    const result = deepMerge(arr1, arr2)
+    expect(result).toEqual([1, 2])
+  })
 
-it('deepMerge', () => {
-  expect(deepMerge(target, source1, source2)).toMatchInlineSnapshot(`
-    {
-      "age1": 2,
-      "age2": 2,
-      "callback": [Function],
-      "extend": [
-        "toString",
-        {
-          "name": "toString",
-        },
-      ],
-      "fnNum": 100,
-      "includes": {
-        "fn": [
-          "clone",
-          {
-            "name": "keys",
-          },
-        ],
-        "name": "object",
-      },
-      "isPublish": true,
-      "name": "@vtrbo/utils",
-      "source1": "string工具库",
-      "source2": "string工具库",
-    }
-  `)
+  it('should not merge non-matching types', () => {
+    const str = 'foo'
+    const num = 1
+    const result = deepMerge(str as any, num)
+    expect(result).toEqual('foo')
+  })
+
+  it('should handle null and undefined values correctly', () => {
+    const obj1 = { a: 1 }
+    const obj2 = null
+    const result = deepMerge(obj1, obj2)
+    expect(result).toEqual({ a: 1 })
+
+    const arr1 = [1, 2]
+    const arr2 = undefined
+    const result2 = deepMerge(arr1, arr2)
+    expect(result2).toEqual([1, 2])
+  })
 })

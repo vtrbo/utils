@@ -12,14 +12,14 @@ function toRawType(data: any): string {
 function isType(data: any, type: string): boolean {
   return toRawType(data).toLowerCase() === type.toLowerCase()
 }
-function isUndefined(data: any): boolean {
+function isUndefined(data: any): data is undefined {
   return isType(data, 'Undefined')
 }`">
 
 ```ts
-const str: string = 'hello @vtrbo/utils!'
+const data: undefined = undefined
 
-console.log(isUndefined(str))
+console.log(isUndefined(data))
 ```
 
 </RunCode>

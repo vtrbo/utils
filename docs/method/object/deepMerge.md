@@ -12,10 +12,10 @@ function toRawType(data: any): string {
 function isType(data: any, type: string): boolean {
   return toRawType(data).toLowerCase() === type.toLowerCase()
 }
-function isObject(data: any): boolean {
+function isObject(data: any): data is object {
   return isType(data, 'Object')
 }
-function isArray(data: any): boolean {
+function isArray(data: any): data is any[] {
   return isType(data, 'Array')
 }
 function objectKeys<T extends object>(object: T): Array<\`\${keyof T & (string | number | boolean | null | undefined)}\`> {

@@ -1,11 +1,5 @@
 import { toArray } from './toArray'
 
-const param: {
-  name: string
-  desc: string
-} = {
-  name: '@vtrbo/utils',
-  desc: '一个收集了很多工具函数的库',
-}
+const data: number[] = [1, 2, 3]
 
-console.log(toArray(param))
+console.log(toArray(data))

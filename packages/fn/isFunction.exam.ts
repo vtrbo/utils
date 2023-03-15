@@ -1,5 +1,5 @@
 import { isFunction } from './isFunction'
 
-const str: string = 'hello @vtrbo/utils!'
+const data: Function = () => {}
 
-console.log(isFunction(str))
+console.log(isFunction(data))

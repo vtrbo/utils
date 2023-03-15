@@ -12,14 +12,14 @@ function toRawType(data: any): string {
 function isType(data: any, type: string): boolean {
   return toRawType(data).toLowerCase() === type.toLowerCase()
 }
-function isBoolean(data: any): boolean {
+function isBoolean(data: any): data is boolean {
   return isType(data, 'Boolean')
 }`">
 
 ```ts
-const str: string = 'hello @vtrbo/utils!'
+const data: boolean = true
 
-console.log(isBoolean(str))
+console.log(isBoolean(data))
 ```
 
 </RunCode>

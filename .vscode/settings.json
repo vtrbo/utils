@@ -5,6 +5,7 @@
     "jsdelivr",
     "keyof",
     "RGBA",
-    "vitepress"
+    "vitepress",
+    "zeroize"
   ]
 }

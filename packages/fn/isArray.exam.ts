@@ -1,5 +1,5 @@
 import { isArray } from './isArray'
 
-const str: string = 'hello @vtrbo/utils!'
+const data: number[] = [1, 2, 3]
 
-console.log(isArray(str))
+console.log(isArray(data))

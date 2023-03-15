@@ -12,14 +12,14 @@ function toRawType(data: any): string {
 function isType(data: any, type: string): boolean {
   return toRawType(data).toLowerCase() === type.toLowerCase()
 }
-function isNumber(data: any): boolean {
+function isNumber(data: any): data is number {
   return isType(data, 'Number')
 }`">
 
 ```ts
-const str: string = 'hello @vtrbo/utils!'
+const data: number = 3.1415926
 
-console.log(isNumber(str))
+console.log(isNumber(data))
 ```
 
 </RunCode>

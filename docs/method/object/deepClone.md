@@ -12,19 +12,19 @@ function toRawType(data: any): string {
 function isType(data: any, type: string): boolean {
   return toRawType(data).toLowerCase() === type.toLowerCase()
 }
-function isArray(data: any): boolean {
+function isArray(data: any): data is any[] {
   return isType(data, 'Array')
 }
-function isObject(data: any): boolean {
+function isObject(data: any): data is object {
   return isType(data, 'Object')
 }
-function isRegExp(data: any): boolean {
+function isRegExp(data: any): data is RegExp {
   return isType(data, 'RegExp')
 }
 function deepClone<T>(target: T): T {
   let cloneTarget: any = null
   if (isRegExp(target)) {
-    cloneTarget = target
+    cloneTarget = new RegExp(target)
   }
   else if (isArray(target)) {
     cloneTarget = []

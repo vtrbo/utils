@@ -11,9 +11,9 @@ function notFalsy<T>(value: T): value is NonNullable<T> {
 }`">
 
 ```ts
-const array = ['@vtrbo/utils', null, 'null', undefined, 'undefined', 100, true, { name: 'Victor Bo' }, () => 'string']
+const data: null = null
 
-console.log(array.filter(notFalsy))
+console.log(notFalsy(data))
 ```
 
 </RunCode>
