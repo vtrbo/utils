@@ -1,3 +1,3 @@
-import { isHttps } from "./isHttps";
+import { isHttps } from './isHttps'
 
 console.log(isHttps())
