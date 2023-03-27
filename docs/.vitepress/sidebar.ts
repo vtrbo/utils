@@ -28,6 +28,7 @@ export default [
       { text: 'isBoolean', link: '/method/fn/isBoolean' },
       { text: 'isDate', link: '/method/fn/isDate' },
       { text: 'isFunction', link: '/method/fn/isFunction' },
+      { text: 'isHttps', link: '/method/fn/isHttps' },
       { text: 'isMap', link: '/method/fn/isMap' },
       { text: 'isNull', link: '/method/fn/isNull' },
       { text: 'isNumber', link: '/method/fn/isNumber' },

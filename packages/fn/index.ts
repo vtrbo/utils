@@ -18,6 +18,10 @@ import {
 } from './isFunction'
 
 import {
+  isHttps,
+} from './isHttps'
+
+import {
   isMap,
 } from './isMap'
 
@@ -115,6 +119,7 @@ export const resolveFnUtils = (aliasPrefix?: string): Record<string, [string, st
       ['isBoolean', aliasPrefix ? `${aliasPrefix}IsBoolean` : 'isBoolean'],
       ['isDate', aliasPrefix ? `${aliasPrefix}IsDate` : 'isDate'],
       ['isFunction', aliasPrefix ? `${aliasPrefix}IsFunction` : 'isFunction'],
+      ['isHttps', aliasPrefix ? `${aliasPrefix}IsHttps` : 'isHttps'],
       ['isMap', aliasPrefix ? `${aliasPrefix}IsMap` : 'isMap'],
       ['isNull', aliasPrefix ? `${aliasPrefix}IsNull` : 'isNull'],
       ['isNumber', aliasPrefix ? `${aliasPrefix}IsNumber` : 'isNumber'],
@@ -141,6 +146,7 @@ export {
   isBoolean,
   isDate,
   isFunction,
+  isHttps,
   isMap,
   isNull,
   isNumber,
@@ -165,6 +171,7 @@ export default {
   isBoolean,
   isDate,
   isFunction,
+  isHttps,
   isMap,
   isNull,
   isNumber,

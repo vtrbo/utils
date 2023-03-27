@@ -56,6 +56,10 @@ it('resolveUtils', () => {
           "utilIsFunction",
         ],
         [
+          "isHttps",
+          "utilIsHttps",
+        ],
+        [
           "isMap",
           "utilIsMap",
         ],
