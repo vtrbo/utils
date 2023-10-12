@@ -1,3 +1,5 @@
 import { isHttps } from './isHttps'
 
-console.log(isHttps())
+const url = 'https://utils.vtrbo.cn:80#randomString'
+
+console.log(isHttps(url))

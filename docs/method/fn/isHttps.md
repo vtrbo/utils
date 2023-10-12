@@ -5,10 +5,16 @@
 
 ## Run Online
 
-<RunCode :language="ts">
+<RunCode :language="ts" :dependency="`
+function isHttps(url?: string): boolean {
+  url = url || location.href.toString()
+  return url.startsWith('https')
+}`">
 
 ```ts
-console.log(isHttps())
+const url = 'https://utils.vtrbo.cn:80#randomString'
+
+console.log(isHttps(url))
 ```
 
 </RunCode>
@@ -19,6 +25,6 @@ console.log(isHttps())
 
 | 属性名 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-
+| url | url路径 | string | - |
 
 </div>

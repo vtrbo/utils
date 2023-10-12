@@ -60,18 +60,18 @@
   },
   "devDependencies": {
     "@types/jsdom": "^21.1.1",
-    "@types/node": "^18.15.3",
+    "@types/node": "^18.17.1",
     "@vtrbo/eslint-config": "^0.2.2",
     "@vtrbo/ni": "^0.1.0",
-    "bumpp": "^9.0.0",
-    "eslint": "^8.36.0",
+    "bumpp": "^9.1.1",
+    "eslint": "^8.46.0",
     "esno": "^0.16.3",
-    "fast-glob": "^3.2.12",
-    "jsdom": "^21.1.1",
-    "pnpm": "^7.29.1",
-    "tsup": "^6.6.3",
+    "fast-glob": "^3.3.1",
+    "jsdom": "^21.1.2",
+    "pnpm": "^7.33.5",
+    "tsup": "^6.7.0",
     "typescript": "^4.9.5",
-    "vite": "^4.1.4",
-    "vitest": "^0.29.2"
+    "vite": "^4.4.8",
+    "vitest": "^0.29.8"
   }
 }

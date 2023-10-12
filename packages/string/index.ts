@@ -26,6 +26,14 @@ import {
 } from './getRight'
 
 import {
+  getUrlQuery,
+} from './getUrlQuery'
+
+import {
+  setUrlQuery,
+} from './setUrlQuery'
+
+import {
   template,
 } from './template'
 
@@ -77,6 +85,8 @@ export const resolveStringUtils = (aliasPrefix?: string): Record<string, [string
       ['getCenter', aliasPrefix ? `${aliasPrefix}GetCenter` : 'getCenter'],
       ['getLeft', aliasPrefix ? `${aliasPrefix}GetLeft` : 'getLeft'],
       ['getRight', aliasPrefix ? `${aliasPrefix}GetRight` : 'getRight'],
+      ['getUrlQuery', aliasPrefix ? `${aliasPrefix}GetUrlQuery` : 'getUrlQuery'],
+      ['setUrlQuery', aliasPrefix ? `${aliasPrefix}SetUrlQuery` : 'setUrlQuery'],
       ['template', aliasPrefix ? `${aliasPrefix}Template` : 'template'],
       ['toCamelCase', aliasPrefix ? `${aliasPrefix}ToCamelCase` : 'toCamelCase'],
       ['toEscape', aliasPrefix ? `${aliasPrefix}ToEscape` : 'toEscape'],
@@ -93,6 +103,8 @@ export {
   getCenter,
   getLeft,
   getRight,
+  getUrlQuery,
+  setUrlQuery,
   template,
   toCamelCase,
   toEscape,
@@ -107,6 +119,8 @@ export default {
   getCenter,
   getLeft,
   getRight,
+  getUrlQuery,
+  setUrlQuery,
   template,
   toCamelCase,
   toEscape,

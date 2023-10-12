@@ -1,5 +1,3 @@
-.DS_Store
-
 # Logs
 logs
 *.log
@@ -18,6 +16,7 @@ lib-cov
 
 # Coverage directory used by tools like istanbul
 coverage
+**/coverage
 
 # nyc test coverage
 .nyc_output
@@ -35,12 +34,17 @@ bower_components
 build/Release
 
 # Dependency directories
-~/
-node_modules/
-jspm_packages/
+~
+**/~
+dist
+**/dist
+node_modules
+**/node_modules
+jspm_packages
+**/jspm_packages
 
 # TypeScript v1 declaration files
-typings/
+typings
 
 # Optional npm cache directory
 .npm
@@ -61,28 +65,29 @@ typings/
 .env
 
 # parcel-bundler cache (https://parceljs.org/)
+cache
+**/cache
 .cache
+**/.cache
 
 # next.js build output
 .next
+**/.next
 
 # nuxt.js build output
 .nuxt
-
-# Nuxt generate
-dist
+**/.nuxt
 
 # Serverless directories
 .serverless
 
 # IDE
 .idea
+.vscode
 
-# history
-.history
+# Svelte kit
+.svelte-kit
+**/.svelte-kit
 
-*.lerna_backup
-*.vsix
-.temp
-temp
-cache
+# Generate
+**/components.d.ts

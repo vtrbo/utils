@@ -201,7 +201,7 @@ function writeModuleEntry(params: { mark: string; path: string }): [boolean, { t
 
     if (fs.existsSync(exPath)) {
       const desc = getCenter(fnData, '@desc', '@func').replace(/\*|[\x20]+\*[\x20]+/g, '').replace(/\r+|\n+|[\r\n]+/g, '  \n').trim()
-      const func = fnData.replace(/[\S\s]*\* @func (.*)\n \*[\S\s]*/g, '$1')
+      const func = getCenter(fnData, '@func', '@param').replace(/\*|[\x20]+\*[\x20]+/g, '').replace(/\r+|\n+|[\r\n]+/g, '  \n').trim()
       const docPath = `docs/method/${mark}/${func}.md`
 
       fs.writeFileSync(
