@@ -1,7 +1,7 @@
 {
   "name": "@vtrbo/utils",
   "type": "module",
-  "version": "0.3.6",
+  "version": "0.4.0-beta.0",
   "description": "Collection of common JavaScript or TypeScript utils.",
   "author": {
     "name": "Victor Bo",
@@ -43,9 +43,8 @@
     "index.js"
   ],
   "scripts": {
-    "build": "pnpm -r run build && pnpm run build:core",
-    "build:core": "tsup",
-    "publish": "pnpm -r publish && pnpm publish",
+    "build": "pnpm -r run build && tsup",
+    "release": "pnpm build && bumpp packages/*/package.json package.json && pnpm -r publish && pnpm publish",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
