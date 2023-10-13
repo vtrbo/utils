@@ -1,0 +1,52 @@
+{
+  "name": "@vtrbo/utils-log",
+  "type": "module",
+  "version": "0.3.6",
+  "description": "Collection of common JavaScript or TypeScript utils.",
+  "author": {
+    "name": "Victor Bo",
+    "email": "hi@vtrbo.cn"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/vtrbo",
+  "bugs": "https://github.com/vtrbo/utils/issues",
+  "keywords": [
+    "typescript",
+    "javascript",
+    "utils",
+    "vue",
+    "react",
+    "vite"
+  ],
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js",
+      "require": "./index.cjs"
+    }
+  },
+  "main": "./index.js",
+  "module": "./index.js",
+  "types": "./index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./*",
+        "./index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "README.md",
+    "index.d.cts",
+    "index.d.ts",
+    "index.cjs",
+    "index.js"
+  ],
+  "scripts": {
+    "build": "tsup"
+  },
+  "devDependencies": {
+    "ansi-colors": "^4.1.3"
+  }
+}
