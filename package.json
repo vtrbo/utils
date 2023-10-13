@@ -46,7 +46,7 @@
     "build": "pnpm -r run build && tsup",
     "release": "pnpm build && pnpm release:bumpp && pnpm release:publish",
     "release:bumpp": "bumpp -r",
-    "release:publish": "pnpm -r publish --no-git-checks --access=public",
+    "release:publish": "pnpm -r publish --access=public",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
