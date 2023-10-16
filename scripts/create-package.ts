@@ -1,4 +1,5 @@
 import fs from 'node:fs'
+import { createRequire } from 'node:module'
 import path from 'node:path'
 import process from 'node:process'
 import ora from 'ora'
@@ -9,6 +10,8 @@ const packageName = process.argv[2]
 const rootDir = process.cwd()
 const packagesDir = `${rootDir}/packages`
 const templateDir = `${packagesDir}/is`
+const requireModule = createRequire(import.meta.url)
+const rootPackageJsonPath = `${rootDir}/package.json`
 
 log.info(`packageName => ${packageName}`)
 createPackage().catch()
@@ -19,18 +22,30 @@ async function createPackage() {
   const packageTypesDir = `${packageBaseDir}/types`
   mkPackageDirs(packageBaseDir, packageSrcDir, packageTypesDir)
   await Promise.all([
-    writeCore(),
-    writePackageIndex(packageBaseDir),
     writePackageJson(packageBaseDir),
     writePackageTsup(packageBaseDir),
     writePackageSrcModule(packageSrcDir),
     writePackageSrcTypes(packageTypesDir),
+    writePackageIndex(packageBaseDir),
+    writeCore(),
+    modifyPackageJson(),
   ])
   log.success(`${packageName} has been created successfully.`)
 }
 
 function mkPackageDirs(...dirs: fs.PathLike[]) {
   dirs.forEach(dir => fs.mkdirSync(dir))
+}
+
+async function modifyPackageJson() {
+  const packageJsonCopy = requireModule(rootPackageJsonPath)
+  const depName = `@vtrbo/utils-${packageName}`
+  if (depName in packageJsonCopy.dependencies) {
+    log.error(`${depName} already exists in the package.json.`)
+    process.exit(1)
+  }
+  packageJsonCopy.dependencies = Object.assign({}, packageJsonCopy.dependencies, { [`${depName}`]: 'workspace:*' })
+  await writeFile(rootPackageJsonPath, JSON.stringify(packageJsonCopy, null, 2))
 }
 
 async function writeCore() {

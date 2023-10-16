@@ -1,4 +1,5 @@
 import { isArray, isEmptyArr, isEmptyObj, isNull, isObject, isRegExp, isString, isUndefined } from '@vtrbo/utils-is'
+import type { Recordable } from '@vtrbo/utils-tool'
 import { notNullish } from '@vtrbo/utils-tool'
 import type { DeepMerge, ObjEntriesReturnType, ObjKeysReturnType } from '../types'
 
@@ -41,17 +42,18 @@ export function clearKeys<T extends object>(obj: T, conditions = [undefined, nul
   const clearEpto = conditions.includes('epto')
   const clearEpta = conditions.includes('epta')
 
-  for (const key of objKeys<Record<any, any>>(obj)) {
+  for (const key of objKeys(obj)) {
+    const currentValue = (obj as Recordable)[key]
     if (
-      (clearUndefined && isUndefined(obj[key]))
-      || (clearNull && isNull(obj[key]))
-      || (clearUdf && isString(obj[key]) && obj[key].trim() === 'undefined')
-      || (clearNul && isString(obj[key]) && obj[key].trim() === 'null')
-      || (clearEpt && isString(obj[key]) && obj[key].trim() === '')
-      || (clearEpto && isEmptyObj(obj[key]))
-      || (clearEpta && isEmptyArr(obj[key]))
+      (clearUndefined && isUndefined(currentValue))
+      || (clearNull && isNull(currentValue))
+      || (clearUdf && isString(currentValue) && currentValue.trim() === 'undefined')
+      || (clearNul && isString(currentValue) && currentValue.trim() === 'null')
+      || (clearEpt && isString(currentValue) && currentValue.trim() === '')
+      || (clearEpto && isEmptyObj(currentValue))
+      || (clearEpta && isEmptyArr(currentValue))
     )
-      delete obj[key]
+      delete (obj as Recordable)[key]
   }
   return obj
 }
@@ -90,16 +92,16 @@ export function deepMerge<T extends object = object, S extends object = T>(targe
       if (['__proto__', 'constructor', 'prototype'].includes(key))
         return
 
-      if (isObject(source[key])) {
-        if (!target[key])
-          target[key] = {}
-        if (isObject(target[key]))
-          deepMerge(target[key], source[key])
+      if (isObject((source as Recordable)[key])) {
+        if (!(target as Recordable)[key])
+          (target as Recordable)[key] = {}
+        if (isObject((target as Recordable)[key]))
+          deepMerge((target as Recordable)[key], (source as Recordable)[key])
         else
-          target[key] = source[key]
+          (target as Recordable)[key] = (source as Recordable)[key]
       }
       else {
-        target[key] = source[key]
+        (target as Recordable)[key] = (source as Recordable)[key]
       }
     })
   }
