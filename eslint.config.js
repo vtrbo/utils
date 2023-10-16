@@ -6,6 +6,7 @@ export default antfu(
     ...ignores(),
     rules: {
       'no-console': 'off',
+      'prefer-regex-literals': 'off',
     },
   },
 )
