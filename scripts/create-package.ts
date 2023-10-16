@@ -4,6 +4,7 @@ import path from 'node:path'
 import process from 'node:process'
 import ora from 'ora'
 import { log, setLogPrefix } from '../packages/log'
+import { runCommand } from './utils'
 
 setLogPrefix('@vtrbo/utils: ')
 const packageName = process.argv[2]
@@ -25,16 +26,59 @@ async function createPackage() {
     writePackageJson(packageBaseDir),
     writePackageTsup(packageBaseDir),
     writePackageSrcModule(packageSrcDir),
-    writePackageSrcTypes(packageTypesDir),
+    writePackageTypes(packageTypesDir),
     writePackageIndex(packageBaseDir),
-    writeCore(),
+    modifyCore(),
     modifyPackageJson(),
   ])
+
+  await installDependencies()
   log.success(`${packageName} has been created successfully.`)
 }
 
 function mkPackageDirs(...dirs: fs.PathLike[]) {
   dirs.forEach(dir => fs.mkdirSync(dir))
+}
+
+async function writePackageJson(packageRoot: string) {
+  const packageJsonPath = `${packageRoot}/package.json`
+  const templatePath = `${templateDir}/package.json`
+  const packageJsonWriteData = requireModule(templatePath)
+  packageJsonWriteData.name = `@vtrbo/utils-${packageName}`
+  await writeFile(packageJsonPath, JSON.stringify(packageJsonWriteData, null, 2))
+}
+
+async function writePackageTsup(packageRoot: string) {
+  const packageTsupPath = `${packageRoot}/tsup.config.ts`
+  const templatePath = `${templateDir}/tsup.config.ts`
+  const packageTsupWriteData = requireModule(templatePath)
+  await writeFile(packageTsupPath, JSON.stringify(packageTsupWriteData, null, 2))
+}
+
+async function writePackageSrcModule(packageSrcRoot: string) {
+  const packageSrcModulePath = `${packageSrcRoot}/${packageName}.ts`
+  const packageSrcModuleWriteData = 'export type test = string'
+  await writeFile(packageSrcModulePath, packageSrcModuleWriteData)
+}
+
+async function writePackageTypes(packageTypesRoot: string) {
+  const packageTypesPath = `${packageTypesRoot}/index.ts`
+  const packageTypesWriteData = `export function test() { return '' }`
+  await writeFile(packageTypesPath, packageTypesWriteData)
+}
+
+async function writePackageIndex(packageRoot: string) {
+  const packageIndexPath = `${packageRoot}/index.ts`
+  const packageIndexWriteData = `export * from './src/types'
+export * from './src/${packageName}'`
+  await writeFile(packageIndexPath, packageIndexWriteData)
+}
+
+async function modifyCore() {
+  const coreRoot = path.join(rootDir, 'packages', 'core')
+  const coreIndexPath = `${coreRoot}/index.ts`
+  const coreIndexAppendData = `export * from '@vtrbo/utils-${packageName}'\n`
+  await appendFile(coreIndexPath, coreIndexAppendData)
 }
 
 async function modifyPackageJson() {
@@ -48,45 +92,13 @@ async function modifyPackageJson() {
   await writeFile(rootPackageJsonPath, JSON.stringify(packageJsonCopy, null, 2))
 }
 
-async function writeCore() {
-  const coreRoot = path.join(rootDir, 'packages', 'core')
-  const coreIndexPath = `${coreRoot}/index.ts`
-  const coreIndexAppendData = `export * from '@vtrbo/utils-${packageName}'\n`
-  await appendFile(coreIndexPath, coreIndexAppendData)
-}
-
-async function writePackageIndex(packageRoot: string) {
-  const packageIndexPath = `${packageRoot}/index.ts`
-  const packageIndexWriteData = `export * from './src/types'
-export * from './src/${packageName}'`
-  await writeFile(packageIndexPath, packageIndexWriteData)
-}
-
-async function writePackageJson(packageRoot: string) {
-  const packageJsonPath = `${packageRoot}/package.json`
-  const templatePath = `${templateDir}/package.json`
-  const templateData = fs.readFileSync(templatePath, { encoding: 'utf-8' })
-  const packageJsonWriteData = templateData.replace('@vtrbo/utils-is', `@vtrbo/utils-${packageName}`)
-  await writeFile(packageJsonPath, packageJsonWriteData)
-}
-
-async function writePackageTsup(packageRoot: string) {
-  const packageTsupPath = `${packageRoot}/tsup.config.ts`
-  const templatePath = `${templateDir}/tsup.config.ts`
-  const packageTsupWriteData = fs.readFileSync(templatePath, { encoding: 'utf-8' })
-  await writeFile(packageTsupPath, packageTsupWriteData)
-}
-
-async function writePackageSrcModule(packageSrcRoot: string) {
-  const packageSrcModulePath = `${packageSrcRoot}/${packageName}.ts`
-  const packageSrcModuleWriteData = ''
-  await writeFile(packageSrcModulePath, packageSrcModuleWriteData)
-}
-
-async function writePackageSrcTypes(packageTypesRoot: string) {
-  const packageSrcTypesPath = `${packageTypesRoot}/index.ts`
-  const packageSrcTypesWriteData = ''
-  await writeFile(packageSrcTypesPath, packageSrcTypesWriteData)
+async function installDependencies() {
+  const spinner = ora('installing dependencies...').start()
+  await runCommand(`pnpm install`).catch((err) => {
+    spinner.fail(`Failed to install dependencies. Please try again.\n ${err}`)
+  })
+  spinner.clear()
+  spinner.succeed('dependencies installed successfully.')
 }
 
 async function writeFile(path: fs.PathOrFileDescriptor, data: string | NodeJS.ArrayBufferView) {
