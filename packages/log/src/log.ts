@@ -1,5 +1,5 @@
 import colors from 'ansi-colors'
-import type { LogType } from './types'
+import type { LogType } from '../types'
 
 const logPrefix = Symbol('Log Prefix Key')
 

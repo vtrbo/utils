@@ -1,5 +1,5 @@
 {
-  "name": "@vtrbo/utils",
+  "name": "@vtrbo/utils-obj",
   "type": "module",
   "version": "0.4.0-beta.4",
   "description": "Collection of common JavaScript or TypeScript utils.",
@@ -38,32 +38,15 @@
   },
   "files": [
     "README.md",
-    "index.cjs",
+    "index.d.cts",
     "index.d.ts",
+    "index.cjs",
     "index.js"
   ],
   "scripts": {
-    "build": "pnpm -r run build && tsup",
-    "release": "pnpm build && pnpm release:bumpp && pnpm release:publish",
-    "release:bumpp": "bumpp -r",
-    "release:publish": "pnpm -r publish --access=public",
-    "create": "esno scripts/create-package.ts",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
-  },
-  "dependencies": {
-    "@vtrbo/utils-is": "workspace:*",
-    "@vtrbo/utils-log": "workspace:*",
-    "@vtrbo/utils-obj": "workspace:*",
-    "@vtrbo/utils-tool": "workspace:*"
+    "build": "tsup"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "1.0.0-beta.26",
-    "@types/node": "^20.8.5",
-    "bumpp": "^9.2.0",
-    "esno": "^0.17.0",
-    "ora": "^7.0.1",
-    "tsup": "^7.2.0",
-    "typescript": "^5.2.2"
+    "@vtrbo/utils-tool": "workspace:*"
   }
 }

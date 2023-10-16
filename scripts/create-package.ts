@@ -16,7 +16,7 @@ createPackage().catch()
 async function createPackage() {
   const packageBaseDir = `${packagesDir}/${packageName}`
   const packageSrcDir = `${packageBaseDir}/src`
-  const packageTypesDir = `${packageSrcDir}/types`
+  const packageTypesDir = `${packageBaseDir}/types`
   mkPackageDirs(packageBaseDir, packageSrcDir, packageTypesDir)
   await Promise.all([
     writeCore(),

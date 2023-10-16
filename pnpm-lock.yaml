@@ -14,6 +14,9 @@ importers:
       '@vtrbo/utils-log':
         specifier: workspace:*
         version: link:packages/log
+      '@vtrbo/utils-obj':
+        specifier: workspace:*
+        version: link:packages/obj
       '@vtrbo/utils-tool':
         specifier: workspace:*
         version: link:packages/tool
@@ -51,6 +54,12 @@ importers:
       ansi-colors:
         specifier: ^4.1.3
         version: 4.1.3
+
+  packages/obj:
+    devDependencies:
+      '@vtrbo/utils-tool':
+        specifier: workspace:*
+        version: link:../tool
 
   packages/tool: {}
 
