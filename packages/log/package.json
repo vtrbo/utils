@@ -46,6 +46,9 @@
   "scripts": {
     "build": "tsup"
   },
+  "dependencies": {
+    "@vtrbo/utils-tool": "workspace:*"
+  },
   "devDependencies": {
     "ansi-colors": "^4.1.3"
   }
