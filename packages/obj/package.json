@@ -46,8 +46,10 @@
   "scripts": {
     "build": "tsup"
   },
-  "devDependencies": {
-    "@vtrbo/utils-is": "workspace:*",
+  "peerDependencies": {
+    "@vtrbo/utils-is": "workspace:*"
+  },
+  "dependencies": {
     "@vtrbo/utils-tool": "workspace:*"
   }
 }
