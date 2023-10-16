@@ -60,9 +60,11 @@
   "devDependencies": {
     "@antfu/eslint-config": "1.0.0-beta.26",
     "@types/node": "^20.8.5",
+    "@types/shelljs": "^0.8.13",
     "bumpp": "^9.2.0",
     "esno": "^0.17.0",
     "ora": "^7.0.1",
+    "shelljs": "^0.8.5",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
   }
