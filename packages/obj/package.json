@@ -47,6 +47,7 @@
     "build": "tsup"
   },
   "devDependencies": {
+    "@vtrbo/utils-is": "workspace:*",
     "@vtrbo/utils-tool": "workspace:*"
   }
 }

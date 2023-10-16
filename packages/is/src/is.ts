@@ -1,3 +1,4 @@
+import { objKeys } from '@vtrbo/utils-obj'
 import { toRawType } from '@vtrbo/utils-tool'
 
 export function isType(data: any, type: string): boolean {
@@ -54,4 +55,31 @@ export function isMap(data: any): data is Map<any, any> {
 
 export function isHttp(url: string): boolean {
   return url.startsWith('http://') || url.startsWith('https://')
+}
+
+export function isLowerCase(str: string) {
+  const reg = /^[a-z]+$/
+  return reg.test(str)
+}
+
+export function isUpperCase(str: string) {
+  const reg = /^[A-Z]+$/
+  return reg.test(str)
+}
+
+export function isMobile(mobile: string) {
+  const reg = /^1[3-9]\d{9}$/
+  return reg.test(mobile)
+}
+
+export function isEmptyObj(obj: unknown): boolean {
+  return isObject(obj) && !objKeys(obj).length
+}
+
+export function isEmptyArr(arr: unknown): boolean {
+  return isArray(arr) && !arr.length
+}
+
+export function isKeyOfObj<T extends object>(obj: T, k: keyof any): k is keyof T {
+  return k in obj
 }
