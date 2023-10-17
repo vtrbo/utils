@@ -16,7 +16,7 @@ describe('log', () => {
     log('error', 'test message')
     expect(console.log).toHaveBeenCalledWith(colors.redBright.bold('new prefix test message'))
 
-    log('warning', 'test message', 'custom prefix ')
+    log('warn', 'test message', 'custom prefix ')
     expect(console.log).toHaveBeenCalledWith(colors.yellowBright.bold('custom prefix test message'))
 
     log('info', 'test message')
@@ -35,7 +35,7 @@ describe('log', () => {
     log.error('test message')
     expect(console.log).toHaveBeenCalledWith(colors.redBright.bold(`${prefix}${msg}`))
 
-    log.warning('test message')
+    log.warn('test message')
     expect(console.log).toHaveBeenCalledWith(colors.yellowBright.bold(`${prefix}${msg}`))
 
     log.info('test message')
