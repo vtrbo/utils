@@ -38,9 +38,9 @@
   },
   "files": [
     "README.md",
+    "index.cjs",
     "index.d.cts",
     "index.d.ts",
-    "index.cjs",
     "index.js"
   ],
   "scripts": {
@@ -53,7 +53,8 @@
     "lint:fix": "eslint . --fix",
     "test": "vitest",
     "test:update": "vitest -u",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "prepare": "npx simple-git-hooks"
   },
   "dependencies": {
     "@vtrbo/utils-is": "workspace:*",
@@ -73,14 +74,13 @@
     "simple-git-hooks": "^2.9.0",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2",
-    "vite-node": "^0.34.6",
     "vitest": "^0.34.6"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged",
-    "commit-msg": "vite-node vertify-commit.ts"
+    "pre-commit": "npx lint-staged",
+    "commit-msg": "node vertify-commit.js"
   },
   "lint-staged": {
-    "*": "eslint --fix"
+    "*": "eslint * --fix"
   }
 }
