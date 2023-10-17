@@ -16,6 +16,7 @@
     "utils",
     "vue",
     "react",
+    "svelte",
     "vite"
   ],
   "exports": {
@@ -38,9 +39,9 @@
   },
   "files": [
     "README.md",
+    "index.cjs",
     "index.d.cts",
     "index.d.ts",
-    "index.cjs",
     "index.js"
   ],
   "scripts": {
