@@ -38,9 +38,9 @@
   },
   "files": [
     "README.md",
+    "index.cjs",
     "index.d.cts",
     "index.d.ts",
-    "index.cjs",
     "index.js"
   ],
   "scripts": {

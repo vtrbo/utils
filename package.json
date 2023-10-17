@@ -54,6 +54,9 @@
     "test": "vitest",
     "test:update": "vitest -u",
     "test:coverage": "vitest --coverage",
+    "clean": "pnpm clean:dist && pnpm clean:deps",
+    "clean:dist": "rimraf packages/**/dist && rimraf dist",
+    "clean:deps": "rimraf packages/**/node_modules && rimraf node_modules",
     "prepare": "npx simple-git-hooks"
   },
   "dependencies": {
@@ -67,9 +70,11 @@
     "@types/node": "^20.8.5",
     "@types/shelljs": "^0.8.13",
     "bumpp": "^9.2.0",
+    "eslint": "^8.51.0",
     "esno": "^0.17.0",
     "lint-staged": "^15.0.1",
     "ora": "^7.0.1",
+    "rimraf": "^5.0.5",
     "shelljs": "^0.8.5",
     "simple-git-hooks": "^2.9.0",
     "tsup": "^7.2.0",
@@ -81,6 +86,6 @@
     "commit-msg": "node vertify-commit.js"
   },
   "lint-staged": {
-    "*": "eslint * --fix"
+    "*": "eslint . --fix"
   }
 }
