@@ -7,6 +7,10 @@ export function setLogPrefix(prefix: string) {
   (globalThis as any)[logPrefix] = prefix
 }
 
+export function getLogPrefix() {
+  return (globalThis as any)[logPrefix]
+}
+
 const logTypeFn = {
   success: (msg: string, prefix = '') => colors.greenBright.bold(`${prefix}${msg}`),
   error: (msg: string, prefix = '') => colors.redBright.bold(`${prefix}${msg}`),
