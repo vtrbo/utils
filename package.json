@@ -16,6 +16,7 @@
     "utils",
     "vue",
     "react",
+    "svelte",
     "vite"
   ],
   "exports": {
@@ -83,7 +84,7 @@
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged",
-    "commit-msg": "node vertify-commit.js"
+    "commit-msg": "node ./vertify-commit.js"
   },
   "lint-staged": {
     "*": "eslint . --fix"
