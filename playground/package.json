@@ -1,5 +1,5 @@
 {
-  "name": "utils-playground",
+  "name": "playground",
   "type": "module",
   "version": "0.4.0-beta.4",
   "description": "Collection of common JavaScript or TypeScript utils.",
@@ -21,7 +21,10 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "clean": "pnpm clean:dist && pnpm clean:deps",
+    "clean:dist": "rimraf dist",
+    "clean:deps": "rimraf node_modules"
   },
   "dependencies": {
     "vue": "^3.3.4"
