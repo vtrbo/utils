@@ -45,7 +45,10 @@
     "index.js"
   ],
   "scripts": {
-    "build": "tsup"
+    "build": "tsup",
+    "clean": "pnpm clean:dist && pnpm clean:deps",
+    "clean:dist": "rimraf dist",
+    "clean:deps": "rimraf node_modules"
   },
   "peerDependencies": {
     "@vtrbo/utils-is": "workspace:*"
