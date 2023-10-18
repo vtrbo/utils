@@ -1,5 +1,5 @@
 {
-  "name": "playground",
+  "name": "docs",
   "type": "module",
   "version": "0.4.0-beta.4",
   "description": "Collection of common JavaScript or TypeScript utils.",
@@ -20,15 +20,16 @@
     "vite"
   ],
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "init": "npx vitepress init",
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
     "clean": "pnpm clean:dist && pnpm clean:deps",
-    "clean:dist": "rimraf dist",
+    "clean:dist": "rimraf .vitepress/dist .vitepress/cache",
     "clean:deps": "rimraf node_modules"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.2.3",
-    "vite": "^4.4.5",
+    "vitepress": "1.0.0-rc.22",
     "vue": "^3.3.4"
   }
 }
