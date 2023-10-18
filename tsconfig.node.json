@@ -4,5 +4,8 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true
-  }
+  },
+  "include": [
+    "playground/vite.config.ts"
+  ]
 }

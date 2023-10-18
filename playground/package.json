@@ -1,0 +1,33 @@
+{
+  "name": "utils-playground",
+  "type": "module",
+  "version": "0.4.0-beta.4",
+  "description": "Collection of common JavaScript or TypeScript utils.",
+  "author": {
+    "name": "Victor Bo",
+    "email": "hi@vtrbo.cn"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/vtrbo",
+  "bugs": "https://github.com/vtrbo/utils/issues",
+  "keywords": [
+    "typescript",
+    "javascript",
+    "utils",
+    "vue",
+    "react",
+    "svelte",
+    "vite"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.4.5"
+  }
+}

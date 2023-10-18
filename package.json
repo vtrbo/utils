@@ -46,11 +46,12 @@
   ],
   "scripts": {
     "create": "esno scripts/create-package.ts",
+    "dev": "pnpm --filter=utils-playground dev --port 9999 --open --host",
     "watch": "esno scripts/watch-package.ts",
-    "build": "pnpm -r run build && tsup",
+    "build": "pnpm --filter \"@vtrbo/utils-*\" build && tsup",
     "release": "pnpm build && pnpm release:bumpp && pnpm release:publish",
     "release:bumpp": "bumpp -r",
-    "release:publish": "pnpm -r publish --access=public",
+    "release:publish": "pnpm --filter \"@vtrbo/utils-*\" publish --access=public && pnpm publish --access=public",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "vitest",
@@ -58,7 +59,7 @@
     "test:coverage": "vitest --coverage",
     "clean": "pnpm clean:dist && pnpm clean:deps",
     "clean:dist": "rimraf packages/**/dist && rimraf dist",
-    "clean:deps": "rimraf packages/**/node_modules && rimraf node_modules",
+    "clean:deps": "rimraf packages/**/node_modules playground/node_modules && rimraf node_modules",
     "prepare": "npx simple-git-hooks",
     "precommit": "esno verify-commit.ts"
   },
