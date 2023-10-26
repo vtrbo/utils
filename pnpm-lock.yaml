@@ -118,9 +118,6 @@ importers:
 
   packages/str:
     dependencies:
-      '@vtrbo/utils-obj':
-        specifier: workspace:*
-        version: link:../obj
       '@vtrbo/utils-tool':
         specifier: workspace:*
         version: link:../tool
