@@ -46,7 +46,7 @@
   ],
   "scripts": {
     "create": "esno scripts/create-package.ts",
-    "watch": "esno scripts/watch-package.ts",
+    "dev": "pnpm build",
     "build": "pnpm build:packages && tsup",
     "build:packages": "pnpm -r --filter=!playground --filter=!docs build",
     "dev:playground": "pnpm -C playground dev",
@@ -78,7 +78,6 @@
     "@types/node": "^20.8.5",
     "@types/shelljs": "^0.8.13",
     "bumpp": "^9.2.0",
-    "chokidar": "^3.5.3",
     "eslint": "^8.51.0",
     "esno": "^0.17.0",
     "lint-staged": "^15.0.1",
