@@ -27,7 +27,7 @@ export function runCommand(command: string, dir = process.cwd(), options: Record
       )
     }
     catch (error) {
-      reject(error.message)
+      reject((error as any).message)
     }
   })
 }
