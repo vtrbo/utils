@@ -67,6 +67,7 @@
     "precommit": "esno verify-commit.ts"
   },
   "dependencies": {
+    "@vtrbo/utils-arr": "workspace:*",
     "@vtrbo/utils-is": "workspace:*",
     "@vtrbo/utils-log": "workspace:*",
     "@vtrbo/utils-obj": "workspace:*",
