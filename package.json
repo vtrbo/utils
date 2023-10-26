@@ -71,6 +71,7 @@
     "@vtrbo/utils-is": "workspace:*",
     "@vtrbo/utils-log": "workspace:*",
     "@vtrbo/utils-obj": "workspace:*",
+    "@vtrbo/utils-str": "workspace:*",
     "@vtrbo/utils-tool": "workspace:*"
   },
   "devDependencies": {

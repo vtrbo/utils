@@ -46,6 +46,11 @@ async function writePackageJson(packageRoot: string) {
   const templatePath = `${templateDir}/package.json`
   const packageJsonWriteData = requireModule(templatePath)
   packageJsonWriteData.name = `@vtrbo/utils-${packageName}`
+  packageJsonWriteData.peerDependencies = undefined
+  packageJsonWriteData.devDependencies = undefined
+  packageJsonWriteData.dependencies = {
+    '@vtrbo/utils-tool': 'workspace:*',
+  }
   await writeFile(packageJsonPath, JSON.stringify(packageJsonWriteData, null, 2))
 }
 
@@ -57,7 +62,7 @@ async function writePackageTsup(packageRoot: string) {
 
 async function writePackageSrcModule(packageSrcRoot: string) {
   const packageSrcModulePath = `${packageSrcRoot}/${packageName}.ts`
-  const packageSrcModuleWriteData = `export function fn() { 
+  const packageSrcModuleWriteData = `export function fn() {
   return ''
 }\n`
   await writeFile(packageSrcModulePath, packageSrcModuleWriteData)
@@ -90,9 +95,10 @@ async function modifyPackageJson() {
     log.error(`${depName} already exists in the package.json.`)
     process.exit(1)
   }
-  packageJsonCopy.dependencies = Object.assign({}, packageJsonCopy.dependencies, { [`${depName}`]: 'workspace:*' })
-  delete packageJsonCopy.peerDependencies
-  await writeFile(rootPackageJsonPath, JSON.stringify(packageJsonCopy, null, 2))
+  packageJsonCopy.dependencies = Object.assign({}, packageJsonCopy.dependencies, {
+    [`${depName}`]: 'workspace:*',
+  })
+  await writeFile(rootPackageJsonPath, `${JSON.stringify(packageJsonCopy, null, 2)}\n`)
 }
 
 async function installDependencies() {
