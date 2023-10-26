@@ -68,6 +68,7 @@
   },
   "dependencies": {
     "@vtrbo/utils-arr": "workspace:*",
+    "@vtrbo/utils-color": "workspace:*",
     "@vtrbo/utils-is": "workspace:*",
     "@vtrbo/utils-log": "workspace:*",
     "@vtrbo/utils-obj": "workspace:*",
