@@ -29,6 +29,9 @@ importers:
       '@vtrbo/utils-tool':
         specifier: workspace:*
         version: link:packages/tool
+      '@vtrbo/utils-tree':
+        specifier: workspace:*
+        version: link:packages/tree
     devDependencies:
       '@antfu/eslint-config':
         specifier: 1.0.0-beta.26
@@ -134,6 +137,12 @@ importers:
         version: link:../tool
 
   packages/tool: {}
+
+  packages/tree:
+    dependencies:
+      '@vtrbo/utils-tool':
+        specifier: workspace:*
+        version: link:../tool
 
   playground:
     devDependencies:
