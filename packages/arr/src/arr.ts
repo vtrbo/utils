@@ -1,6 +1,6 @@
 import { isArray } from '@vtrbo/utils-is'
 
-export function toArr<T>(data?: T | T[]): T[] {
+export function toArray<T>(data?: T | T[]): T[] {
   data = data ?? []
   return isArray(data) ? data : [data]
 }
