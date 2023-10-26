@@ -73,7 +73,8 @@
     "@vtrbo/utils-log": "workspace:*",
     "@vtrbo/utils-obj": "workspace:*",
     "@vtrbo/utils-str": "workspace:*",
-    "@vtrbo/utils-tool": "workspace:*"
+    "@vtrbo/utils-tool": "workspace:*",
+    "@vtrbo/utils-tree": "workspace:*"
   },
   "devDependencies": {
     "@antfu/eslint-config": "1.0.0-beta.26",
