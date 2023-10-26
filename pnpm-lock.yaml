@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@vtrbo/utils-arr':
+        specifier: workspace:*
+        version: link:packages/arr
       '@vtrbo/utils-is':
         specifier: workspace:*
         version: link:packages/is
@@ -75,6 +78,12 @@ importers:
       vue:
         specifier: ^3.3.4
         version: 3.3.4
+
+  packages/arr:
+    dependencies:
+      '@vtrbo/utils-tool':
+        specifier: workspace:*
+        version: link:../tool
 
   packages/is:
     dependencies:

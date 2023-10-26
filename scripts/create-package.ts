@@ -3,6 +3,7 @@ import { createRequire } from 'node:module'
 import path from 'node:path'
 import process from 'node:process'
 import ora from 'ora'
+import type { Recordable } from '../packages/tool'
 import { log, setLogPrefix } from '../packages/log'
 import { runCommand } from './utils'
 
@@ -51,26 +52,27 @@ async function writePackageJson(packageRoot: string) {
 async function writePackageTsup(packageRoot: string) {
   const packageTsupPath = `${packageRoot}/tsup.config.ts`
   const templatePath = `${templateDir}/tsup.config.ts`
-  const packageTsupWriteData = requireModule(templatePath)
-  await writeFile(packageTsupPath, JSON.stringify(packageTsupWriteData, null, 2))
+  fs.copyFileSync(templatePath, packageTsupPath)
 }
 
 async function writePackageSrcModule(packageSrcRoot: string) {
   const packageSrcModulePath = `${packageSrcRoot}/${packageName}.ts`
-  const packageSrcModuleWriteData = 'export type test = string'
+  const packageSrcModuleWriteData = `export function fn() { 
+  return ''
+}\n`
   await writeFile(packageSrcModulePath, packageSrcModuleWriteData)
 }
 
 async function writePackageTypes(packageTypesRoot: string) {
   const packageTypesPath = `${packageTypesRoot}/index.ts`
-  const packageTypesWriteData = `export function test() { return '' }`
+  const packageTypesWriteData = 'export type Test = string\n'
   await writeFile(packageTypesPath, packageTypesWriteData)
 }
 
 async function writePackageIndex(packageRoot: string) {
   const packageIndexPath = `${packageRoot}/index.ts`
-  const packageIndexWriteData = `export * from './src/types'
-export * from './src/${packageName}'`
+  const packageIndexWriteData = `export * from './types'
+export * from './src/${packageName}'\n`
   await writeFile(packageIndexPath, packageIndexWriteData)
 }
 
@@ -82,13 +84,14 @@ async function modifyCore() {
 }
 
 async function modifyPackageJson() {
-  const packageJsonCopy = requireModule(rootPackageJsonPath)
+  const packageJsonCopy: Recordable = requireModule(rootPackageJsonPath)
   const depName = `@vtrbo/utils-${packageName}`
   if (depName in packageJsonCopy.dependencies) {
     log.error(`${depName} already exists in the package.json.`)
     process.exit(1)
   }
   packageJsonCopy.dependencies = Object.assign({}, packageJsonCopy.dependencies, { [`${depName}`]: 'workspace:*' })
+  delete packageJsonCopy.peerDependencies
   await writeFile(rootPackageJsonPath, JSON.stringify(packageJsonCopy, null, 2))
 }
 
