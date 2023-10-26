@@ -51,6 +51,7 @@
     "clean:deps": "rimraf node_modules"
   },
   "dependencies": {
+    "@vtrbo/utils-is": "workspace:*",
     "@vtrbo/utils-tool": "workspace:*"
   }
 }
