@@ -11,6 +11,9 @@ importers:
       '@vtrbo/utils-arr':
         specifier: workspace:*
         version: link:packages/arr
+      '@vtrbo/utils-color':
+        specifier: workspace:*
+        version: link:packages/color
       '@vtrbo/utils-is':
         specifier: workspace:*
         version: link:packages/is
@@ -84,6 +87,15 @@ importers:
       '@vtrbo/utils-is':
         specifier: workspace:*
         version: link:../is
+      '@vtrbo/utils-tool':
+        specifier: workspace:*
+        version: link:../tool
+
+  packages/color:
+    dependencies:
+      '@vtrbo/utils-color':
+        specifier: workspace:*
+        version: 'link:'
       '@vtrbo/utils-tool':
         specifier: workspace:*
         version: link:../tool

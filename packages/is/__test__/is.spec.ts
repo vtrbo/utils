@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import {
   isArray,
   isBoolean,
+  isColor,
   isDate,
   isEmptyArr,
   isEmptyObj,
@@ -124,6 +125,27 @@ describe('is', () => {
   it('isMobile', async () => {
     expect(isMobile('18934569876')).toBeTruthy()
     expect(isMobile('037166668888')).toBeFalsy()
+  })
+
+  it('isColor', async () => {
+    expect(isColor('#fff', 'HEX')).toBe(true)
+    expect(isColor('#F0f0F0', 'HEX')).toBe(true)
+    expect(isColor('#12345678', 'HEX')).toBe(true)
+    expect(isColor('#fgh', 'HEX')).toBe(false)
+    expect(isColor('#1234', 'HEX')).toBe(true)
+    expect(isColor('#123456789', 'HEX')).toBe(false)
+    expect(isColor('rgb(255, 0, 0)', 'RGB')).toBe(true)
+    expect(isColor('Rgb( 0,255,0 )', 'RGB')).toBe(true)
+    expect(isColor('rgb( 0 , 0 , 255)', 'RGB')).toBe(true)
+    expect(isColor('rgb(256, 0, 0)', 'RGB')).toBe(false)
+    expect(isColor('rgba(0, 255, 0)', 'RGB')).toBe(false)
+    expect(isColor('rgb(0, 0, 256)', 'RGB')).toBe(false)
+    expect(isColor('rgba(255, 0, 0, 1)', 'RGBA')).toBe(true)
+    expect(isColor('rgba(0, 255, 0, 0.5)', 'RGBA')).toBe(true)
+    expect(isColor('rgba(0, 0, 255, 0.1)', 'RGBA')).toBe(true)
+    expect(isColor('rgba(256, 0, 0)', 'RGBA')).toBe(false)
+    expect(isColor('rgba(0, 255, 0, 1.5)', 'RGBA')).toBe(false)
+    expect(isColor('rgba(0, 0, 256, 0)', 'RGBA')).toBe(false)
   })
 
   it('isEmptyObj', async () => {
