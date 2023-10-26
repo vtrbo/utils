@@ -51,9 +51,7 @@
     "clean:deps": "rimraf node_modules"
   },
   "dependencies": {
-    "@vtrbo/utils-tool": "workspace:*"
-  },
-  "devDependencies": {
+    "@vtrbo/utils-tool": "workspace:*",
     "ansi-colors": "^4.1.3"
   }
 }
