@@ -81,6 +81,9 @@ importers:
 
   packages/arr:
     dependencies:
+      '@vtrbo/utils-is':
+        specifier: workspace:*
+        version: link:../is
       '@vtrbo/utils-tool':
         specifier: workspace:*
         version: link:../tool
