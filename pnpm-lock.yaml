@@ -93,6 +93,9 @@ importers:
 
   packages/color:
     dependencies:
+      '@vtrbo/utils-color':
+        specifier: workspace:*
+        version: 'link:'
       '@vtrbo/utils-tool':
         specifier: workspace:*
         version: link:../tool
