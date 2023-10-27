@@ -28,8 +28,18 @@
     "clean:dist": "rimraf .vitepress/dist .vitepress/cache",
     "clean:deps": "rimraf node_modules"
   },
+  "dependencies": {
+    "@codemirror/lang-javascript": "^6.2.1",
+    "vue-codemirror": "^6.1.1"
+  },
   "devDependencies": {
-    "vitepress": "1.0.0-rc.22",
-    "vue": "^3.3.4"
+    "@iconify/json": "^2.2.133",
+    "@vitejs/plugin-vue": "^4.4.0",
+    "@vueuse/core": "^10.5.0",
+    "sass": "^1.69.5",
+    "unocss": "^0.57.1",
+    "vite": "^4.5.0",
+    "vitepress": "1.0.0-rc.24",
+    "vue": "^3.3.7"
   }
 }

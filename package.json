@@ -77,13 +77,13 @@
     "@vtrbo/utils-tree": "workspace:*"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "1.0.0-beta.26",
-    "@types/node": "^20.8.5",
-    "@types/shelljs": "^0.8.13",
+    "@antfu/eslint-config": "1.0.0-beta.29",
+    "@types/node": "^20.8.9",
+    "@types/shelljs": "^0.8.14",
     "bumpp": "^9.2.0",
-    "eslint": "^8.51.0",
+    "eslint": "^8.52.0",
     "esno": "^0.17.0",
-    "lint-staged": "^15.0.1",
+    "lint-staged": "^15.0.2",
     "ora": "^7.0.1",
     "rimraf": "^5.0.5",
     "shelljs": "^0.8.5",
