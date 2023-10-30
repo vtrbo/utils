@@ -1,0 +1,41 @@
+name: 🌈 Deployment
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: Setup
+        run: npm i -g @antfu/ni
+
+      - name: Install
+        run: nci
+
+      - name: Build
+        run: 'nr build:docs'
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          cname: utils.vtrbo.cn
+          publish_branch: docs
+          publish_dir: ./docs/.vitepress/dist/
+          commit_message: Test Deployment Docs
+          github_token: ${{secrets.PERSONAL_ACCESS_TOKEN}}

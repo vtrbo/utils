@@ -4,7 +4,7 @@ import { nextTick, onMounted, ref, watch } from 'vue'
 import { Codemirror } from 'vue-codemirror'
 import { javascript } from '@codemirror/lang-javascript'
 import { useClipboard } from '@vueuse/core'
-import { ModuleKind, ScriptTarget, transpileModule } from 'typescript'
+import typescript from 'typescript'
 
 interface IProps {
   example: string
@@ -23,7 +23,7 @@ type TModules = Record<string, () => Promise<string>>
 async function getFileContent(fileName: string, fileModules: TModules) {
   const filePath = `../../../../examples/${ensureSuffix(fileName, '.ts')}`
   const fileCode = await fileModules[filePath]()
-  return fileCode ?? ''
+  return (fileCode ?? '').trim()
 }
 
 const codeValue = ref<string>('')
@@ -52,6 +52,7 @@ onMounted(async () => {
     recordHeight = refMirror.value?.$el?.querySelector('.cm-editor')?.clientHeight
     computedRefHeight()
   })
+  handleRun()
 })
 
 function handleSet() {
@@ -75,12 +76,12 @@ const runLoading = ref<boolean>(false)
 const outputResult = ref<string>('')
 function handleRun() {
   runLoading.value = true
-  const transpileOutput = transpileModule(
+  const transpileOutput = typescript.transpileModule(
     codeValue.value,
     {
       compilerOptions: {
-        target: ScriptTarget.ES2015,
-        module: ModuleKind.None,
+        target: typescript.ScriptTarget.ES2015,
+        module: typescript.ModuleKind.None,
       },
     },
   )
@@ -160,6 +161,7 @@ function handleCopy() {
         :tab-size="2"
         :extensions="extensions"
         :scrollbar-style="null"
+        :style="{ fontSize: '14px' }"
       />
     </div>
   </div>
@@ -222,7 +224,7 @@ function handleCopy() {
   }
 
   .VppEditor {
-    --at-apply: bg-#ffffff dark\:bg-#282c34 vtr-bt b-color-transparent overflow-hidden;
+    --at-apply: bg-#ffffff vtr-bt b-color-transparent overflow-hidden;
     border-bottom-left-radius: var(--br);
     border-bottom-right-radius: var(--br);
 
