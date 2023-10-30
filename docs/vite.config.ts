@@ -7,5 +7,10 @@ export default defineConfig({
   ],
   build: {
     chunkSizeWarningLimit: 999999,
+    rollupOptions: {
+      external: [
+        'typescript',
+      ],
+    },
   },
 })

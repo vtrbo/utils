@@ -11,6 +11,7 @@ export default antfu(
       'no-new-func': 'off',
       'prefer-regex-literals': 'off',
       'vue/no-unused-refs': 'off',
+      'vue/component-name-in-template-casing': 'off',
     },
   },
   {

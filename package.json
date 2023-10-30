@@ -92,6 +92,11 @@
     "typescript": "^5.2.2",
     "vitest": "^0.34.6"
   },
+  "pnpm": {
+    "patchedDependencies": {
+      "vue-codemirror@6.1.1": "patches/vue-codemirror@6.1.1.patch"
+    }
+  },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged",
     "commit-msg": "pnpm precommit"
