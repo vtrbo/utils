@@ -1,12 +1,9 @@
-name: 🌈 Deployment
+name: 📃 Deployment
 
 on:
   push:
     tags:
       - 'v*'
-
-    branches:
-      - main
 
 jobs:
   deploy:

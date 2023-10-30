@@ -5,16 +5,16 @@ import { viteExternalsPlugin } from 'vite-plugin-externals'
 export default defineConfig({
   plugins: [
     UnoCSS(),
-    viteExternalsPlugin({
-      typescript: 'ts',
-    }),
+    viteExternalsPlugin(
+      {
+        typescript: 'ts',
+      },
+      {
+        disableInServe: true,
+      },
+    ),
   ],
   build: {
     chunkSizeWarningLimit: 999999,
-    rollupOptions: {
-      external: [
-        'typescript',
-      ],
-    },
   },
 })

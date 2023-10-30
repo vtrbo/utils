@@ -2,6 +2,7 @@ import theme from 'vitepress/theme'
 import { h } from 'vue'
 import './style.css'
 import 'uno.css'
+import './install'
 import RunCodeEditor from '../components/run-code-editor'
 
 export default {

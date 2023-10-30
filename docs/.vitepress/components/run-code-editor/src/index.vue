@@ -74,10 +74,17 @@ function noop() {}
 
 const runLoading = ref<boolean>(false)
 const outputResult = ref<string>('')
+function getTransformCode(code: string) {
+  return code.replace(
+    /import\s+{\s+(.*?)\s+}\s+from\s+['|"](.*?)['|"]/g,
+    (_, name, lib) => `const { ${name} } = window['${lib}']`,
+  )
+}
 function handleRun() {
   runLoading.value = true
+  const transformCode = getTransformCode(codeValue.value)
   const transpileOutput = typescript.transpileModule(
-    codeValue.value,
+    transformCode,
     {
       compilerOptions: {
         target: typescript.ScriptTarget.ES2015,
@@ -102,6 +109,7 @@ ${compiledCode}
 return output;`.replace('console.log(', 'presetConsoleLog(').trim()
   const consoleOutput = new Function(consoleCode)()
   outputResult.value = consoleOutput
+  runLoading.value = false
 }
 
 const tooltip = ref<string>('复制代码')
@@ -120,7 +128,14 @@ function handleCopy() {
 <template>
   <div class="VppRunCode">
     <div class="VppOutput">
-      {{ outputResult }}
+      <div class="VppOutputCard">
+        {{ outputResult }}
+      </div>
+      <div class="VppOutputLoading">
+        <div />
+        <div />
+        <div />
+      </div>
     </div>
     <div class="VppOperate">
       <div class="VppOperateLeft">
@@ -186,6 +201,28 @@ function handleCopy() {
 
   .VppOutput {
     --at-apply: p-$ps vtr-bb text-oc text-$os;
+
+    &Loading {
+      --at-apply: block text-0 w-54px h-18px;
+
+      &,
+      & > div {
+        position: relative;
+        box-sizing: border-box;
+      }
+
+      & > div {
+        --at-apply: inline-block w-10px h-10px m-4px rd-100%;
+        float: none;
+        background-color: currentColor;
+        border: 0 solid currentColor;
+        animation: loading 0.7s -0.15s infinite linear;
+      }
+
+      & > div:nth-child(2n - 1) {
+        animation-delay: -0.5s;
+      }
+    }
   }
 
   .VppOperate {
@@ -249,6 +286,18 @@ function handleCopy() {
         --at-apply: bg-transparent;
       }
     }
+  }
+}
+
+@keyframes loading {
+  50% {
+    opacity: 0.2;
+    transform: scale(0.75);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 </style>
