@@ -6,10 +6,10 @@ import * as STR from '@vtrbo/utils-str'
 import * as TOOL from '@vtrbo/utils-tool'
 import * as TREE from '@vtrbo/utils-tree'
 
-window['@vtrbo/utils-arr'] = ARR
-window['@vtrbo/utils-color'] = COLOR
-window['@vtrbo/utils-is'] = IS
-window['@vtrbo/utils-log'] = LOG
-window['@vtrbo/utils-str'] = STR
-window['@vtrbo/utils-tool'] = TOOL
-window['@vtrbo/utils-tree'] = TREE
+(globalThis as any)['@vtrbo/utils-arr'] = ARR;
+(globalThis as any)['@vtrbo/utils-color'] = COLOR;
+(globalThis as any)['@vtrbo/utils-is'] = IS;
+(globalThis as any)['@vtrbo/utils-log'] = LOG;
+(globalThis as any)['@vtrbo/utils-str'] = STR;
+(globalThis as any)['@vtrbo/utils-tool'] = TOOL;
+(globalThis as any)['@vtrbo/utils-tree'] = TREE
