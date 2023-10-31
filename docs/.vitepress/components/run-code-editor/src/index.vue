@@ -4,7 +4,7 @@ import { nextTick, onMounted, ref, watch } from 'vue'
 import { Codemirror } from 'vue-codemirror'
 import { javascript } from '@codemirror/lang-javascript'
 import { useClipboard } from '@vueuse/core'
-import typescript from 'typescript'
+import ts from 'typescript'
 import { stringify } from './stringify'
 
 interface IProps {
@@ -53,7 +53,8 @@ onMounted(async () => {
     recordHeight = refMirror.value?.$el?.querySelector('.cm-editor')?.clientHeight
     computedRefHeight()
   })
-  handleRun()
+  if (ts)
+    handleRun()
 })
 
 function handleSet() {
@@ -74,7 +75,7 @@ watch(
 function noop() {}
 
 const runLoading = ref<boolean>(false)
-const outputResult = ref<string>('')
+const outputResult = ref<string>('运行代码后显示结果，等待运行...')
 function getTransformCode(code: string) {
   return code.replace(
     /import\s+{\s+(.*?)\s+}\s+from\s+['|"](.*?)['|"]/g,
@@ -83,24 +84,25 @@ function getTransformCode(code: string) {
 }
 function handleRun() {
   runLoading.value = true
-  const transformCode = getTransformCode(codeValue.value)
-  const transpileOutput = typescript.transpileModule(
-    transformCode,
-    {
-      compilerOptions: {
-        target: typescript.ScriptTarget.ES2015,
-        module: typescript.ModuleKind.None,
+  try {
+    const transformCode = getTransformCode(codeValue.value)
+    const transpileOutput = ts.transpileModule(
+      transformCode,
+      {
+        compilerOptions: {
+          target: ts.ScriptTarget.ES2015,
+          module: ts.ModuleKind.None,
+        },
       },
-    },
-  )
-  const compiledCode = transpileOutput.outputText
-  // const returnOutput = new Function(compiledCode)()
-  // if (returnOutput) {
-  //   outputResult.value = returnOutput
-  //   return
-  // }
+    )
+    const compiledCode = transpileOutput.outputText
+    // const returnOutput = new Function(compiledCode)()
+    // if (returnOutput) {
+    //   outputResult.value = returnOutput
+    //   return
+    // }
 
-  const consoleCode = `const output = [];
+    const consoleCode = `const output = [];
 const reConsole = console.log;
 presetConsoleLog = function() {
   reConsole.apply(console, arguments);
@@ -108,8 +110,12 @@ presetConsoleLog = function() {
 };
 ${compiledCode}
 return output;`.replace(/console\.log\(/g, 'presetConsoleLog(').trim()
-  const consoleOutput = new Function(consoleCode)()
-  outputResult.value = consoleOutput.map((m: string) => stringify(m)).join('\n')
+    const consoleOutput = new Function(consoleCode)()
+    outputResult.value = consoleOutput.map((m: string) => stringify(m)).join('\n')
+  }
+  catch (err) {
+    outputResult.value = '代码运行错误，请检查'
+  }
   runLoading.value = false
 }
 
@@ -213,12 +219,12 @@ function handleCopy() {
     }
 
     &Card {
-      --at-apply: pt-$br;
+      --at-apply: pt-$br font-size-$os;
       white-space: pre-wrap;
     }
 
     &Loading {
-      --at-apply: block text-0 w-54px h-18px;
+      --at-apply: block text-0 w-54px h-18px pt-$br;
 
       &,
       & > div {
