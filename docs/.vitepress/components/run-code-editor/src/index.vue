@@ -5,6 +5,7 @@ import { Codemirror } from 'vue-codemirror'
 import { javascript } from '@codemirror/lang-javascript'
 import { useClipboard } from '@vueuse/core'
 import typescript from 'typescript'
+import { stringify } from './stringify'
 
 interface IProps {
   example: string
@@ -74,10 +75,17 @@ function noop() {}
 
 const runLoading = ref<boolean>(false)
 const outputResult = ref<string>('')
+function getTransformCode(code: string) {
+  return code.replace(
+    /import\s+{\s+(.*?)\s+}\s+from\s+['|"](.*?)['|"]/g,
+    (_, name, lib) => `const { ${name} } = window['${lib}']`,
+  )
+}
 function handleRun() {
   runLoading.value = true
+  const transformCode = getTransformCode(codeValue.value)
   const transpileOutput = typescript.transpileModule(
-    codeValue.value,
+    transformCode,
     {
       compilerOptions: {
         target: typescript.ScriptTarget.ES2015,
@@ -99,9 +107,10 @@ presetConsoleLog = function() {
   output.push(...arguments);
 };
 ${compiledCode}
-return output;`.replace('console.log(', 'presetConsoleLog(').trim()
+return output;`.replace(/console\.log\(/g, 'presetConsoleLog(').trim()
   const consoleOutput = new Function(consoleCode)()
-  outputResult.value = consoleOutput
+  outputResult.value = consoleOutput.map((m: string) => stringify(m)).join('\n')
+  runLoading.value = false
 }
 
 const tooltip = ref<string>('复制代码')
@@ -120,7 +129,17 @@ function handleCopy() {
 <template>
   <div class="VppRunCode">
     <div class="VppOutput">
-      {{ outputResult }}
+      <div class="VppOutputTitle">
+        运行结果
+      </div>
+      <div v-if="!runLoading" class="VppOutputCard">
+        {{ outputResult }}
+      </div>
+      <div v-else class="VppOutputLoading">
+        <div />
+        <div />
+        <div />
+      </div>
     </div>
     <div class="VppOperate">
       <div class="VppOperateLeft">
@@ -139,11 +158,13 @@ function handleCopy() {
           >{{ tooltip }}</span>
         </div>
       </div>
-      <div class="VppOperateCenter" />
+      <div class="VppOperateCenter">
+        修改代码运行
+      </div>
       <div class="VppOperateRight">
         <div class="VppOperateButton" @click="runLoading ? noop() : handleRun()">
           <span class="i-carbon:play" />
-          <span class="VppOperateTooltip">开始执行</span>
+          <span class="VppOperateTooltip">运行代码</span>
         </div>
         <div class="VppOperateButton" @click="handleSet">
           <span class="i-carbon:reset" />
@@ -178,14 +199,45 @@ function handleCopy() {
   // operate height
   --oh: 40px;
   // operate center text size
-  --ocs: 10px;
+  --ocs: 12px;
   // operate button space
-  --obs: 10px;
+  --obs: 12px;
 
   --at-apply: vtr-b vtr-rd bg-white;
 
   .VppOutput {
-    --at-apply: p-$ps vtr-bb text-oc text-$os;
+    --at-apply: p-$ps vtr-bb text-oc font-$os;
+
+    &Title {
+      --at-apply: font-size-$os vtr-bb pb-$br;
+    }
+
+    &Card {
+      --at-apply: pt-$br;
+      white-space: pre-wrap;
+    }
+
+    &Loading {
+      --at-apply: block text-0 w-54px h-18px;
+
+      &,
+      & > div {
+        position: relative;
+        box-sizing: border-box;
+      }
+
+      & > div {
+        --at-apply: inline-block w-10px h-10px m-4px rd-100\%;
+        float: none;
+        background-color: currentColor;
+        border: 0 solid currentColor;
+        animation: loading 0.7s -0.15s infinite linear;
+      }
+
+      & > div:nth-child(2n - 1) {
+        animation-delay: -0.5s;
+      }
+    }
   }
 
   .VppOperate {
@@ -196,7 +248,7 @@ function handleCopy() {
     }
 
     &Center {
-      --at-apply: text-occ text-$ocs cursor-pointer;
+      --at-apply: text-occ font-size-$ocs cursor-pointer;
     }
 
     &Right {
@@ -249,6 +301,18 @@ function handleCopy() {
         --at-apply: bg-transparent;
       }
     }
+  }
+}
+
+@keyframes loading {
+  50% {
+    opacity: 0.2;
+    transform: scale(0.75);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 </style>

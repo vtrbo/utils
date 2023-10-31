@@ -94,7 +94,7 @@
   },
   "pnpm": {
     "patchedDependencies": {
-      "vue-codemirror@6.1.1": "patches/vue-codemirror@6.1.1.patch"
+      "vue-codemirror@6.1.1": "docs/patches/vue-codemirror@6.1.1.patch"
     }
   },
   "simple-git-hooks": {
