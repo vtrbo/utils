@@ -6,5 +6,5 @@ export const head: HeadConfig[] = [
   ['meta', { property: 'og:url', content: 'https://github.com/vtrbo/utils' }],
   ['meta', { name: 'referrer', content: 'no-referrer' }],
   ['link', { rel: 'icon', href: '/logo.svg', type: 'image/svg+xml' }],
-  ['script', { async: '', src: 'https://cdnjs.cloudflare.com/ajax/libs/typescript/5.2.2/typescript.min.js' }],
+  ['script', { src: 'https://cdnjs.cloudflare.com/ajax/libs/typescript/5.2.2/typescript.min.js' }],
 ]
