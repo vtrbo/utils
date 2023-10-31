@@ -1,25 +1,43 @@
 import type { DefaultTheme } from 'vitepress'
 
-export const functions: DefaultTheme.NavItem[] = [
+export const functions: DefaultTheme.NavItemChildren[] = [
   {
-    text: 'Is',
-    collapsed: false,
+    text: 'utils-is',
     items: [
       {
         text: 'isType',
         link: '/functions/is/isType',
       },
+      {
+        text: 'isString',
+        link: '/functions/is/isString',
+      },
+      {
+        text: 'isNumber',
+        link: '/functions/is/isNumber',
+      },
+      {
+        text: 'isBoolean',
+        link: '/functions/is/isBoolean',
+      },
+    ],
+  },
+  {
+    text: 'utils-arr',
+    items: [
+      {
+        text: 'toArray',
+        link: '/functions/arr/toArray',
+      },
     ],
   },
 ]
 
-export const nav: DefaultTheme.NavItem[] = [
+export const nav: DefaultTheme.Config['nav'] = [
   { text: 'Home', link: '/' },
   { text: 'Functions', items: functions },
 ]
 
-export const sidebar = {
-  '/guide': [
-    { text: 'Developer Guide', items: [] },
-  ],
+export const sidebar: DefaultTheme.Sidebar = {
+  '/functions': functions,
 }

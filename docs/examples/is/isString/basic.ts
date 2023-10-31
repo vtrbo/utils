@@ -1,0 +1,5 @@
+import { isString } from '@vtrbo/utils-is'
+
+const data = 'hello vtrbo-utils'
+
+console.log(isString(data))

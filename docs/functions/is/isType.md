@@ -29,9 +29,9 @@ npm install @vtrbo/utils-is
 
 <demo example="is/isType/basic.ts"></demo>
 
-## Params
+## Options
 
-| 名称   | 描述     | 类型       | 默认值 |
-|------|--------|----------|-----|
-| data | 欲校验的数据 | `any`    | -   |
-| type | 校验的类型  | `string` | -   |
+| 名称   | 描述     | 类型       | 必填  | 默认值 |
+|------|--------|----------|-----|-----|
+| data | 欲校验的数据 | `any`    | `是` | -   |
+| type | 校验的类型  | `string` | `是` | -   |

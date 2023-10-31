@@ -33,9 +33,10 @@
     "vue-codemirror": "^6.1.1"
   },
   "devDependencies": {
-    "@iconify/json": "^2.2.134",
+    "@iconify/json": "^2.2.135",
     "@vitejs/plugin-vue": "^4.4.0",
     "@vueuse/core": "^10.5.0",
+    "pretty-format": "^29.7.0",
     "sass": "^1.69.5",
     "unocss": "^0.57.1",
     "vite": "^4.5.0",

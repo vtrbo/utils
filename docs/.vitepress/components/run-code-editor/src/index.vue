@@ -5,6 +5,7 @@ import { Codemirror } from 'vue-codemirror'
 import { javascript } from '@codemirror/lang-javascript'
 import { useClipboard } from '@vueuse/core'
 import typescript from 'typescript'
+import { stringify } from './stringify'
 
 interface IProps {
   example: string
@@ -106,9 +107,9 @@ presetConsoleLog = function() {
   output.push(...arguments);
 };
 ${compiledCode}
-return output;`.replace('console.log(', 'presetConsoleLog(').trim()
+return output;`.replace(/console\.log\(/g, 'presetConsoleLog(').trim()
   const consoleOutput = new Function(consoleCode)()
-  outputResult.value = consoleOutput
+  outputResult.value = consoleOutput.map((m: string) => stringify(m)).join('\n')
   runLoading.value = false
 }
 
@@ -128,10 +129,13 @@ function handleCopy() {
 <template>
   <div class="VppRunCode">
     <div class="VppOutput">
-      <div class="VppOutputCard">
+      <div class="VppOutputTitle">
+        运行结果
+      </div>
+      <div v-if="!runLoading" class="VppOutputCard">
         {{ outputResult }}
       </div>
-      <div class="VppOutputLoading">
+      <div v-else class="VppOutputLoading">
         <div />
         <div />
         <div />
@@ -154,11 +158,13 @@ function handleCopy() {
           >{{ tooltip }}</span>
         </div>
       </div>
-      <div class="VppOperateCenter" />
+      <div class="VppOperateCenter">
+        修改代码运行
+      </div>
       <div class="VppOperateRight">
         <div class="VppOperateButton" @click="runLoading ? noop() : handleRun()">
           <span class="i-carbon:play" />
-          <span class="VppOperateTooltip">开始执行</span>
+          <span class="VppOperateTooltip">运行代码</span>
         </div>
         <div class="VppOperateButton" @click="handleSet">
           <span class="i-carbon:reset" />
@@ -193,14 +199,23 @@ function handleCopy() {
   // operate height
   --oh: 40px;
   // operate center text size
-  --ocs: 10px;
+  --ocs: 12px;
   // operate button space
-  --obs: 10px;
+  --obs: 12px;
 
   --at-apply: vtr-b vtr-rd bg-white;
 
   .VppOutput {
-    --at-apply: p-$ps vtr-bb text-oc text-$os;
+    --at-apply: p-$ps vtr-bb text-oc font-$os;
+
+    &Title {
+      --at-apply: font-size-$os vtr-bb pb-$br;
+    }
+
+    &Card {
+      --at-apply: pt-$br;
+      white-space: pre-wrap;
+    }
 
     &Loading {
       --at-apply: block text-0 w-54px h-18px;
@@ -212,7 +227,7 @@ function handleCopy() {
       }
 
       & > div {
-        --at-apply: inline-block w-10px h-10px m-4px rd-100%;
+        --at-apply: inline-block w-10px h-10px m-4px rd-100\%;
         float: none;
         background-color: currentColor;
         border: 0 solid currentColor;
@@ -233,7 +248,7 @@ function handleCopy() {
     }
 
     &Center {
-      --at-apply: text-occ text-$ocs cursor-pointer;
+      --at-apply: text-occ font-size-$ocs cursor-pointer;
     }
 
     &Right {
