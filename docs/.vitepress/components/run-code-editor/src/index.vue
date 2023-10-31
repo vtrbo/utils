@@ -78,7 +78,7 @@ const outputResult = ref<string>('')
 function getTransformCode(code: string) {
   return code.replace(
     /import\s+{\s+(.*?)\s+}\s+from\s+['|"](.*?)['|"]/g,
-    (_, name, lib) => `const { ${name} } = window['${lib}']`,
+    (_, name, lib) => `const { ${name} } = (globalThis as any)['${lib}']`,
   )
 }
 function handleRun() {
