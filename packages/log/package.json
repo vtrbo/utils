@@ -21,28 +21,23 @@
   ],
   "exports": {
     ".": {
-      "types": "./index.d.ts",
-      "import": "./index.js",
-      "require": "./index.cjs"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     }
   },
-  "main": "./index.js",
-  "module": "./index.js",
-  "types": "./index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "typesVersions": {
     "*": {
       "*": [
-        "./*",
-        "./index.d.ts"
+        "./dist/index.d.ts"
       ]
     }
   },
   "files": [
-    "README.md",
-    "index.cjs",
-    "index.d.cts",
-    "index.d.ts",
-    "index.js"
+    "dist"
   ],
   "scripts": {
     "build": "tsup",
