@@ -1,4 +1,3 @@
-import { objKeys } from '@vtrbo/utils-obj'
 import { toRawType } from '@vtrbo/utils-tool'
 
 export function isType(data: any, type: string): boolean {
@@ -82,7 +81,7 @@ export function isColor(color: string, type: 'HEX' | 'RGB' | 'RGBA'): boolean {
 }
 
 export function isEmptyObj(obj: unknown): boolean {
-  return isObject(obj) && !objKeys(obj).length
+  return isObject(obj) && !Object.keys(obj).length
 }
 
 export function isEmptyArr(arr: unknown): boolean {

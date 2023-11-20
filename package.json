@@ -26,7 +26,7 @@
       "require": "./dist/index.cjs"
     }
   },
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "typesVersions": {
@@ -72,18 +72,18 @@
     "@vtrbo/utils-tree": "workspace:*"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "1.0.0-beta.29",
-    "@types/node": "^20.8.9",
-    "@types/shelljs": "^0.8.14",
+    "@antfu/eslint-config": "2.0.0",
+    "@types/node": "^20.9.2",
+    "@types/shelljs": "^0.8.15",
     "bumpp": "^9.2.0",
-    "eslint": "^8.52.0",
-    "esno": "^0.17.0",
-    "lint-staged": "^15.0.2",
+    "eslint": "^8.54.0",
+    "esno": "^4.0.0",
+    "lint-staged": "^15.1.0",
     "ora": "^7.0.1",
     "rimraf": "^5.0.5",
     "shelljs": "^0.8.5",
     "simple-git-hooks": "^2.9.0",
-    "tsup": "^7.2.0",
+    "tsup": "^8.0.0",
     "typescript": "^5.2.2",
     "vitest": "^0.34.6"
   },
