@@ -96,6 +96,30 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^4.5.0
         version: 4.5.0(vite@5.0.0)(vue@3.3.8)
+      '@vtrbo/utils-arr':
+        specifier: workspace:*
+        version: link:../packages/arr
+      '@vtrbo/utils-color':
+        specifier: workspace:*
+        version: link:../packages/color
+      '@vtrbo/utils-is':
+        specifier: workspace:*
+        version: link:../packages/is
+      '@vtrbo/utils-log':
+        specifier: workspace:*
+        version: link:../packages/log
+      '@vtrbo/utils-obj':
+        specifier: workspace:*
+        version: link:../packages/obj
+      '@vtrbo/utils-str':
+        specifier: workspace:*
+        version: link:../packages/str
+      '@vtrbo/utils-tool':
+        specifier: workspace:*
+        version: link:../packages/tool
+      '@vtrbo/utils-tree':
+        specifier: workspace:*
+        version: link:../packages/tree
       '@vueuse/core':
         specifier: ^10.6.1
         version: 10.6.1(vue@3.3.8)
