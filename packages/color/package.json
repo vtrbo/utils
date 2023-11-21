@@ -1,7 +1,7 @@
 {
   "name": "@vtrbo/utils-color",
   "type": "module",
-  "version": "0.4.1-beta.0",
+  "version": "0.4.1-beta.1",
   "description": "Collection of common JavaScript or TypeScript utils.",
   "author": {
     "name": "Victor Bo",
