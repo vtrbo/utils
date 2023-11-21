@@ -23,8 +23,11 @@ jobs:
       - name: Install
         run: nci
 
+      - name: Packages
+        run: nr build
+
       - name: Build
-        run: 'nr build:docs'
+        run: nr build:docs
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

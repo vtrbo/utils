@@ -41,7 +41,7 @@
     "unocss": "^0.57.6",
     "vite": "^5.0.0",
     "vite-plugin-externals": "^0.6.2",
-    "vitepress": "1.0.0-rc.24",
+    "vitepress": "1.0.0-rc.29",
     "vue": "^3.3.8"
   }
 }
