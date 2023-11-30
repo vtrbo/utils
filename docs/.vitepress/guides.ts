@@ -2,6 +2,19 @@ import type { DefaultTheme } from 'vitepress'
 
 export const functions: DefaultTheme.NavItemChildren[] = [
   {
+    text: 'utils-arr',
+    items: [
+      {
+        text: 'toArray',
+        link: '/functions/arr/toArray',
+      },
+      {
+        text: 'groupBy',
+        link: '/functions/arr/groupBy',
+      },
+    ],
+  },
+  {
     text: 'utils-is',
     items: [
       {
@@ -22,15 +35,7 @@ export const functions: DefaultTheme.NavItemChildren[] = [
       },
     ],
   },
-  {
-    text: 'utils-arr',
-    items: [
-      {
-        text: 'toArray',
-        link: '/functions/arr/toArray',
-      },
-    ],
-  },
+
 ]
 
 export const nav: DefaultTheme.Config['nav'] = [
