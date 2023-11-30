@@ -81,8 +81,6 @@ export function isMap<K = any, V = any>(data: unknown): data is Map<K, V> {
   return isType(data, 'map')
 }
 
-export const isClient = !isUndefined(window) && !isUndefined(document)
-
 export function isHttp(url: string): boolean {
   return url.startsWith('http://') || url.startsWith('https://')
 }
