@@ -15,6 +15,27 @@ export const functions: DefaultTheme.NavItemChildren[] = [
     ],
   },
   {
+    text: 'utils-color',
+    items: [
+      {
+        text: 'hexToRgba',
+        link: '/functions/color/hexToRgba',
+      },
+      {
+        text: 'rgbaToHex',
+        link: '/functions/color/rgbaToHex',
+      },
+      {
+        text: 'darken',
+        link: '/functions/color/darken',
+      },
+      {
+        text: 'lighten',
+        link: '/functions/color/lighten',
+      },
+    ],
+  },
+  {
     text: 'utils-is',
     items: [
       {
