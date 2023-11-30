@@ -1,72 +1,103 @@
+import type { Recordable } from '@vtrbo/utils-tool'
 import { toRawType } from '@vtrbo/utils-tool'
 
-export function isType(data: any, type: string): boolean {
+export function isType(data: unknown, type: string): boolean {
   return toRawType(data).toLowerCase() === type.toLowerCase()
 }
 
-export function isString(data: any): data is string {
-  return isType(data, 'String')
+export function isString(data: unknown): data is string {
+  return isType(data, 'string')
 }
 
-export function isNumber(data: any): data is number {
-  return isType(data, 'Number')
+export function isNumber(data: unknown): data is number {
+  return isType(data, 'number')
 }
 
-export function isBoolean(data: any): data is boolean {
-  return isType(data, 'Boolean')
+export function isNaN(data: unknown): data is number {
+  return Number.isNaN(data)
 }
 
-export function isObject(data: any): data is Record<any, any> {
-  return isType(data, 'Object')
+export function isBoolean(data: unknown): data is boolean {
+  return isType(data, 'boolean')
 }
 
-export function isArray(data: any): data is any[] {
-  return isType(data, 'Array')
+export function isTrue(data: unknown): data is true {
+  return data === true
 }
 
-export function isFunction<T extends Function>(data: any): data is T {
-  return isType(data, 'Function')
+export function isFalse(data: unknown): data is false {
+  return data === false
 }
 
-export function isRegExp(data: any): data is RegExp {
-  return isType(data, 'RegExp')
+export function isSymbol(data: unknown): data is symbol {
+  return isType(data, 'symbol')
 }
 
-export function isDate(data: any): data is Date {
-  return isType(data, 'Date')
+export function isBigInt(data: unknown): data is bigint {
+  return isType(data, 'bigint')
 }
 
-export function isUndefined(data: any): data is undefined {
-  return isType(data, 'Undefined')
+export function isObject<T extends Recordable = Recordable>(data: unknown): data is T {
+  return isType(data, 'object')
 }
 
-export function isNull(data: any): data is null {
-  return isType(data, 'Null')
+export function isArray<T = any>(data: unknown): data is T[] {
+  return isType(data, 'array')
 }
 
-export function isSet(data: any): data is Set<any> {
-  return isType(data, 'Set')
+export function isFunction<T extends Function = any>(data: unknown): data is T {
+  return isType(data, 'function')
 }
 
-export function isMap(data: any): data is Map<any, any> {
-  return isType(data, 'Map')
+export function isPromise<T = any>(data: unknown): data is Promise<T> {
+  return (
+    !!data
+    && isFunction((data as any).then)
+    && isFunction((data as any).catch)
+  )
 }
+
+export function isRegExp(data: unknown): data is RegExp {
+  return isType(data, 'regexp')
+}
+
+export function isDate(data: unknown): data is Date {
+  return isType(data, 'date')
+}
+
+export function isUndefined(data: unknown): data is undefined {
+  return isType(data, 'undefined')
+}
+
+export function isNull(data: unknown): data is null {
+  return isType(data, 'null')
+}
+
+export function isSet<T = any>(data: unknown): data is Set<T> {
+  return isType(data, 'set')
+}
+
+export function isMap<K = any, V = any>(data: unknown): data is Map<K, V> {
+  return isType(data, 'map')
+}
+
+export const isClient = !isUndefined(window) && !isUndefined(document)
 
 export function isHttp(url: string): boolean {
   return url.startsWith('http://') || url.startsWith('https://')
 }
 
-export function isLowerCase(str: string) {
+export function isLowerCase(str: string): boolean {
   const reg = /^[a-z]+$/
   return reg.test(str)
 }
 
-export function isUpperCase(str: string) {
+export function isUpperCase(str: string): boolean {
   const reg = /^[A-Z]+$/
   return reg.test(str)
 }
 
-export function isMobile(mobile: string) {
+export function isMobile(mobile: string): boolean {
   const reg = /^1[3-9]\d{9}$/
   return reg.test(mobile)
 }
@@ -80,14 +111,14 @@ export function isColor(color: string, type: 'HEX' | 'RGB' | 'RGBA'): boolean {
   return typeMap[type].test(color)
 }
 
-export function isEmptyObj(obj: unknown): boolean {
-  return isObject(obj) && !Object.keys(obj).length
+export function isEmptyObj(object: unknown): boolean {
+  return isObject(object) && Reflect.ownKeys(object).length === 0
 }
 
-export function isEmptyArr(arr: unknown): boolean {
-  return isArray(arr) && !arr.length
+export function isEmptyArr(array: unknown): boolean {
+  return isArray(array) && !array.length
 }
 
-export function isKeyOfObj<T extends object>(obj: T, k: keyof any): k is keyof T {
-  return k in obj
+export function isKeyOfObj<T extends Recordable = Recordable>(object: T, k: keyof any): k is keyof T {
+  return k in object
 }

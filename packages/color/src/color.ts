@@ -25,9 +25,7 @@ export function hexToRgba(hex: string): string {
   const getDouble = (start: number, end: number) => Number.parseInt(`0x${hex.slice(start, end)}`)
   const getAlpha = (start: number, end: number, fn: typeof getSingle | typeof getDouble) => Math.round(fn(start, end) / 255 * 100) / 100
 
-  const hexMap: {
-    [key: number]: string
-  } = {
+  const hexMap: { [key: number]: string } = {
     4: `rgb(${getSingle(1, 2)}, ${getSingle(2, 3)}, ${getSingle(3, 4)})`,
     5: `rgba(${getSingle(1, 2)}, ${getSingle(2, 3)}, ${getSingle(3, 4)}, ${getAlpha(4, 5, getSingle)})`,
     7: `rgb(${getDouble(1, 3)}, ${getDouble(3, 5)}, ${getDouble(5, 7)})`,

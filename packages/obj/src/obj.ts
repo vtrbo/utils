@@ -3,12 +3,12 @@ import type { Recordable } from '@vtrbo/utils-tool'
 import { notNullish } from '@vtrbo/utils-tool'
 import type { DeepMerge, ObjEntriesReturnType, ObjKeysReturnType } from '../types'
 
-export function objKeys<T extends object>(obj: T): ObjKeysReturnType<T> {
-  return Object.keys(obj) as ObjKeysReturnType<T>
+export function objKeys<T extends Recordable = Recordable>(object: T): ObjKeysReturnType<T> {
+  return Object.keys(object) as ObjKeysReturnType<T>
 }
 
-export function objEntries<T extends object>(obj: T): ObjEntriesReturnType<T> {
-  return Object.entries(obj) as ObjEntriesReturnType<T>
+export function objEntries<T extends Recordable = Recordable>(object: T): ObjEntriesReturnType<T> {
+  return Object.entries(object) as ObjEntriesReturnType<T>
 }
 
 export function objMap<K extends string, V, NK = K, NV = V>(object: Record<K, V>, fn: (key: K, value: V) => [NK, NV] | undefined): Record<K, V> {
@@ -19,19 +19,19 @@ export function objMap<K extends string, V, NK = K, NV = V>(object: Record<K, V>
   )
 }
 
-export function objPick<O extends object, T extends keyof O>(object: O, keys: T[]): Pick<O, T> {
+export function objPick<O extends Recordable, T extends keyof O>(object: O, keys: T[]): Pick<O, T> {
   return objKeys(object as object).reduce((acc, key) => {
     return keys.includes(key) ? { ...acc, [key]: object[key] } : acc
   }, {} as Pick<O, T>)
 }
 
-export function objOmit<O extends object, T extends keyof O>(object: O, keys: T[]): Omit<O, T> {
+export function objOmit<O extends Recordable, T extends keyof O>(object: O, keys: T[]): Omit<O, T> {
   return objKeys(object as object).reduce((acc, key) => {
     return keys.includes(key) ? acc : { ...acc, [key]: object[key] }
   }, {} as Omit<O, T>)
 }
 
-export function clearKeys<T extends object>(obj: T, conditions = [undefined, null, 'udf', 'nul', 'ept', 'epto', 'epta']): T {
+export function clearKeys<T extends Recordable>(object: T, conditions = [undefined, null, 'udf', 'nul', 'ept', 'epto', 'epta']): T {
   conditions = conditions.map(condition => isString(condition) ? condition.trim() : condition)
 
   const clearUndefined = conditions.includes(undefined)
@@ -42,8 +42,8 @@ export function clearKeys<T extends object>(obj: T, conditions = [undefined, nul
   const clearEpto = conditions.includes('epto')
   const clearEpta = conditions.includes('epta')
 
-  for (const key of objKeys(obj)) {
-    const currentValue = (obj as Recordable)[key]
+  for (const key of objKeys(object)) {
+    const currentValue = (object as Recordable)[key]
     if (
       (clearUndefined && isUndefined(currentValue))
       || (clearNull && isNull(currentValue))
@@ -53,9 +53,9 @@ export function clearKeys<T extends object>(obj: T, conditions = [undefined, nul
       || (clearEpto && isEmptyObj(currentValue))
       || (clearEpta && isEmptyArr(currentValue))
     )
-      delete (obj as Recordable)[key]
+      delete (object as Recordable)[key]
   }
-  return obj
+  return object
 }
 
 export function deepClone<T>(target: T): T {
@@ -79,7 +79,7 @@ export function deepClone<T>(target: T): T {
   return cloneTarget as T
 }
 
-export function deepMerge<T extends object = object, S extends object = T>(target: T, ...sources: S[]): DeepMerge<T, S> {
+export function deepMerge<T extends Recordable = Recordable, S extends Recordable = T>(target: T, ...sources: S[]): DeepMerge<T, S> {
   if (!sources.length)
     return target as DeepMerge<T, S>
 

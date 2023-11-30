@@ -1,4 +1,4 @@
-export function treeToList<T>(tree: T[], options?: {
+export function treeToList<T = any>(tree: T[], options?: {
   children?: string
 }): T[] {
   const tOption = Object.assign({
@@ -18,7 +18,7 @@ export function treeToList<T>(tree: T[], options?: {
   return list
 }
 
-export function treeFilter<T>(tree: T[], callback: (node: T) => boolean, options?: {
+export function treeFilter<T = any>(tree: T[], callback: (node: T) => boolean, options?: {
   children?: string
 }): T[] {
   const tOption = Object.assign({
@@ -40,7 +40,7 @@ export function treeFilter<T>(tree: T[], callback: (node: T) => boolean, options
   })
 }
 
-export function findPaths<T>(tree: T[], callback: (node: T) => boolean, options?: {
+export function findPaths<T = any>(tree: T[], callback: (node: T) => boolean, options?: {
   children?: string
   findAll?: boolean
 }): Array<T[]> {
@@ -77,7 +77,7 @@ export function findPaths<T>(tree: T[], callback: (node: T) => boolean, options?
   return paths
 }
 
-export function findNodes<T>(tree: T[], callback: (node: T) => boolean, options?: {
+export function findNodes<T = any>(tree: T[], callback: (node: T) => boolean, options?: {
   children?: string
   findAll?: boolean
 }): T[] {
