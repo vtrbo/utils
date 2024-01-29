@@ -3,7 +3,8 @@ import { ensureSuffix } from '@vtrbo/utils-str'
 import { nextTick, onMounted, ref, watch } from 'vue'
 import { Codemirror } from 'vue-codemirror'
 import { javascript } from '@codemirror/lang-javascript'
-import { useClipboard } from '@vueuse/core'
+import { oneDark } from '@codemirror/theme-one-dark'
+import { useClipboard, useLocalStorage } from '@vueuse/core'
 import ts from 'typescript'
 import { stringify } from './stringify'
 
@@ -21,6 +22,7 @@ const extensions = ref(javascript({ jsx: true, typescript: true }))
 
 const exampleFileModules = import.meta.glob('../../../../examples/**/*.ts', { as: 'raw' })
 type TModules = Record<string, () => Promise<string>>
+
 async function getFileContent(fileName: string, fileModules: TModules) {
   const filePath = `../../../../examples/${ensureSuffix(fileName, '.ts')}`
   const fileCode = await fileModules[filePath]()
@@ -72,16 +74,19 @@ watch(
   },
 )
 
-function noop() {}
+function noop() {
+}
 
 const runLoading = ref<boolean>(false)
 const outputResult = ref<string>('运行代码后显示结果，等待运行...')
+
 function getTransformCode(code: string) {
   return code.replace(
     /import\s+{\s+(.*?)\s+}\s+from\s+['|"](.*?)['|"]/g,
     (_, name, lib) => `const { ${name} } = (globalThis as any)['${lib}']`,
   )
 }
+
 function handleRun() {
   runLoading.value = true
   try {
@@ -120,6 +125,7 @@ return output;`.replace(/console\.log\(/g, 'presetConsoleLog(').trim()
 }
 
 const tooltip = ref<string>('复制代码')
+
 function handleCopy() {
   if (tooltip.value === '已复制')
     return
@@ -130,6 +136,8 @@ function handleCopy() {
     tooltip.value = '复制代码'
   }, 1500)
 }
+
+const mode = useLocalStorage('vitepress-theme-appearance', 'auto')
 </script>
 
 <template>
@@ -178,7 +186,7 @@ function handleCopy() {
         </div>
       </div>
     </div>
-    <div class="VppEditor" :class="{ '!b-color-bc': collapsable }">
+    <div class="VppEditor" :class="{ '!b-color-bc dark:!b-color-dbbc': collapsable, '!bg-transparent': !collapsable }">
       <Codemirror
         ref="refMirror"
         v-model="codeValue"
@@ -186,7 +194,7 @@ function handleCopy() {
         :autofocus="false"
         :indent-with-tab="true"
         :tab-size="2"
-        :extensions="extensions"
+        :extensions="[extensions, mode === 'dark' ? oneDark : null].filter(Boolean)"
         :scrollbar-style="null"
         :style="{ fontSize: '14px' }"
       />
@@ -209,10 +217,10 @@ function handleCopy() {
   // operate button space
   --obs: 12px;
 
-  --at-apply: vtr-b vtr-rd bg-white;
+  --at-apply: 'vtr-b vtr-rd bg-white dark:(bg-dbc b-dbbc)';
 
   .VppOutput {
-    --at-apply: p-$ps vtr-bb text-oc font-$os;
+    --at-apply: 'p-$ps vtr-bb text-oc dark:text-white font-$os';
 
     &Title {
       --at-apply: font-size-$os vtr-bb pb-$br;
@@ -254,7 +262,7 @@ function handleCopy() {
     }
 
     &Center {
-      --at-apply: text-occ font-size-$ocs cursor-pointer;
+      --at-apply: 'text-occ dark:text-white font-size-$ocs cursor-pointer';
     }
 
     &Right {
@@ -282,13 +290,13 @@ function handleCopy() {
   }
 
   .VppEditor {
-    --at-apply: bg-#ffffff vtr-bt b-color-transparent overflow-hidden;
+    --at-apply: bg-white vtr-bt b-color-transparent overflow-hidden;
     border-bottom-left-radius: var(--br);
     border-bottom-right-radius: var(--br);
 
     ::v-deep(.v-codemirror) {
       .cm-gutters {
-        --at-apply: bg-transparent b-r-color-bc;
+        --at-apply: 'bg-transparent b-r-color-bc dark:b-r-color-oc';
       }
 
       .cm-editor {

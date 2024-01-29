@@ -33,6 +33,7 @@
     "vue-codemirror": "^6.1.1"
   },
   "devDependencies": {
+    "@codemirror/theme-one-dark": "^6.1.2",
     "@iconify/json": "^2.2.144",
     "@vitejs/plugin-vue": "^4.5.0",
     "@vueuse/core": "^10.6.1",
