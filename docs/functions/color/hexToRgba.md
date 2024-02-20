@@ -27,11 +27,11 @@ npm install @vtrbo/utils-color
 
 ## 使用
 
-### 3/6位`HEX`转换为`RGB`  
+### 3/6位`HEX`转换为`RGB`
 
 <demo example="color/hexToRgba/hexToRgb.ts"></demo>
 
-### 4/8位`HEX`转换为`RGBA`  
+### 4/8位`HEX`转换为`RGBA`
 
 <demo example="color/hexToRgba/hexToRgba.ts"></demo>
 
