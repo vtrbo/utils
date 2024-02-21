@@ -29,14 +29,14 @@
     "clean:deps": "rimraf node_modules"
   },
   "dependencies": {
-    "@codemirror/lang-javascript": "^6.2.1",
+    "@codemirror/lang-javascript": "^6.2.2",
     "vue-codemirror": "^6.1.1"
   },
   "devDependencies": {
     "@codemirror/theme-one-dark": "^6.1.2",
     "@iconify/json": "^2.2.184",
     "@vitejs/plugin-vue": "^5.0.4",
-    "@vueuse/core": "^10.7.2",
+    "@vueuse/core": "^10.8.0",
     "pretty-format": "^29.7.0",
     "sass": "^1.71.0",
     "unocss": "^0.58.5",
