@@ -120,3 +120,11 @@ export function isEmptyArr(array: unknown): boolean {
 export function isKeyOfObj<T extends Recordable = Recordable>(object: T, k: keyof any): k is keyof T {
   return k in object
 }
+
+export function isLikeNumber(value?: unknown): boolean {
+  return !Number.isNaN(+value!)
+}
+
+export function isLikeBoolean(value?: unknown): boolean {
+  return value === 'true' || value === 'false' || value === true || value === false
+}

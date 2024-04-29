@@ -29,7 +29,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
     "@vtrbo/utils": "workspace:*",
-    "vite": "^5.1.3",
-    "vue": "^3.4.19"
+    "vite": "^5.2.10",
+    "vue": "^3.4.25"
   }
 }
